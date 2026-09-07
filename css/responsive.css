@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Shiplystic Prarthana - Responsive Stylesheet (responsive.css)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .booking-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .package-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-image-showcase img {
+    height: 320px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-only-divider {
+    display: none;
+  }
+
+  .top-bar {
+    display: block;
+    text-align: center;
+  }
+
+  .brand-logo img {
+    height: 46px !important;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 74px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 74px);
+    background: var(--bg-cream);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    transition: left var(--transition-normal);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .booking-stepper {
+    flex-direction: column;
+    border-radius: var(--radius-md);
+    gap: 0.8rem;
+  }
+
+  .step-divider {
+    display: none;
+  }
+
+  .glass-step-grid-light {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-callout-card-light {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .temple-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .step-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .step-grid-4-dark {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .crimson-cta-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .step-showcase-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.8rem;
+  }
+
+  .review-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .temple-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .step-grid-8 {
+    grid-template-columns: 1fr;
+  }
+
+  .step-grid-4-dark {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid-5 {
+    grid-template-columns: 1fr;
+  }
+
+  .review-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .step-showcase-card {
+    padding: 1.2rem;
+  }
+}

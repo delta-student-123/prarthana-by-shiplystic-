@@ -1,0 +1,354 @@
+/* ==========================================================================
+   Shiplystic Prarthana - Booking Portal Styles (Black, Red & White Theme)
+   ========================================================================== */
+
+.prarthana-hero {
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.78) 0%, rgba(153, 27, 27, 0.5) 50%, rgba(9, 9, 11, 0.92) 100%),
+              url('../images/temples/mahakaleshwar-ujjain.jpg') center/cover no-repeat;
+  padding: 4rem 0 3rem;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  border-bottom: 3px solid var(--primary-red);
+}
+
+.prarthana-hero h1 {
+  color: #FFFFFF;
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+  font-weight: 900;
+}
+
+.prarthana-hero p {
+  color: #E4E4E7;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Stepper Bar (Positioned in Middle Space) */
+.booking-stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1040px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-light);
+  border-radius: 50px;
+  padding: 0.75rem 1.6rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.step-item.active {
+  opacity: 1;
+  color: var(--primary-red);
+  font-weight: 800;
+}
+
+.step-number {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #F1F5F9;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.step-item.active .step-number {
+  background: var(--primary-red);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+}
+
+.step-divider {
+  height: 2px;
+  width: 40px;
+  background: #E2E8F0;
+  flex-shrink: 0;
+}
+
+/* Main Grid Layout */
+.booking-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+  padding: 3rem 0;
+}
+
+/* Booking Form Step Panels */
+.booking-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 2px solid var(--bg-black);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.step-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-red);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #09090B;
+}
+
+/* Temple Filter Pills */
+.filter-pills {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filter-pill {
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  border: 1.5px solid var(--bg-black);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #09090B;
+  transition: all var(--transition-fast);
+}
+
+.filter-pill.active, .filter-pill:hover {
+  background: var(--primary-red);
+  color: #FFFFFF;
+  border-color: var(--primary-red);
+}
+
+/* Temple Selector Grid */
+.temple-radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.temple-radio-card {
+  position: relative;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: #FFFFFF;
+}
+
+.temple-radio-card:hover {
+  border-color: var(--primary-red);
+  background: var(--red-subtle);
+}
+
+.temple-radio-card.selected {
+  border-color: var(--primary-red);
+  background: #FEF2F2;
+  box-shadow: var(--shadow-sm);
+}
+
+.temple-radio-card input[type="radio"] {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  accent-color: var(--primary-red);
+}
+
+.temple-radio-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.temple-radio-info h4 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  color: #09090B;
+}
+
+.temple-radio-info p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Package Selection Cards */
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.package-card {
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  background: #FFFFFF;
+}
+
+.package-card:hover, .package-card.selected {
+  border-color: var(--primary-red);
+  background: #FEF2F2;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.package-card.popular::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-red);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.2rem 0.8rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 1px;
+}
+
+.package-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #09090B;
+}
+
+.package-price {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--primary-red);
+  margin-bottom: 1rem;
+}
+
+.package-features {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.package-features li {
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.package-features li::before {
+  content: '✓';
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: #09090B;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* Order Summary Sidebar */
+.order-summary-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  border: 2px solid var(--bg-black);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 100px;
+}
+
+.summary-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-red);
+  color: #09090B;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+
+.summary-row.total {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--primary-red);
+  padding-top: 1rem;
+  border-top: 2px dashed var(--border-light);
+  margin-top: 1rem;
+}
+
+.trust-badge-box {
+  background: #09090B;
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--primary-red);
+}
