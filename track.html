@@ -37,8 +37,9 @@
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="services/index.html" class="nav-link">Services Overview</a></li>
           <li class="dropdown">
-            <a href="#" class="nav-link">Temples ▾</a>
+            <a href="temples.html" class="nav-link">Temples ▾</a>
             <div class="dropdown-menu" style="min-width: 270px; padding: 0.5rem 0;">
+              <a href="temples.html" class="dropdown-item" style="font-weight: 800; color: var(--primary-red); background: #FEF2F2; border-bottom: 1px solid #FECACA; margin-bottom: 0.3rem;">🌟 All Participating Temples (15) ➔</a>
               <div style="font-weight: 800; font-size: 0.72rem; color: var(--primary-red); padding: 0.4rem 1rem 0.1rem; text-transform: uppercase; letter-spacing: 0.5px;">Featured Temples</div>
               <a href="temples/mahakaleshwar-ujjain.html" class="dropdown-item">🔱 Shri Mahakaleshwar Ujjain</a>
               <a href="temples/omkareshwar.html" class="dropdown-item">🔱 Shri Omkareshwar Jyotirlinga</a>
@@ -58,6 +59,10 @@
           <li><a href="track.html" class="nav-link active">Track Delivery</a></li>
           <li><a href="about.html" class="nav-link">About Us</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <!-- Mobile-only Book button inside nav menu -->
+          <li class="mobile-nav-book-btn">
+            <a href="services/prarthana.html" class="btn btn-red" style="margin: 0.8rem 1rem; display: block; text-align: center; border-radius: 8px;">🛕 Book Prarthana Service</a>
+          </li>
         </ul>
       </nav>
 
@@ -67,18 +72,30 @@
   </header>
 
   <!-- Track Hero Banner Section with Temple Background Image -->
-  <section style="background: linear-gradient(180deg, rgba(9, 9, 11, 0.82) 0%, rgba(127, 29, 29, 0.55) 50%, rgba(9, 9, 11, 0.9) 100%), url('images/temples/omkareshwar.jpg') center/cover no-repeat; padding: 4rem 0 2.5rem; color: #FFFFFF; text-align: center; position: relative;">
+  <section class="track-hero-banner" style="background: linear-gradient(180deg, rgba(9,9,11,0.55) 0%, rgba(127,29,29,0.35) 50%, rgba(9,9,11,0.6) 100%), url('images/temples/omkareshwar.jpg') center/cover no-repeat; padding: 4rem 0 2.5rem; color: #FFFFFF; text-align: center; position: relative;">
     
     <!-- Background Subtle Glow Effect -->
     <div style="position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,38,38,0.25) 0%, rgba(0,0,0,0) 70%); pointer-events: none;"></div>
 
     <div class="container" style="position: relative; z-index: 10;">
       
-      <!-- Breadcrumb Navigation Bar -->
-      <nav aria-label="breadcrumb" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #FCA5A5; font-weight: 700; margin-bottom: 1.2rem; background: rgba(0,0,0,0.25); padding: 0.35rem 1.1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12);">
-        <a href="index.html" style="color: #FCA5A5; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFFFFF'" onmouseleave="this.style.color='#FCA5A5'">Home</a>
-        <span style="color: #EF4444;">➔</span>
-        <span style="color: #FFFFFF; font-weight: 800;">Track Delivery</span>
+      <!-- Luxury Breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <div class="luxury-breadcrumb">
+          <a href="index.html" class="breadcrumb-home-link">
+            <svg class="breadcrumb-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Home</span>
+          </a>
+          <span class="breadcrumb-separator">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="breadcrumb-current-badge">
+            <span>📦</span> Track Delivery
+          </span>
+        </div>
       </nav>
 
       <!-- Main Headline & Subtitle -->
@@ -92,7 +109,7 @@
       </div>
 
       <!-- Floating Xpressbees Tracking Widget Card (Floats over bottom wave) -->
-      <div class="xpress-tracking-widget" style="margin: 1.5rem auto -6.5rem; position: relative; z-index: 10;">
+      <div class="xpress-tracking-widget track-page-widget" style="margin: 1.5rem auto -6.5rem; position: relative; z-index: 10;">
         
         <!-- Top Tabs Navigation -->
         <div class="xpress-tabs-nav">
@@ -145,7 +162,7 @@
 
 
   <!-- Tracking Result Display Area -->
-  <section style="padding: 7.5rem 0 4rem; background: var(--bg-cream); min-height: 500px;">
+  <section class="track-results-section" style="padding: 7.5rem 0 4rem; background: var(--bg-cream); min-height: 500px;">
     <div class="container">
 
       <!-- Default instructions if no tracking ID entered yet -->
@@ -164,7 +181,7 @@
         </div>
 
         <!-- Order Summary Pills -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; background: var(--bg-cream); padding: 1.2rem; border-radius: var(--radius-md);">
+        <div class="track-order-summary-pills" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; background: var(--bg-cream); padding: 1.2rem; border-radius: var(--radius-md);">
           <div>
             <div style="font-size: 0.8rem; color: var(--text-muted);">Temple Sanctuary</div>
             <strong id="track-res-temple" style="font-size: 0.95rem;">Mahakaleshwar Ujjain</strong>
@@ -215,10 +232,10 @@
         </div>
 
         <!-- 3 Guidance Step Cards -->
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+        <div class="track-guidance-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
           
           <!-- Step 1 Card -->
-          <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 1.6rem; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;" onmouseenter="this.style.borderColor='var(--primary-red)'; this.style.transform='translateY(-4px)';" onmouseleave="this.style.borderColor='#E2E8F0'; this.style.transform='translateY(0)';">
+          <div class="track-guidance-card" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 1.6rem; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;" onmouseenter="this.style.borderColor='var(--primary-red)'; this.style.transform='translateY(-4px)';" onmouseleave="this.style.borderColor='#E2E8F0'; this.style.transform='translateY(0)';">
             <div style="width: 48px; height: 48px; border-radius: 14px; background: #FEF2F2; color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; border: 1px solid #FCA5A5;">
               📩
             </div>
@@ -230,7 +247,7 @@
           </div>
 
           <!-- Step 2 Card -->
-          <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 1.6rem; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;" onmouseenter="this.style.borderColor='var(--primary-red)'; this.style.transform='translateY(-4px)';" onmouseleave="this.style.borderColor='#E2E8F0'; this.style.transform='translateY(0)';">
+          <div class="track-guidance-card" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 1.6rem; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;" onmouseenter="this.style.borderColor='var(--primary-red)'; this.style.transform='translateY(-4px)';" onmouseleave="this.style.borderColor='#E2E8F0'; this.style.transform='translateY(0)';">
             <div style="width: 48px; height: 48px; border-radius: 14px; background: #FEF2F2; color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; border: 1px solid #FCA5A5;">
               🔍
             </div>
@@ -242,7 +259,7 @@
           </div>
 
           <!-- Step 3 Card -->
-          <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 1.6rem; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;" onmouseenter="this.style.borderColor='var(--primary-red)'; this.style.transform='translateY(-4px)';" onmouseleave="this.style.borderColor='#E2E8F0'; this.style.transform='translateY(0)';">
+          <div class="track-guidance-card" style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 1.6rem; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;" onmouseenter="this.style.borderColor='var(--primary-red)'; this.style.transform='translateY(-4px)';" onmouseleave="this.style.borderColor='#E2E8F0'; this.style.transform='translateY(0)';">
             <div style="width: 48px; height: 48px; border-radius: 14px; background: #FEF2F2; color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; border: 1px solid #FCA5A5;">
               📹
             </div>
@@ -256,7 +273,7 @@
         </div>
 
         <!-- Help Support Callout -->
-        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 1.2rem 1.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+        <div class="track-help-callout" style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 1.2rem 1.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 0.8rem;">
             <span style="font-size: 1.5rem;">📞</span>
             <div style="font-size: 0.9rem; color: #334155; font-weight: 600;">
@@ -333,12 +350,20 @@
         </div>
       </div>
 
-      <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #71717A; font-size: 0.85rem;">
+            <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; color: #71717A; font-size: 0.85rem;">
         <div>© 2026 Shiplystic Prarthana. All rights reserved.</div>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="faq.html" style="color: #71717A; text-decoration: none;">FAQs</a>
-          <a href="testimonials.html" style="color: #71717A; text-decoration: none;">Testimonials</a>
-          <a href="gallery.html" style="color: #71717A; text-decoration: none;">Gallery</a>
+        <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;">
+          <a href="#" onclick="openLegalModal('Privacy Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Privacy Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Terms of Service'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Terms of Service</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Refund Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Refund Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Cookies Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openCookiePreferences(); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Preferences</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Sitemap'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Sitemap</a>
         </div>
       </div>
     </div>

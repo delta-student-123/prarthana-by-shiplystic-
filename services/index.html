@@ -38,8 +38,9 @@
           <li><a href="../index.html" class="nav-link">Home</a></li>
           <li><a href="index.html" class="nav-link active">Services Overview</a></li>
           <li class="dropdown">
-            <a href="#" class="nav-link">Temples ▾</a>
-            <div class="dropdown-menu" style="min-width: 270px; padding: 0.5rem 0;">
+            <a href="../temples.html" class="nav-link">Temples ▾</a>
+            <div class="dropdown-menu">
+              <a href="../temples.html" class="dropdown-item" style="font-weight: 800; color: var(--primary-red); background: #FEF2F2; border-bottom: 1px solid #FECACA; margin-bottom: 0.3rem;">🌟 All Participating Temples (15) ➔</a>
               <div style="font-weight: 800; font-size: 0.72rem; color: var(--primary-red); padding: 0.4rem 1rem 0.1rem; text-transform: uppercase; letter-spacing: 0.5px;">Featured Temples</div>
               <a href="../temples/mahakaleshwar-ujjain.html" class="dropdown-item">🔱 Shri Mahakaleshwar Ujjain</a>
               <a href="../temples/omkareshwar.html" class="dropdown-item">🔱 Shri Omkareshwar Jyotirlinga</a>
@@ -59,6 +60,9 @@
           <li><a href="../track.html" class="nav-link">Track Delivery</a></li>
           <li><a href="../about.html" class="nav-link">About Us</a></li>
           <li><a href="../contact.html" class="nav-link">Contact</a></li>
+          <li class="mobile-nav-book-btn" style="display: none; padding: 0.5rem 1rem;">
+            <a href="prarthana.html" class="btn btn-red" style="display: block; text-align: center; width: 100%;">🛕 Book Prarthana Service</a>
+          </li>
         </ul>
       </nav>
 
@@ -71,7 +75,7 @@
     <div class="services-layout-grid">
       
       <!-- LEFT SIDEBAR: Package Summary & Support Box -->
-      <aside>
+      <aside class="services-sidebar">
         <div class="sidebar-sticky-box">
           
           <!-- Package Includes Summary Card -->
@@ -110,6 +114,22 @@
             </a>
           </div>
 
+          <!-- Sacred Offering Image Card -->
+          <div style="border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 8px 28px rgba(0,0,0,0.1); border: 1.5px solid #E8E2D5;">
+            <img 
+              src="../images/sidebar-prasad-box.jpg" 
+              alt="Sacred Prasad Delivery Box — Prarthana by Shiplystic" 
+              style="width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.5s ease;"
+              onmouseover="this.style.transform='scale(1.04)'" 
+              onmouseout="this.style.transform='scale(1)'"
+            >
+            <!-- Gradient overlay with caption -->
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, rgba(15,23,42,0.82) 0%, transparent 100%); padding: 1.2rem 1rem 0.9rem;">
+              <div style="font-size: 0.7rem; font-weight: 800; color: #F59E0B; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem;">📦 Doorstep Delivery</div>
+              <div style="font-size: 0.88rem; font-weight: 700; color: #FFFFFF; line-height: 1.3;">Tamper-Proof Sealed Prasad Box — Delivered to You</div>
+            </div>
+          </div>
+
           <!-- Support Callout Box -->
           <div class="ask-questions-card">
             <h3>Support & Tracking Help</h3>
@@ -125,18 +145,37 @@
       <!-- RIGHT MAIN CONTENT -->
       <main>
         
-        <div style="margin-bottom: 1.5rem;">
+        <div class="services-header-intro" style="margin-bottom: 1.5rem;">
+          <!-- Luxury Breadcrumb -->
+          <nav aria-label="breadcrumb">
+            <div class="luxury-breadcrumb light-theme">
+              <a href="../index.html" class="breadcrumb-home-link">
+                <svg class="breadcrumb-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span>Home</span>
+              </a>
+              <span class="breadcrumb-separator">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+              <span class="breadcrumb-current-badge">
+                <span>📋</span> Services Overview
+              </span>
+            </div>
+          </nav>
+
           <span style="background: #09090B; color: #FFF; padding: 0.3rem 0.8rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid var(--primary-red);">
             SERVICES • BOOK, OFFER, RECEIVE
           </span>
-          <h1 style="font-size: 2.2rem; color: #09090B; margin-top: 0.5rem; font-weight: 900;">
+          <h1 class="services-h1-title" style="font-size: 2.2rem; color: #09090B; margin-top: 0.5rem; font-weight: 900;">
             Prarthana Service — Book, Offer, Receive
           </h1>
         </div>
 
         <!-- Redesigned 5-Step Service Breakdown -->
-        <section style="background: #FFFFFF; border-radius: 16px; padding: 2rem; border: 1.5px solid #E2E8F0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.8rem; border-bottom: 2px solid #F1F5F9; padding-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+        <section class="services-offerings-card" style="background: #FFFFFF; border-radius: 16px; padding: 2rem; border: 1.5px solid #E2E8F0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2rem;">
+          <div class="offering-section-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.8rem; border-bottom: 2px solid #F1F5F9; padding-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
             <div>
               <div style="font-size: 0.72rem; font-weight: 800; color: #DC2626; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem;">
                 🪔 END-TO-END TRANSPARENT JOURNEY
@@ -155,15 +194,15 @@
             
             <!-- Step 1 -->
             <div style="display: flex; gap: 1.2rem; background: #FAFAFA; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; transition: all 0.3s ease; position: relative;" class="offering-step-card">
-              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
+              <div class="offering-step-badge" style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
                 01
               </div>
-              <div style="flex: 1;">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+              <div class="offering-step-body" style="flex: 1; min-width: 0;">
+                <div class="offering-step-title-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
                   <h3 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                     <span>🛕</span> Temple Puja Booking
                   </h3>
-                  <span style="font-size: 0.72rem; font-weight: 700; background: #EFF6FF; color: #1D4ED8; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #BFDBFE;">
+                  <span class="offering-pill-tag" style="font-size: 0.72rem; font-weight: 700; background: #EFF6FF; color: #1D4ED8; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #BFDBFE;">
                     Official Temple Ritual
                   </span>
                 </div>
@@ -175,15 +214,15 @@
 
             <!-- Step 2 -->
             <div style="display: flex; gap: 1.2rem; background: #FAFAFA; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; transition: all 0.3s ease; position: relative;" class="offering-step-card">
-              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
+              <div class="offering-step-badge" style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
                 02
               </div>
-              <div style="flex: 1;">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+              <div class="offering-step-body" style="flex: 1; min-width: 0;">
+                <div class="offering-step-title-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
                   <h3 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                     <span>📜</span> Temple Donation Pass-Through
                   </h3>
-                  <span style="font-size: 0.72rem; font-weight: 700; background: #ECFDF5; color: #047857; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #A7F3D0;">
+                  <span class="offering-pill-tag" style="font-size: 0.72rem; font-weight: 700; background: #ECFDF5; color: #047857; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #A7F3D0;">
                     ₹501 Direct Offering
                   </span>
                 </div>
@@ -195,15 +234,15 @@
 
             <!-- Step 3 -->
             <div style="display: flex; gap: 1.2rem; background: #FAFAFA; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; transition: all 0.3s ease; position: relative;" class="offering-step-card">
-              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
+              <div class="offering-step-badge" style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
                 03
               </div>
-              <div style="flex: 1;">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+              <div class="offering-step-body" style="flex: 1; min-width: 0;">
+                <div class="offering-step-title-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
                   <h3 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                     <span>🧾</span> Proof & Receipt Confirmation
                   </h3>
-                  <span style="font-size: 0.72rem; font-weight: 700; background: #FFFBEB; color: #B45309; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #FDE68A;">
+                  <span class="offering-pill-tag" style="font-size: 0.72rem; font-weight: 700; background: #FFFBEB; color: #B45309; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #FDE68A;">
                     Official Documentation
                   </span>
                 </div>
@@ -215,15 +254,15 @@
 
             <!-- Step 4 -->
             <div style="display: flex; gap: 1.2rem; background: #FAFAFA; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; transition: all 0.3s ease; position: relative;" class="offering-step-card">
-              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
+              <div class="offering-step-badge" style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
                 04
               </div>
-              <div style="flex: 1;">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+              <div class="offering-step-body" style="flex: 1; min-width: 0;">
+                <div class="offering-step-title-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
                   <h3 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                     <span>📦</span> Prasad Collection & Secure Packaging
                   </h3>
-                  <span style="font-size: 0.72rem; font-weight: 700; background: #F3E8FF; color: #6B21A8; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #E9D5FF;">
+                  <span class="offering-pill-tag" style="font-size: 0.72rem; font-weight: 700; background: #F3E8FF; color: #6B21A8; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #E9D5FF;">
                     Tamper-Evident Pack
                   </span>
                 </div>
@@ -235,15 +274,15 @@
 
             <!-- Step 5 -->
             <div style="display: flex; gap: 1.2rem; background: #FAFAFA; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; transition: all 0.3s ease; position: relative;" class="offering-step-card">
-              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
+              <div class="offering-step-badge" style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(220,38,38,0.3);">
                 05
               </div>
-              <div style="flex: 1;">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+              <div class="offering-step-body" style="flex: 1; min-width: 0;">
+                <div class="offering-step-title-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
                   <h3 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                     <span>🚚</span> Multi-Carrier Doorstep Delivery
                   </h3>
-                  <span style="font-size: 0.72rem; font-weight: 700; background: #FEF2F2; color: #DC2626; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #FCA5A5;">
+                  <span class="offering-pill-tag" style="font-size: 0.72rem; font-weight: 700; background: #FEF2F2; color: #DC2626; padding: 0.2rem 0.65rem; border-radius: 50px; border: 1px solid #FCA5A5;">
                     Live GPS Tracking
                   </span>
                 </div>
@@ -257,7 +296,7 @@
         </section>
 
         <!-- What Shiplystic Does NOT Do -->
-        <section style="background: #09090B; color: #FFF; border-radius: var(--radius-md); padding: 1.8rem; border: 1.5px solid var(--primary-red); margin-bottom: 2rem;">
+        <section class="does-not-do-section" style="background: #09090B; color: #FFF; border-radius: var(--radius-md); padding: 1.8rem; border: 1.5px solid var(--primary-red); margin-bottom: 2rem;">
           <h2 style="font-size: 1.3rem; color: var(--primary-red); margin-bottom: 0.8rem; font-weight: 800;">
             What Shiplystic Does NOT Do
           </h2>
@@ -273,7 +312,7 @@
         <!-- Featured Categories Summary -->
         <section style="margin-bottom: 2rem;">
           <h2 style="font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 800;">Featured Service Categories</h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div class="featured-cats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
             <div style="background: #FFF; padding: 1rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-light); text-align: center;">
               <div style="font-size: 1.8rem;">🔱</div>
               <h3 style="font-size: 1rem; margin: 0.4rem 0 0.2rem; color: var(--primary-red);">Jyotirlingas</h3>
@@ -299,9 +338,13 @@
 
         <!-- Participating Temples Table -->
         <section style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 800;">Participating Temples & Shrines</h2>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
+            <h2 style="font-size: 1.4rem; margin: 0; font-weight: 800;">Participating Temples & Shrines</h2>
+            <div class="mobile-table-scroll-hint" style="display: none;">👉 Swipe horizontally to view full table details</div>
+          </div>
 
-          <table class="resp-table">
+          <div class="table-responsive-wrapper">
+            <table class="resp-table">
             <thead>
               <tr>
                 <th>Temple</th>
@@ -437,10 +480,11 @@
 
             </tbody>
           </table>
+          </div>
         </section>
 
         <!-- Who Can Use Prarthana? -->
-        <section style="background: #FFFFFF; border-radius: var(--radius-md); padding: 1.8rem; border: 1.5px solid var(--border-light); margin-bottom: 2rem;">
+        <section class="who-can-use-section" style="background: #FFFFFF; border-radius: var(--radius-md); padding: 1.8rem; border: 1.5px solid var(--border-light); margin-bottom: 2rem;">
           <h2 style="font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 800;">Who Can Use Prarthana?</h2>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">Prarthana is built for devotees who:</p>
 
@@ -522,12 +566,20 @@
         </div>
       </div>
 
-      <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #71717A; font-size: 0.85rem;">
+            <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; color: #71717A; font-size: 0.85rem;">
         <div>© 2026 Shiplystic Prarthana. All rights reserved.</div>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="../faq.html" style="color: #71717A; text-decoration: none;">FAQs</a>
-          <a href="../testimonials.html" style="color: #71717A; text-decoration: none;">Testimonials</a>
-          <a href="../gallery.html" style="color: #71717A; text-decoration: none;">Gallery</a>
+        <div class="footer-legal-links" style="display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;">
+          <a href="#" onclick="openLegalModal('Privacy Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Privacy Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Terms of Service'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Terms of Service</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Refund Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Refund Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Cookies Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openCookiePreferences(); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Preferences</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Sitemap'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Sitemap</a>
         </div>
       </div>
     </div>

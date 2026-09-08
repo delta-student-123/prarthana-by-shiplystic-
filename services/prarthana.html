@@ -40,8 +40,9 @@
           <li><a href="../index.html" class="nav-link">Home</a></li>
           <li><a href="index.html" class="nav-link">Services Overview</a></li>
           <li class="dropdown">
-            <a href="#" class="nav-link">Temples ▾</a>
+            <a href="../temples.html" class="nav-link">Temples ▾</a>
             <div class="dropdown-menu" style="min-width: 270px; padding: 0.5rem 0;">
+              <a href="../temples.html" class="dropdown-item" style="font-weight: 800; color: var(--primary-red); background: #FEF2F2; border-bottom: 1px solid #FECACA; margin-bottom: 0.3rem;">🌟 All Participating Temples (15) ➔</a>
               <div style="font-weight: 800; font-size: 0.72rem; color: var(--primary-red); padding: 0.4rem 1rem 0.1rem; text-transform: uppercase; letter-spacing: 0.5px;">Featured Temples</div>
               <a href="../temples/mahakaleshwar-ujjain.html" class="dropdown-item">🔱 Shri Mahakaleshwar Ujjain</a>
               <a href="../temples/omkareshwar.html" class="dropdown-item">🔱 Shri Omkareshwar Jyotirlinga</a>
@@ -61,6 +62,10 @@
           <li><a href="../track.html" class="nav-link">Track Delivery</a></li>
           <li><a href="../about.html" class="nav-link">About Us</a></li>
           <li><a href="../contact.html" class="nav-link">Contact</a></li>
+          <!-- Mobile-only Book button inside nav menu -->
+          <li class="mobile-nav-book-btn">
+            <a href="prarthana.html" class="btn btn-red" style="margin: 0.8rem 1rem; display: block; text-align: center; border-radius: 8px;">🛕 Book Prarthana Service</a>
+          </li>
         </ul>
       </nav>
 
@@ -72,11 +77,36 @@
   <!-- Hero Section -->
   <section class="prarthana-hero">
     <div class="container">
+      <!-- Luxury Breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <div class="luxury-breadcrumb">
+          <a href="../index.html" class="breadcrumb-home-link">
+            <svg class="breadcrumb-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Home</span>
+          </a>
+          <span class="breadcrumb-separator">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <a href="../temples.html" class="breadcrumb-crumb-link">Temples</a>
+          <span class="breadcrumb-separator">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="breadcrumb-current-badge">
+            <span>🛕</span> Book Prarthana
+          </span>
+        </div>
+      </nav>
+
       <span style="background: var(--primary-red); color: #FFF; padding: 0.25rem 0.8rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
-        BOOKING PORTAL
+        ⚡ Direct Temple Service
       </span>
-      <h1 style="margin: 0.6rem 0 0.4rem;">Book Prarthana Service</h1>
-      <p>Select your temple, provide devotee details, and receive blessed prasad delivered safely to your home.</p>
+      <h1 class="hero-title" style="margin-top: 0.5rem;">Book Verified Temple Prarthana</h1>
+      <p class="hero-desc">
+        Complete your prayer booking in 3 simple steps. Your ₹501 Sankalp donation will be officially recorded with the temple priest.
+      </p>
     </div>
   </section>
 
@@ -124,13 +154,13 @@
               <!-- Rendered via js/prarthana.js -->
             </div>
 
-            <h3 style="font-size: 1.15rem; margin: 1.5rem 0 1rem;">📦 Package Includes (Flat Rate ₹1,999)</h3>
+            <h3 class="package-section-title" style="font-size: 1.15rem; margin: 1.5rem 0 1rem;">📦 Package Includes (Flat Rate ₹1,999)</h3>
             
             <div class="package-grid" id="package-grid">
               <!-- Rendered via js/prarthana.js -->
             </div>
 
-            <div style="text-align: right; margin-top: 1.5rem;">
+            <div class="booking-actions-row step1-actions" style="text-align: right; margin-top: 1.5rem;">
               <button type="button" class="btn btn-red" id="btn-step1-next">Continue to Devotee Details ➔</button>
             </div>
           </div>
@@ -172,7 +202,7 @@
               <textarea id="sankalp" class="form-control" rows="3" placeholder="e.g. Good health & prosperity for family..."></textarea>
             </div>
 
-            <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+            <div class="booking-actions-row step2-actions" style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
               <button type="button" class="btn btn-outline" id="btn-step2-back">⬅ Back to Temple Selection</button>
               <button type="button" class="btn btn-red" id="btn-step2-next">Proceed to Delivery Address ➔</button>
             </div>
@@ -219,7 +249,7 @@
               </label>
             </div>
 
-            <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+            <div class="booking-actions-row step3-actions" style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
               <button type="button" class="btn btn-outline" id="btn-step3-back">⬅ Back</button>
               <button type="submit" class="btn btn-red" id="btn-submit-booking">Confirm & Pay ₹1,999 ➔</button>
             </div>
@@ -254,7 +284,7 @@
       </div>
 
       <!-- Right Side: Order Summary Sidebar -->
-      <div>
+      <div class="summary-sidebar-wrapper">
         <div class="order-summary-card">
           <h3 class="summary-title">📋 Package Summary</h3>
 
@@ -361,12 +391,20 @@
         </div>
       </div>
 
-      <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #71717A; font-size: 0.85rem;">
+            <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; color: #71717A; font-size: 0.85rem;">
         <div>© 2026 Shiplystic Prarthana. All rights reserved.</div>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="../faq.html" style="color: #71717A; text-decoration: none;">FAQs</a>
-          <a href="../testimonials.html" style="color: #71717A; text-decoration: none;">Testimonials</a>
-          <a href="../gallery.html" style="color: #71717A; text-decoration: none;">Gallery</a>
+        <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;">
+          <a href="#" onclick="openLegalModal('Privacy Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Privacy Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Terms of Service'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Terms of Service</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Refund Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Refund Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Cookies Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openCookiePreferences(); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Preferences</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Sitemap'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Sitemap</a>
         </div>
       </div>
     </div>

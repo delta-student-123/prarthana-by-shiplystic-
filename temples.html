@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Explore all participating sacred temples across India on Shiplystic Prarthana. Book authentic pujas performed by temple priests at 12 Jyotirlingas, Shakti Peeths & Char Dham shrines with doorstep prasad delivery.">
+  <title>Participating Sacred Temples of India | Shiplystic Prarthana</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .temple-filter-btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1.5px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .temple-filter-btn:hover {
+      border-color: var(--primary-red);
+      color: var(--primary-red);
+      background: #FEF2F2;
+    }
+    .temple-filter-btn.active {
+      background: var(--primary-red);
+      color: #FFFFFF;
+      border-color: var(--primary-red);
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
+    }
+    .temple-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+    @media (max-width: 1024px) {
+      .temple-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .temple-card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
+      }
+    }
+    .temple-showcase-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 1.5px solid #E2E8F0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .temple-showcase-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-red);
+      box-shadow: 0 16px 36px rgba(220, 38, 38, 0.12);
+    }
+    .temple-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+    .temple-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .temple-showcase-card:hover .temple-img-wrap img {
+      transform: scale(1.06);
+    }
+    .temple-badge-pill {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(9, 9, 11, 0.88);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      letter-spacing: 0.02em;
+    }
+    .temple-badge-jyotirlinga { color: #F59E0B; border-color: rgba(245, 158, 11, 0.4); }
+    .temple-badge-shakti { color: #F43F5E; border-color: rgba(244, 63, 94, 0.4); }
+    .temple-badge-dham { color: #38BDF8; border-color: rgba(56, 189, 248, 0.4); }
+    .temple-badge-shrine { color: #10B981; border-color: rgba(16, 185, 129, 0.4); }
+
+    .temple-card-content {
+      padding: 1.25rem 1.25rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .temple-name-title {
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.3;
+      margin-bottom: 0.3rem;
+      transition: color 0.2s ease;
+    }
+    .temple-showcase-card:hover .temple-name-title {
+      color: var(--primary-red);
+    }
+    .temple-deity-loc {
+      font-size: 0.82rem;
+      color: #64748B;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .temple-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .temple-feature-list li {
+      font-size: 0.8rem;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .temple-feature-list li span.check {
+      color: #10B981;
+      font-weight: 800;
+    }
+    .temple-price-strip {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div>
+        <span>📦 Powered by Shiplystic Ecosystem — Ship. Track. Scale.</span>
+      </div>
+      <div class="safety-pill-badge">
+        <span>🛡️ Safety Notice: No direct payment links or OTPs requested</span>
+      </div>
+      <div>
+        <span>📞 Support: +91 9422799941</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="header-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="main-brand-logo">
+        <img src="images/logo/shiplystic-logo-horizontal.png" alt="Prarthana by Shiplystic" style="height: 54px;">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services/index.html" class="nav-link">Services Overview</a></li>
+          <li class="dropdown">
+            <a href="temples.html" class="nav-link active">Temples ▾</a>
+            <div class="dropdown-menu" style="min-width: 270px; padding: 0.5rem 0;">
+              <a href="temples.html" class="dropdown-item" style="font-weight: 800; color: var(--primary-red); background: #FEF2F2; border-bottom: 1px solid #FECACA; margin-bottom: 0.3rem;">🌟 All Participating Temples (15) ➔</a>
+              <div style="font-weight: 800; font-size: 0.72rem; color: var(--primary-red); padding: 0.4rem 1rem 0.1rem; text-transform: uppercase; letter-spacing: 0.5px;">Featured Temples</div>
+              <a href="temples/mahakaleshwar-ujjain.html" class="dropdown-item">🔱 Shri Mahakaleshwar Ujjain</a>
+              <a href="temples/omkareshwar.html" class="dropdown-item">🔱 Shri Omkareshwar Jyotirlinga</a>
+              <a href="temples/mahalaxmi-kolhapur.html" class="dropdown-item">🌺 Shri Mahalaxmi Kolhapur</a>
+              <a href="temples/sai-baba-shirdi.html" class="dropdown-item">🕊️ Shri Sai Baba Shirdi</a>
+              <div style="border-top: 1px solid #E4E4E7; margin: 0.3rem 0;"></div>
+              <div style="font-weight: 800; font-size: 0.72rem; color: var(--primary-red); padding: 0.4rem 1rem 0.1rem; text-transform: uppercase; letter-spacing: 0.5px;">Revered Shrines</div>
+              <a href="services/prarthana.html" class="dropdown-item">Ayodhya Ram Mandir</a>
+              <a href="services/prarthana.html" class="dropdown-item">Mata Vaishno Devi</a>
+              <a href="services/prarthana.html" class="dropdown-item">Tirupati Balaji</a>
+              <a href="services/prarthana.html" class="dropdown-item">Siddhivinayak Mumbai</a>
+              <a href="services/prarthana.html" class="dropdown-item">Kashi Vishwanath & Somnath</a>
+              <a href="services/prarthana.html" class="dropdown-item">Kedarnath & Badrinath</a>
+              <a href="services/prarthana.html" class="dropdown-item">Jagannath Puri & Dwarkadhish</a>
+            </div>
+          </li>
+          <li><a href="track.html" class="nav-link">Track Delivery</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="mobile-nav-book-btn">
+            <a href="services/prarthana.html" class="btn btn-red" style="margin: 0.8rem 1rem; display: block; text-align: center; border-radius: 8px;">🛕 Book Prarthana Service</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="services/prarthana.html" class="btn btn-red" id="header-cta-btn">Book Prarthana Service</a>
+      <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="temples-hero-section" style="
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFDF9 35%, rgba(255, 253, 249, 0.96) 52%, rgba(255, 253, 249, 0.82) 72%, rgba(255, 253, 249, 0.45) 100%), 
+                url('images/temples/temples-banner.jpg') center right / cover no-repeat;
+    color: #0F172A; 
+    padding: 2.6rem 0 2.2rem; 
+    position: relative; 
+    overflow: hidden; 
+    border-bottom: 3px solid var(--primary-red);
+  ">
+    <div style="position: absolute; top: -60px; right: -60px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(220,38,38,0.06) 0%, rgba(245,158,11,0.05) 50%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+      <!-- Luxury Breadcrumb (Light Theme) -->
+      <nav aria-label="breadcrumb">
+        <div class="luxury-breadcrumb light-theme">
+          <a href="index.html" class="breadcrumb-home-link">
+            <svg class="breadcrumb-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Home</span>
+          </a>
+          <span class="breadcrumb-separator">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="breadcrumb-current-badge">
+            <span>🛕</span> Temples Directory
+          </span>
+        </div>
+      </nav>
+
+      <div style="max-width: 780px;">
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem; background: #FEE2E2; color: #DC2626; border: 1px solid #FECACA; font-size: 0.7rem; font-weight: 800; padding: 0.28rem 0.8rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; box-shadow: 0 2px 6px rgba(220,38,38,0.08);">
+          <span>🛕</span> PAN-INDIA SACRED SANCTUMS
+        </span>
+        <h1 class="temples-hero-title" style="font-size: 2.05rem; font-weight: 900; line-height: 1.22; margin-bottom: 0.75rem; color: #0F172A;">
+          Participating Sacred Temples <span style="color: var(--primary-red);">Across India</span>
+        </h1>
+        <p class="temples-hero-subtitle" style="font-size: 0.92rem; line-height: 1.55; color: #475569; margin-bottom: 1.35rem;">
+          Experience authentic rituals performed directly by genuine temple priests inside holy sanctums. ₹501 of your payment is passed directly to the temple with an official receipt, followed by doorstep sacred prasad delivery via Shiplystic logistics.
+        </p>
+
+        <!-- Trust Badges Strip -->
+        <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; padding: 0.38rem 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; color: #1E293B; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <span>🔱</span> 5 Jyotirlingas
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; padding: 0.38rem 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; color: #1E293B; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <span>🌺</span> Shakti Peeths
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; padding: 0.38rem 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; color: #1E293B; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <span>🛕</span> Char Dham Shrines
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; padding: 0.38rem 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; color: #1E293B; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <span>📜</span> ₹501 Direct Pass-Through
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Search Toolbar -->
+  <section style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0; padding: 1.25rem 0; position: sticky; top: 68px; z-index: 50; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        
+        <!-- Category Filters -->
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+          <button type="button" class="temple-filter-btn active" data-filter="all">All Temples (15)</button>
+          <button type="button" class="temple-filter-btn" data-filter="jyotirlinga">🔱 Jyotirlingas (5)</button>
+          <button type="button" class="temple-filter-btn" data-filter="shakti">🌺 Shakti Peeths (2)</button>
+          <button type="button" class="temple-filter-btn" data-filter="dham">🛕 Char Dham (4)</button>
+          <button type="button" class="temple-filter-btn" data-filter="shrine">✨ Revered Shrines (4)</button>
+        </div>
+
+        <!-- Search Input -->
+        <div style="position: relative; min-width: 260px; flex: 1; max-width: 360px;">
+          <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 0.95rem; color: #94A3B8;">🔍</span>
+          <input 
+            type="text" 
+            id="templeSearchInput" 
+            placeholder="Search by temple, deity, or state..." 
+            style="width: 100%; padding: 0.55rem 0.9rem 0.55rem 2.2rem; border-radius: 9999px; border: 1.5px solid #CBD5E1; font-size: 0.86rem; background: #FFFFFF; outline: none; transition: border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--primary-red)'"
+            onblur="this.style.borderColor='#CBD5E1'"
+          >
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Temple Grid Showcase -->
+  <section style="background: #FFFFFF; padding: 3rem 0 4.5rem; min-height: 500px;">
+    <div class="container">
+      
+      <!-- Counter & Status Row -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #F1F5F9; padding-bottom: 0.75rem;">
+        <div style="font-size: 0.9rem; color: #64748B;">
+          Showing <strong id="temple-visible-count" style="color: #0F172A;">15</strong> participating sacred sanctums
+        </div>
+        <div style="font-size: 0.82rem; color: #10B981; font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
+          <span>●</span> All Pujas Performed by Official Temple Priests
+        </div>
+      </div>
+
+      <!-- Grid Container -->
+      <div class="temple-card-grid" id="templeShowcaseGrid">
+
+        <!-- 1. Shri Mahakaleshwar -->
+        <div class="temple-showcase-card" data-category="jyotirlinga" data-name="mahakaleshwar ujjain shiva mahakal madhya pradesh">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/mahakaleshwar-ujjain.jpg" alt="Shri Mahakaleshwar Temple, Ujjain" loading="lazy">
+              <span class="temple-badge-pill temple-badge-jyotirlinga">⭐ Jyotirlinga</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Mahakaleshwar</h2>
+              <div class="temple-deity-loc">
+                <span>🔱 Lord Shiva / Mahakal</span> • <span>📍 Ujjain, Madhya Pradesh</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Official Bhasma & Jalabhishek pujas by temple priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation pass-through with temple receipt</li>
+                <li><span class="check">✓</span> Holy Mahakal Dry Fruit Prasad & Vibhuti box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="temples/mahakaleshwar-ujjain.html" class="btn" style="flex: 1; background: #F1F5F9; color: #0F172A; font-size: 0.8rem; font-weight: 700; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.2rem; text-decoration: none;">View Details</a>
+              <a href="services/prarthana.html?temple=mahakaleshwar-ujjain" class="btn btn-red" style="flex: 1; font-size: 0.8rem; font-weight: 700; border-radius: 8px; padding: 0.6rem 0.2rem;">Book Puja ➔</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Shri Kashi Vishwanath -->
+        <div class="temple-showcase-card" data-category="jyotirlinga" data-name="kashi vishwanath varanasi shiva ganga uttar pradesh">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/kashi-vishwanath.jpg" alt="Shri Kashi Vishwanath Temple, Varanasi" loading="lazy">
+              <span class="temple-badge-pill temple-badge-jyotirlinga">⭐ Jyotirlinga</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Kashi Vishwanath</h2>
+              <div class="temple-deity-loc">
+                <span>🔱 Lord Shiva</span> • <span>📍 Varanasi, Uttar Pradesh</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Rudrabhishek rituals conducted by Kashi priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation with official confirmation</li>
+                <li><span class="check">✓</span> Sacred Ganga Jal, Vibhuti & Temple Prasad</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=kashi-vishwanath" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 3. Shri Somnath Temple -->
+        <div class="temple-showcase-card" data-category="jyotirlinga" data-name="somnath shiva someshwar veraval gujarat">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/somnath.jpg" alt="Shri Somnath Temple, Gujarat" loading="lazy">
+              <span class="temple-badge-pill temple-badge-jyotirlinga">⭐ Jyotirlinga</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Somnath Temple</h2>
+              <div class="temple-deity-loc">
+                <span>🔱 Lord Shiva / Someshwar</span> • <span>📍 Veraval, Gujarat</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Prayers at the First of 12 sacred Jyotirlingas</li>
+                <li><span class="check">✓</span> ₹501 pass-through donation + Trust receipt</li>
+                <li><span class="check">✓</span> Somnath Holy Bhasma & Blessed Maha Prasad</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=somnath" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 4. Shri Kedarnath Dham -->
+        <div class="temple-showcase-card" data-category="jyotirlinga dham" data-name="kedarnath shiva kedar rudraprayag uttarakhand himalayas">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/kedarnath.jpg" alt="Shri Kedarnath Dham, Uttarakhand" loading="lazy">
+              <span class="temple-badge-pill temple-badge-jyotirlinga">⭐ Jyotirlinga & Dham</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Kedarnath Dham</h2>
+              <div class="temple-deity-loc">
+                <span>🔱 Lord Shiva / Kedar</span> • <span>📍 Rudraprayag, Uttarakhand</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Sacred Himalayan Jyotirlinga prayers by Rawal priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation with official board receipt</li>
+                <li><span class="check">✓</span> Blessed Himalayan Dry Fruit Prasad Box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=kedarnath" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 5. Shri Omkareshwar -->
+        <div class="temple-showcase-card" data-category="jyotirlinga" data-name="omkareshwar shiva narmada khandwa madhya pradesh">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/omkareshwar.jpg" alt="Shri Omkareshwar Temple, Madhya Pradesh" loading="lazy">
+              <span class="temple-badge-pill temple-badge-jyotirlinga">⭐ Jyotirlinga</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Omkareshwar</h2>
+              <div class="temple-deity-loc">
+                <span>🔱 Lord Shiva</span> • <span>📍 Khandwa District, MP</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Island shrine puja on holy Narmada river</li>
+                <li><span class="check">✓</span> ₹501 passed to shrine trust with official receipt</li>
+                <li><span class="check">✓</span> Narmada sacred prasad box delivered home</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="temples/omkareshwar.html" class="btn" style="flex: 1; background: #F1F5F9; color: #0F172A; font-size: 0.8rem; font-weight: 700; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.2rem; text-decoration: none;">View Details</a>
+              <a href="services/prarthana.html?temple=omkareshwar" class="btn btn-red" style="flex: 1; font-size: 0.8rem; font-weight: 700; border-radius: 8px; padding: 0.6rem 0.2rem;">Book Puja ➔</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Mata Vaishno Devi -->
+        <div class="temple-showcase-card" data-category="shakti" data-name="vaishno devi durga mata katra jammu kashmir trikuta">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/vaishno-devi.jpg" alt="Mata Vaishno Devi Shrine, Katra" loading="lazy">
+              <span class="temple-badge-pill temple-badge-shakti">🌺 Shakti Peeth</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Mata Vaishno Devi Shrine</h2>
+              <div class="temple-deity-loc">
+                <span>🌺 Goddess Durga / Vaishno Devi</span> • <span>📍 Katra, J&K</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Holy Cave prayers by Shrine Board priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation pass-through with receipt</li>
+                <li><span class="check">✓</span> Blessed Khazana Coin & Sacred Maha Prasad</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=vaishno-devi" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 7. Shri Mahalaxmi Temple -->
+        <div class="temple-showcase-card" data-category="shakti" data-name="mahalaxmi ambabai kolhapur maharashtra laxmi">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/mahalaxmi-kolhapur.jpg" alt="Shri Mahalaxmi Temple, Kolhapur" loading="lazy">
+              <span class="temple-badge-pill temple-badge-shakti">🌺 Shakti Peeth</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Mahalaxmi Temple</h2>
+              <div class="temple-deity-loc">
+                <span>🌺 Goddess Ambabai / Mahalaxmi</span> • <span>📍 Kolhapur, Maharashtra</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Kumkumarchana rituals conducted by temple priests</li>
+                <li><span class="check">✓</span> ₹501 donation passed to temple trust with receipt</li>
+                <li><span class="check">✓</span> Blessed Haldi-Kumkum & Maha Prasad box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="temples/mahalaxmi-kolhapur.html" class="btn" style="flex: 1; background: #F1F5F9; color: #0F172A; font-size: 0.8rem; font-weight: 700; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.2rem; text-decoration: none;">View Details</a>
+              <a href="services/prarthana.html?temple=mahalaxmi-kolhapur" class="btn btn-red" style="flex: 1; font-size: 0.8rem; font-weight: 700; border-radius: 8px; padding: 0.6rem 0.2rem;">Book Puja ➔</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Shri Siddhivinayak Mumbai -->
+        <div class="temple-showcase-card" data-category="shrine" data-name="siddhivinayak ganesha ganpati mumbai prabhadevi maharashtra">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/siddhivinayak.jpg" alt="Shri Siddhivinayak Temple, Mumbai" loading="lazy">
+              <span class="temple-badge-pill temple-badge-shrine">✨ Major Ganpati Temple</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Siddhivinayak Temple</h2>
+              <div class="temple-deity-loc">
+                <span>🐘 Lord Ganesha / Siddhivinayak</span> • <span>📍 Mumbai, Maharashtra</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Atharvashirsha Avartan & Modak Bhog by priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation with Temple Trust receipt</li>
+                <li><span class="check">✓</span> Sacred Ladoo Prasad & Blessed Angavastra</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=siddhivinayak-mumbai" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 9. Shri Sai Baba Sansthan -->
+        <div class="temple-showcase-card" data-category="shrine" data-name="sai baba shirdi sansthan maharashtra samadhi">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/sai-baba-shirdi.jpg" alt="Shri Sai Baba Sansthan, Shirdi" loading="lazy">
+              <span class="temple-badge-pill temple-badge-shrine">🕊️ Sai Sansthan</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Sai Baba Sansthan</h2>
+              <div class="temple-deity-loc">
+                <span>🕊️ Shri Sai Baba</span> • <span>📍 Shirdi, Maharashtra</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Aarti & prayers conducted at holy Samadhi Mandir</li>
+                <li><span class="check">✓</span> ₹501 donation pass-through with official receipt</li>
+                <li><span class="check">✓</span> Blessed Shirdi Sacred Udi & Maha Prasad</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="temples/sai-baba-shirdi.html" class="btn" style="flex: 1; background: #F1F5F9; color: #0F172A; font-size: 0.8rem; font-weight: 700; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.2rem; text-decoration: none;">View Details</a>
+              <a href="services/prarthana.html?temple=sai-baba-shirdi" class="btn btn-red" style="flex: 1; font-size: 0.8rem; font-weight: 700; border-radius: 8px; padding: 0.6rem 0.2rem;">Book Puja ➔</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Shri Tirupati Balaji -->
+        <div class="temple-showcase-card" data-category="dham" data-name="tirupati balaji venkateswara swamy tirumala andhra pradesh">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/tirupati.jpg" alt="Shri Tirupati Balaji Temple, Tirumala" loading="lazy">
+              <span class="temple-badge-pill temple-badge-dham">🛕 Sacred Dham</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Tirupati Balaji</h2>
+              <div class="temple-deity-loc">
+                <span>🪷 Lord Venkateswara / Balaji</span> • <span>📍 Tirumala, AP</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Archana & prayers by Tirumala shrine priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation with official TTD receipt</li>
+                <li><span class="check">✓</span> Authentic Tirupati Srivari Ladoo Prasad box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=tirupati-balaji" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 11. Shri Jagannath Temple -->
+        <div class="temple-showcase-card" data-category="dham" data-name="jagannath puri odisha char dham krishna balabhadra subhadra">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/jagannath-puri.jpg" alt="Shri Jagannath Temple, Puri" loading="lazy">
+              <span class="temple-badge-pill temple-badge-dham">🛕 Char Dham</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Jagannath Temple</h2>
+              <div class="temple-deity-loc">
+                <span>🔱 Lord Jagannath</span> • <span>📍 Puri, Odisha</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Holy Mahaprasad prayers by traditional servitors</li>
+                <li><span class="check">✓</span> ₹501 direct temple pass-through & official receipt</li>
+                <li><span class="check">✓</span> Authentic Puri Khaja & Nirmalya Prasad Box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=jagannath-puri" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 12. Shri Dwarkadhish Temple -->
+        <div class="temple-showcase-card" data-category="dham" data-name="dwarkadhish dwarka krishna gujarat char dham gomti">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/dwarkadhish.jpg" alt="Shri Dwarkadhish Temple, Dwarka" loading="lazy">
+              <span class="temple-badge-pill temple-badge-dham">🛕 Char Dham</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Dwarkadhish Temple</h2>
+              <div class="temple-deity-loc">
+                <span>🪷 Lord Krishna / Dwarkadhish</span> • <span>📍 Dwarka, Gujarat</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Makhan Mishri offering by Jagat Mandir priests</li>
+                <li><span class="check">✓</span> ₹501 direct temple donation with receipt</li>
+                <li><span class="check">✓</span> Blessed Sugar Candy & Sacred Prasad Box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=dwarkadhish" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 13. Shri Badrinath Dham -->
+        <div class="temple-showcase-card" data-category="dham" data-name="badrinath vishnu badri narayan chamoli uttarakhand char dham">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/badrinath.jpg" alt="Shri Badrinath Dham, Uttarakhand" loading="lazy">
+              <span class="temple-badge-pill temple-badge-dham">🛕 Char Dham</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Badrinath Dham</h2>
+              <div class="temple-deity-loc">
+                <span>🪷 Lord Vishnu / Badri Narayan</span> • <span>📍 Chamoli, Uttarakhand</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Sahasranama Archana conducted by temple priests</li>
+                <li><span class="check">✓</span> ₹501 donation pass-through + Board receipt</li>
+                <li><span class="check">✓</span> Blessed Badrinath Tulsi & Dry Fruit Prasad</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=badrinath" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 14. Shri Ram Janmabhoomi Mandir -->
+        <div class="temple-showcase-card" data-category="shrine" data-name="ayodhya ram mandir janmabhoomi lalla uttar pradesh">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/ayodhya.jpg" alt="Shri Ram Janmabhoomi Mandir, Ayodhya" loading="lazy">
+              <span class="temple-badge-pill temple-badge-shrine">🏹 Sacred Shrine</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Shri Ram Janmabhoomi Mandir</h2>
+              <div class="temple-deity-loc">
+                <span>🏹 Lord Ram Lalla</span> • <span>📍 Ayodhya, Uttar Pradesh</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Special Archana & Bhog offering by Trust priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation with Official Trust receipt</li>
+                <li><span class="check">✓</span> Blessed Ayodhya Elaichi Dana Prasad Box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=ayodhya-ram-mandir" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+        <!-- 15. Mathura-Vrindavan Shrines -->
+        <div class="temple-showcase-card" data-category="shrine" data-name="mathura vrindavan krishna radha rani banke bihari uttar pradesh">
+          <div>
+            <div class="temple-img-wrap">
+              <img src="images/temples/mathura-vrindavan.jpg" alt="Mathura-Vrindavan Shri Krishna Shrines" loading="lazy">
+              <span class="temple-badge-pill temple-badge-shrine">🦚 Sacred Shrine</span>
+            </div>
+            <div class="temple-card-content">
+              <h2 class="temple-name-title">Mathura-Vrindavan Shrines</h2>
+              <div class="temple-deity-loc">
+                <span>🦚 Lord Krishna & Radha Rani</span> • <span>📍 Mathura, UP</span>
+              </div>
+              <ul class="temple-feature-list">
+                <li><span class="check">✓</span> Peda & Chappan Bhog invocations by traditional priests</li>
+                <li><span class="check">✓</span> ₹501 direct donation pass-through with confirmation</li>
+                <li><span class="check">✓</span> Authentic Mathura Peda & Vrindavan Chandan box</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding: 0 1.25rem 1.25rem;">
+            <div class="temple-price-strip">
+              <span style="font-size: 0.8rem; color: #64748B;">Package Rate:</span>
+              <strong style="font-size: 1.15rem; color: var(--primary-red);">₹1,999</strong>
+            </div>
+            <a href="services/prarthana.html?temple=mathura-vrindavan" class="btn btn-red" style="width: 100%; font-size: 0.84rem; font-weight: 700; border-radius: 8px; padding: 0.65rem 0.5rem; text-align: center;">Book Prarthana ➔</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty State message -->
+      <div id="noTemplesFound" style="display: none; text-align: center; padding: 4rem 1rem; background: #F8FAFC; border-radius: 16px; border: 1.5px dashed #CBD5E1; margin-top: 1rem;">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+        <h3 style="font-size: 1.2rem; color: #0F172A; font-weight: 800; margin-bottom: 0.4rem;">No matching temples found</h3>
+        <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 1.2rem;">Try searching for a different temple name, deity, or clear the search filter.</p>
+        <button type="button" class="btn btn-red" onclick="resetTempleFilter()" style="border-radius: 8px; font-size: 0.85rem; padding: 0.6rem 1.2rem;">Reset Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How It Works Summary -->
+  <section style="background: #F8FAFC; padding: 3.5rem 0; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 2.5rem;">
+        <span style="font-size: 0.75rem; font-weight: 800; color: var(--primary-red); text-transform: uppercase; letter-spacing: 0.1em;">OUR 3-STEP SACRED PROCESS</span>
+        <h2 style="font-size: 1.85rem; font-weight: 900; color: #0F172A; margin-top: 0.3rem;">Transparent Devotional Journey</h2>
+        <p style="font-size: 0.9rem; color: #64748B;">From sanctum rituals to your home altar — every step is tracked with utmost sanctity.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="step-grid-3">
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <div style="width: 42px; height: 42px; border-radius: 50%; background: #FEF2F2; color: var(--primary-red); font-size: 1.1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border: 1.5px solid #FECACA;">1</div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 0.4rem;">Select Temple & Gotra</h3>
+          <p style="font-size: 0.85rem; color: #64748B; line-height: 1.55;">Choose your revered temple and share devotee names, nakshatra, and gotra details for personalized sankalp prayers.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <div style="width: 42px; height: 42px; border-radius: 50%; background: #FEF2F2; color: var(--primary-red); font-size: 1.1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border: 1.5px solid #FECACA;">2</div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 0.4rem;">Direct Priest Rituals</h3>
+          <p style="font-size: 0.85rem; color: #64748B; line-height: 1.55;">Designated temple priests perform the rituals in the sanctum. ₹501 is passed directly as your donation, and the official temple receipt is shared.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <div style="width: 42px; height: 42px; border-radius: 50%; background: #FEF2F2; color: var(--primary-red); font-size: 1.1rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border: 1.5px solid #FECACA;">3</div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 0.4rem;">Doorstep Prasad Delivery</h3>
+          <p style="font-size: 0.85rem; color: #64748B; line-height: 1.55;">Holy Maha Prasad is hygienically packed in tamper-proof boxes and shipped directly to your home via Shiplystic express logistics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section style="background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 50%, #B91C1C 100%); color: #FFFFFF; padding: 3.5rem 0; position: relative; overflow: hidden; border-top: 3px solid #F59E0B;">
+    <div style="position: absolute; top: -50px; right: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+    <div class="container" style="text-align: center; max-width: 720px; margin: 0 auto; position: relative; z-index: 2;">
+      <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 0.8rem; color: #FFFFFF;">
+        Ready to Offer Your Prarthana?
+      </h2>
+      <p style="font-size: 0.98rem; color: #FEE2E2; line-height: 1.6; margin-bottom: 1.8rem;">
+        Choose your sacred temple, complete your devotee registration in under 2 minutes, and receive authentic divine blessings directly at your doorstep.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="services/prarthana.html" class="btn" style="background: #FFFFFF; color: #DC2626; font-size: 0.95rem; font-weight: 800; padding: 0.85rem 2rem; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);">
+          🛕 Book Prarthana Service ➔
+        </a>
+        <a href="contact.html" class="btn" style="background: rgba(255,255,255,0.12); color: #FFFFFF; border: 1.5px solid rgba(255,255,255,0.4); font-size: 0.95rem; font-weight: 800; padding: 0.85rem 1.8rem; border-radius: 8px; backdrop-filter: blur(8px);">
+          📞 Contact Devotee Seva Desk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-dark" style="background: #09090B; color: #A1A1AA; padding: 4.5rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="container">
+      <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 2.5rem;">
+        
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1.2rem; display: inline-block;">
+            <img src="images/logo/prarthana-footer-logo.png" alt="Prarthana by Shiplystic" style="height: 52px; width: auto; object-fit: contain;">
+          </a>
+          <p style="color: #A1A1AA; font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.2rem; max-width: 320px;">
+            Shiplystic Prarthana operates as a technology and logistics coordination ecosystem facilitating temple puja bookings, transparent donation pass-through, and secure doorstep prasad delivery.
+          </p>
+          <div class="footer-social-links" style="display: flex; gap: 0.8rem;">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: #FFF; font-weight: 800; font-size: 1.05rem; margin-bottom: 1.2rem;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><a href="index.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Home</a></li>
+            <li><a href="services/index.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Services Overview</a></li>
+            <li><a href="temples.html" style="color: #FFFFFF; font-weight: 700; text-decoration: none; font-size: 0.9rem;">All Temples (15)</a></li>
+            <li><a href="services/prarthana.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Book Prarthana Service</a></li>
+            <li><a href="track.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Track Delivery</a></li>
+            <li><a href="about.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">About Us</a></li>
+            <li><a href="contact.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: #FFF; font-weight: 800; font-size: 1.05rem; margin-bottom: 1.2rem;">Featured Temples</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><a href="temples/mahakaleshwar-ujjain.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Mahakaleshwar Ujjain</a></li>
+            <li><a href="temples/omkareshwar.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Omkareshwar Jyotirlinga</a></li>
+            <li><a href="temples/mahalaxmi-kolhapur.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Mahalaxmi Kolhapur</a></li>
+            <li><a href="temples/sai-baba-shirdi.html" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Sai Baba Shirdi</a></li>
+            <li><a href="temples.html" style="color: #EF4444; font-weight: 700; text-decoration: none; font-size: 0.88rem;">+ View All 15 Temples ➔</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: #FFF; font-weight: 800; font-size: 1.05rem; margin-bottom: 1.2rem;">Devotee Support</h4>
+          <p style="color: #A1A1AA; font-size: 0.88rem; line-height: 1.6; margin-bottom: 0.8rem;">
+            Have questions about temple selections, special festival occasions, or tracking?
+          </p>
+          <div style="font-weight: 800; color: #FFF; font-size: 1.1rem; margin-bottom: 0.4rem;">📞 +91 9422799941</div>
+          <div style="color: #A1A1AA; font-size: 0.85rem;">Dedicated Devotee Support (9 AM – 8 PM)</div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; color: #71717A; font-size: 0.85rem;">
+        <div>© 2026 Shiplystic Prarthana. All rights reserved.</div>
+        <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;">
+          <a href="#" onclick="openLegalModal('Privacy Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Privacy Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Terms of Service'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Terms of Service</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Refund Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Refund Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Cookies Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openCookiePreferences(); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Preferences</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Sitemap'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    // Live Filtering and Search
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.temple-filter-btn');
+      const searchInput = document.getElementById('templeSearchInput');
+      const templeCards = document.querySelectorAll('.temple-showcase-card');
+      const countEl = document.getElementById('temple-visible-count');
+      const emptyState = document.getElementById('noTemplesFound');
+      const grid = document.getElementById('templeShowcaseGrid');
+
+      let currentCategory = 'all';
+
+      function applyFilter() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        templeCards.forEach(card => {
+          const category = card.getAttribute('data-category') || '';
+          const nameData = card.getAttribute('data-name') || '';
+
+          const matchesCategory = (currentCategory === 'all') || category.includes(currentCategory);
+          const matchesQuery = !query || nameData.includes(query);
+
+          if (matchesCategory && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (countEl) countEl.textContent = visibleCount;
+        if (emptyState) {
+          emptyState.style.display = (visibleCount === 0) ? 'block' : 'none';
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-filter');
+          applyFilter();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyFilter);
+      }
+
+      window.resetTempleFilter = function() {
+        currentCategory = 'all';
+        filterBtns.forEach(b => {
+          if (b.getAttribute('data-filter') === 'all') b.classList.add('active');
+          else b.classList.remove('active');
+        });
+        if (searchInput) searchInput.value = '';
+        applyFilter();
+      };
+    });
+  </script>
+</body>
+
+</html>
