@@ -57,14 +57,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active Link Highlight
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.includes(currentPath)) {
-      link.classList.add('active');
+  // Shiplystic Mega Dropdown Tab Switcher (Hover & Click)
+  const initMegaDropdownTabs = () => {
+    const megaTabBtns = document.querySelectorAll('.mega-tab-btn');
+    megaTabBtns.forEach(btn => {
+      const activateTab = () => {
+        const container = btn.closest('.shiplystic-mega-menu');
+        if (!container) return;
+        
+        const targetId = btn.getAttribute('data-target');
+        if (!targetId) return;
+
+        container.querySelectorAll('.mega-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        container.querySelectorAll('.mega-panel').forEach(p => {
+          if (p.id === targetId) {
+            p.classList.add('active');
+          } else {
+            p.classList.remove('active');
+          }
+        });
+      };
+
+      btn.addEventListener('mouseenter', activateTab);
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        activateTab();
+      });
+    });
+  };
+  initMegaDropdownTabs();
+
+  // Active Link Highlight - ensure only the ONE current menu item is marked active
+  try {
+    const rawPath = window.location.pathname.replace(/\\/g, '/');
+    const cleanPath = rawPath.split('?')[0].split('#')[0];
+    const filename = cleanPath.split('/').filter(Boolean).pop() || 'index.html';
+    const isServicesSection = cleanPath.includes('/services/');
+    const isTemplesSection = cleanPath.includes('/temples/') || filename === 'temples.html';
+
+    const headerNavLinks = Array.from(document.querySelectorAll('.nav-links > li > .nav-link'));
+    if (headerNavLinks.length > 0) {
+      let activeLink = null;
+
+      if (isTemplesSection) {
+        activeLink = headerNavLinks.find(l => {
+          const href = (l.getAttribute('href') || '').toLowerCase();
+          return href.includes('temples.html') || l.textContent.trim().startsWith('Temples');
+        });
+      } else if (isServicesSection) {
+        activeLink = headerNavLinks.find(l => {
+          const href = (l.getAttribute('href') || '').toLowerCase();
+          return href.includes('services/') || (href.endsWith('index.html') && l.textContent.trim().startsWith('Services')) || l.textContent.trim().startsWith('Services');
+        });
+      } else if (filename === 'index.html' || cleanPath.endsWith('/')) {
+        activeLink = headerNavLinks.find(l => {
+          const href = (l.getAttribute('href') || '').toLowerCase();
+          return l.textContent.trim() === 'Home' && !href.includes('services/');
+        });
+      } else {
+        activeLink = headerNavLinks.find(l => {
+          const href = (l.getAttribute('href') || '').trim();
+          const target = href.split('/').filter(Boolean).pop();
+          return target === filename;
+        });
+      }
+
+      if (activeLink) {
+        headerNavLinks.forEach(link => {
+          if (link === activeLink) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+
+      // Add click handler so clicking a menu item highlights it immediately
+      headerNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          headerNavLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
     }
-  });
+  } catch (err) {
+    console.warn('Active nav link highlight error:', err);
+  }
 
   // Interactive Occasion Tab Switcher
   window.switchOccasionTab = function(tabId, btnElement) {

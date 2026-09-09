@@ -242,7 +242,7 @@ const TEMPLE_DATA = [
     name: "Shri Tirupati Balaji Temple",
     deity: "Lord Venkateswara / Balaji",
     location: "Tirumala, Andhra Pradesh",
-    tag: "Sacred Dham",
+    tag: "Revered Shrine",
     image: "../images/temples/tirupati.jpg",
     rating: "4.9 ★ (25,000+ Bookings)",
     basePrice: 1999,
@@ -268,7 +268,7 @@ const TEMPLE_DATA = [
     name: "Shri Jagannath Temple",
     deity: "Lord Jagannath, Balabhadra & Subhadra",
     location: "Puri, Odisha",
-    tag: "Sacred Dham",
+    tag: "Char Dham",
     image: "../images/temples/jagannath-puri.jpg",
     rating: "4.9 ★ (14,100+ Bookings)",
     basePrice: 1999,
@@ -294,7 +294,7 @@ const TEMPLE_DATA = [
     name: "Shri Dwarkadhish Temple",
     deity: "Lord Krishna / Dwarkadhish",
     location: "Dwarka, Gujarat",
-    tag: "Sacred Dham",
+    tag: "Char Dham",
     image: "../images/temples/dwarkadhish.jpg",
     rating: "4.8 ★ (10,500+ Bookings)",
     basePrice: 1999,
@@ -320,7 +320,7 @@ const TEMPLE_DATA = [
     name: "Shri Badrinath Dham",
     deity: "Lord Vishnu / Badri Narayan",
     location: "Chamoli, Uttarakhand",
-    tag: "Sacred Dham",
+    tag: "Char Dham",
     image: "../images/temples/badrinath.jpg",
     rating: "4.9 ★ (13,700+ Bookings)",
     basePrice: 1999,
@@ -340,6 +340,32 @@ const TEMPLE_DATA = [
       }
     ],
     description: "Sacred Himalayan Vishnu Dham. Facilitated puja bookings with ₹501 direct temple donation pass-through and doorstep prasad delivery."
+  },
+  {
+    id: "rameswaram",
+    name: "Shri Ramanathaswamy Temple (Rameswaram)",
+    deity: "Lord Shiva / Ramanathaswamy",
+    location: "Rameswaram Island, Tamil Nadu",
+    tag: "Char Dham",
+    image: "../images/temples/rameswaram.jpg",
+    rating: "4.9 ★ (14,500+ Bookings)",
+    basePrice: 1999,
+    packages: [
+      {
+        id: "rameswaram-standard",
+        name: "Shri Rameswaram Char Dham Prarthana Package",
+        price: 1999,
+        popular: true,
+        features: [
+          "22 Sacred Theertham Snanam & Sanctum Puja by Priests",
+          "₹501 Passed directly as Temple Donation",
+          "Official Temple Trust Confirmation & Receipt",
+          "Consecrated Vibhuti, Kumkum & Blessed Sweet Prasad",
+          "Multi-Carrier Doorstep Express Delivery"
+        ]
+      }
+    ],
+    description: "Sacred Southern Char Dham and holy Jyotirlinga sanctum in Rameswaram. Includes ₹501 direct temple donation pass-through and authentic blessed prasad delivery."
   },
   {
     id: "ayodhya-ram-mandir",
@@ -392,6 +418,58 @@ const TEMPLE_DATA = [
       }
     ],
     description: "Sacred birthplace and playland of Lord Krishna in Mathura & Vrindavan. Pujas conducted by traditional goswamis with authentic Peda prasad delivery."
+  },
+  {
+    id: "dagdusheth-ganpati",
+    name: "Shreemant Dagdusheth Halwai Ganpati",
+    deity: "Lord Ganesha / Dagdusheth Ganpati",
+    location: "Pune, Maharashtra",
+    tag: "Revered Shrine",
+    image: "../images/temples/dagdusheth-ganpati.jpg",
+    rating: "5.0 ★ (28,500+ Bookings)",
+    basePrice: 1999,
+    packages: [
+      {
+        id: "dagdusheth-standard",
+        name: "Shreemant Dagdusheth Ganpati Prarthana Package",
+        price: 1999,
+        popular: true,
+        features: [
+          "Atharvashirsha Avartan & Modak Bhog by Trust Priests",
+          "₹501 Passed directly as Temple Trust Donation",
+          "Official Trust Receipt & Confirmation",
+          "Special Dagdusheth Modak & Dry Fruit Maha Prasad Box",
+          "Express Temperature-Controlled Delivery"
+        ]
+      }
+    ],
+    description: "World-renowned Wish-Fulfilling Ganpati of Pune. Authentic rituals by temple trust priests, direct ₹501 donation pass-through, and blessed Modak prasad doorstep delivery."
+  },
+  {
+    id: "gajanan-maharaj-shegaon",
+    name: "Shri Gajanan Maharaj Sansthan, Shegaon",
+    deity: "Sant Shri Gajanan Maharaj",
+    location: "Shegaon, Buldhana District, Maharashtra",
+    tag: "Revered Shrine",
+    image: "../images/temples/gajanan-maharaj-shegaon.jpg",
+    rating: "4.9 ★ (22,000+ Bookings)",
+    basePrice: 1999,
+    packages: [
+      {
+        id: "shegaon-standard",
+        name: "Shri Gajanan Maharaj Sansthan Prarthana Package",
+        price: 1999,
+        popular: true,
+        features: [
+          "Samadhi Mandir Pooja & Aarti Invocations by Sansthan Sevaks",
+          "₹501 Passed directly as Temple Donation",
+          "Official Sansthan Trust Receipt",
+          "Authentic Shegaon Mahaprasad Box & Sacred Angavastra",
+          "Multi-Carrier Express Doorstep Delivery"
+        ]
+      }
+    ],
+    description: "Revered spiritual pilgrimage of Sant Shri Gajanan Maharaj in Shegaon. Official sansthan donation pass-through, temple receipt, and doorstep blessed prasad delivery."
   }
 ];
 

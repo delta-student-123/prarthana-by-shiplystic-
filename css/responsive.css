@@ -97,6 +97,300 @@ body {
   padding-left: 1.3rem;
 }
 
+/* ============================================================
+   HORIZONTAL DROPDOWN (TEMPLES SUBMENU)
+   ============================================================ */
+.dropdown-menu.dropdown-horizontal {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -40px !important;
+  transform: none !important;
+  min-width: 490px !important;
+  max-width: 530px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
+  padding: 0.6rem !important;
+  z-index: 1005 !important;
+  overflow: visible !important;
+}
+
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu.dropdown-horizontal,
+  .dropdown.open .dropdown-menu.dropdown-horizontal {
+    display: block !important;
+  }
+}
+
+.dropdown-horizontal .dropdown-all-link {
+  display: block !important;
+  font-weight: 800 !important;
+  font-size: 0.85rem !important;
+  color: #DC2626 !important;
+  background: #FEF2F2 !important;
+  border: 1px solid #FECACA !important;
+  border-radius: 6px !important;
+  padding: 0.55rem 0.85rem !important;
+  margin-bottom: 0.45rem !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.dropdown-horizontal .dropdown-all-link:hover {
+  background: #FEE2E2 !important;
+  padding-left: 1.1rem !important;
+}
+
+.dropdown-horizontal .dropdown-columns {
+  display: flex !important;
+  gap: 0.8rem !important;
+}
+
+.dropdown-horizontal .dropdown-col {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.dropdown-horizontal .dropdown-col:first-child {
+  border-right: 1px solid #E4E4E7 !important;
+  padding-right: 0.6rem !important;
+}
+
+.dropdown-horizontal .dropdown-col-title {
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  color: #DC2626 !important;
+  padding: 0.3rem 0.75rem 0.25rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.dropdown-horizontal .dropdown-item {
+  display: block !important;
+  padding: 0.48rem 0.75rem !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+}
+
+.dropdown-horizontal .dropdown-item:hover {
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  padding-left: 1rem !important;
+}
+
+@media (max-width: 1024px) {
+  .dropdown-menu.shiplystic-mega-menu {
+    width: 740px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  .mega-sidebar {
+    width: 195px !important;
+  }
+  .mega-featured-card {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu.shiplystic-mega-menu {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    border: 1px solid #E2E8F0 !important;
+    margin: 0.6rem 0 !important;
+    display: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .dropdown.open .dropdown-menu.shiplystic-mega-menu {
+    display: block !important;
+  }
+
+  .mega-menu-inner {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+
+  .mega-sidebar {
+    width: 100% !important;
+    border-radius: 12px 12px 0 0 !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding: 0.5rem !important;
+    gap: 0.4rem !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mega-tab-btn {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    margin-right: 0 !important;
+  }
+
+  .mega-tab-btn .mega-chevron {
+    display: none !important;
+  }
+
+  .mega-content-area {
+    padding: 1rem !important;
+  }
+
+  .mega-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .mega-featured-card {
+    display: flex !important;
+    width: calc(100% - 1.5rem) !important;
+    margin: 0 0.75rem 0.75rem !important;
+    border-radius: 12px !important;
+    padding: 1.2rem !important;
+  }
+}
+
+
+/* ============================================================
+   TEMPLE QUICK STATS CARD (SINGLE LINE ON DESKTOP)
+   ============================================================ */
+.temple-stats-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  padding: 0.95rem 1.4rem;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.temple-stats-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  min-width: 0;
+}
+
+.temple-stats-item:not(:last-child) {
+  border-right: 1px solid #F1F5F9;
+}
+
+.temple-stats-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FEF2F2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.temple-stats-content {
+  min-width: 0;
+}
+
+.temple-stats-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #6B7280;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  white-space: nowrap !important;
+}
+
+.temple-stats-value {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 0.1rem;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+  .temple-stats-card {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+  }
+  .temple-stats-item:nth-child(2) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .temple-stats-card {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  .temple-stats-item:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #F1F5F9;
+    padding-bottom: 0.75rem;
+  }
+  .temple-stats-value {
+    white-space: normal !important;
+  }
+}
+
+/* ============================================================
+   PRASAD ITEMS GRID (PROPER BALANCED 2x2 GRID)
+   ============================================================ */
+.prasad-items-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.2rem !important;
+}
+
+@media (max-width: 680px) {
+  .prasad-items-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+}
+
+/* ============================================================
+   TEMPLE HOW IT WORKS PROCESS GRID (BALANCED 2x2 GRID)
+   ============================================================ */
+.temple-process-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.2rem !important;
+}
+
+@media (max-width: 680px) {
+  .temple-process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.9rem !important;
+  }
+  .temple-process-card {
+    padding: 1.5rem !important;
+  }
+  .temple-prasad-section {
+    padding: 1.5rem !important;
+  }
+}
+
 /* Mobile Toggle Button — hidden on desktop */
 .mobile-toggle {
   display: none;
