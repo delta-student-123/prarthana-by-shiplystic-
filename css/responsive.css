@@ -431,7 +431,8 @@ body {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
   }
 
   .package-grid {

@@ -1,0 +1,20 @@
+# Enable Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# Force trailing slash on directories
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+
+# 301 Redirects from .html to clean SEO URLs
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^about\.html$ /about-us [R=301,L]
+RewriteRule ^contact\.html$ /contact-us [R=301,L]
+RewriteRule ^faq\.html$ /faqs [R=301,L]
+RewriteRule ^gallery\.html$ /gallery [R=301,L]
+RewriteRule ^testimonials\.html$ /reviews [R=301,L]
+RewriteRule ^track\.html$ /track-delivery [R=301,L]
+RewriteRule ^temples\.html$ /temples [R=301,L]
+RewriteRule ^services/index\.html$ /services [R=301,L]
+RewriteRule ^services/prarthana\.html$ /book-prarthana [R=301,L]
+RewriteRule ^temples/([a-zA-Z0-9_-]+)\.html$ /temples/$1 [R=301,L]

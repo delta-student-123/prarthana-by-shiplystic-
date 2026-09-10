@@ -15,8 +15,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const summaryPujaPrice = document.getElementById('summary-puja-price');
   const summaryTotalPrice = document.getElementById('summary-total');
 
-  // Handle URL parameter for Special Occasion selection
+  // Coming Soon Temples List
+  const COMING_SOON_TEMPLES = [
+    'kashi-vishwanath',
+    'somnath',
+    'kedarnath',
+    'vaishno-devi',
+    'siddhivinayak-mumbai',
+    'siddhivinayak',
+    'tirupati-balaji',
+    'tirupati',
+    'jagannath-puri',
+    'jagannath',
+    'badrinath',
+    'rameswaram',
+    'ayodhya-ram-mandir',
+    'ram-mandir'
+  ];
+
+  // Handle URL parameter for Temple and Special Occasion selection
   const urlParams = new URLSearchParams(window.location.search);
+  const paramTemple = urlParams.get('temple');
+  if (paramTemple) {
+    const found = TEMPLE_DATA.find(t => t.id.toLowerCase() === paramTemple.toLowerCase());
+    if (found) {
+      if (COMING_SOON_TEMPLES.includes(found.id.toLowerCase())) {
+        setTimeout(() => {
+          if (typeof showComingSoon === 'function') {
+            showComingSoon();
+          }
+        }, 350);
+      } else {
+        selectedTemple = found;
+        if (found.packages && found.packages.length > 0) {
+          selectedPackage = found.packages[0];
+        }
+      }
+    }
+  }
+
   const paramOccasion = urlParams.get('occasion');
   const occasionSelect = document.getElementById('specialOccasion');
   if (paramOccasion && occasionSelect) {
@@ -34,21 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
     templeGrid.innerHTML = '';
 
     TEMPLE_DATA.forEach(t => {
+      const isComingSoon = COMING_SOON_TEMPLES.includes(t.id.toLowerCase());
       const isSelected = t.id === selectedTemple.id;
       const card = document.createElement('div');
       card.className = `temple-radio-card ${isSelected ? 'selected' : ''}`;
-      const imgSrc = window.location.pathname.includes('/services/') ? t.image : t.image.replace('../', '');
-      const fallbackSrc = window.location.pathname.includes('/services/') ? '../images/temples/mahakaleshwar-ujjain.jpg' : 'images/temples/mahakaleshwar-ujjain.jpg';
+      const isSub = window.location.pathname.includes('/book-prarthana') || window.location.pathname.includes('/services/') || window.location.pathname.includes('/temples/');
+      const imgSrc = isSub ? t.image : t.image.replace('../', '');
+      const fallbackSrc = isSub ? '../images/temples/mahakaleshwar-ujjain.jpg' : 'images/temples/mahakaleshwar-ujjain.jpg';
       card.innerHTML = `
         <input type="radio" name="temple-select" id="t-${t.id}" ${isSelected ? 'checked' : ''}>
         <img src="${imgSrc}" alt="${t.name}" class="temple-radio-thumb" onerror="this.onerror=null; this.src='${fallbackSrc}';">
         <div class="temple-radio-info">
-          <h4>${t.name}</h4>
+          <h4>${t.name} ${isComingSoon ? '<span style="font-size:0.55rem; font-weight:800; background:#FEE2E2; color:#DC2626; padding:1px 5px; border-radius:4px; vertical-align:middle; margin-left:3px; letter-spacing:0.2px; display:inline-block;">COMING SOON</span>' : ''}</h4>
           <p>${t.deity} • ${t.location}</p>
         </div>
       `;
 
       card.addEventListener('click', () => {
+        if (isComingSoon) {
+          if (typeof showComingSoon === 'function') {
+            showComingSoon();
+          }
+          return;
+        }
         selectedTemple = t;
         selectedPackage = t.packages[0];
         document.querySelectorAll('.temple-radio-card').forEach(c => c.classList.remove('selected'));
@@ -122,7 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 250, behavior: 'smooth' });
   }
 
-  if (btnStep1Next) btnStep1Next.addEventListener('click', () => goToStep(2));
+  if (btnStep1Next) {
+    btnStep1Next.addEventListener('click', () => {
+      if (selectedTemple && COMING_SOON_TEMPLES.includes(selectedTemple.id.toLowerCase())) {
+        if (typeof showComingSoon === 'function') {
+          showComingSoon();
+        }
+        return;
+      }
+      goToStep(2);
+    });
+  }
   if (btnStep2Back) btnStep2Back.addEventListener('click', () => goToStep(1));
   if (btnStep2Next) btnStep2Next.addEventListener('click', () => goToStep(3));
   if (btnStep3Back) btnStep3Back.addEventListener('click', () => goToStep(2));

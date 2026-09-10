@@ -327,24 +327,28 @@ img {
 .temple-radio-info {
   flex-grow: 1;
   min-width: 0;
+  padding-right: 1.6rem;
 }
 
 .temple-radio-info h4 {
-  font-size: 0.92rem;
-  font-weight: 800;
+  font-size: 0.80rem;
+  font-weight: 750;
+  line-height: 1.25;
   color: #0F172A;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.12rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .temple-radio-info p {
-  font-size: 0.76rem;
+  font-size: 0.69rem;
+  line-height: 1.25;
   color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: 0;
 }
 
 .temple-radio-card input[type="radio"] {
@@ -355,15 +359,28 @@ img {
 }
 
 /* Package Includes Box */
+.package-section-title {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 2.2rem 0 1.3rem;
+  padding-top: 1.3rem;
+  border-top: 1.5px dashed #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .package-grid {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  margin-top: 0.8rem;
 }
 
 .package-card {
   background: #FFFFFF;
   border: 1.5px solid #FCA5A5;
   border-radius: var(--radius-md);
-  padding: 1.8rem 1.5rem;
+  padding: 1.5rem 1.35rem;
   box-shadow: 0 4px 15px rgba(220, 38, 38, 0.06);
   position: relative;
   overflow: visible;
@@ -376,28 +393,28 @@ img {
   left: 1.5rem;
   background: var(--primary-red);
   color: #FFFFFF;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  padding: 0.25rem 0.85rem;
+  padding: 0.22rem 0.75rem;
   border-radius: 50px;
   letter-spacing: 0.05em;
   box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
 }
 
 .package-title {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #0F172A;
-  margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
-  line-height: 1.35;
+  margin-bottom: 0.4rem;
+  margin-top: 0.3rem;
+  line-height: 1.3;
 }
 
 .package-price {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 900;
   color: var(--primary-red);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
@@ -412,10 +429,10 @@ img {
 }
 
 .package-features li {
-  font-size: 0.86rem;
+  font-size: 0.80rem;
   color: #334155;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1618,18 +1635,19 @@ img {
 }
 
 /* Footer */
-.footer {
-  background: #000000;
-  color: #FFFFFF;
-  padding-top: 3rem;
-  padding-bottom: 1.25rem;
-  border-top: 4px solid var(--primary-red);
+.footer,
+.footer-dark {
+  background: #09090B;
+  color: #A1A1AA;
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 2rem;
+  gap: 2.5rem;
   margin-bottom: 2rem;
 }
 
@@ -1762,7 +1780,7 @@ img {
 }
 
 .hero-red-accent {
-  color: #991B1B;
+  color: #DC2626;
   position: relative;
   display: inline-block;
 }
@@ -1791,7 +1809,8 @@ img {
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-bottom: 1.1rem;
-  overflow: hidden;
+  overflow: visible;
+  padding: 4px 2px;
 }
 
 .hero-feature-card {
@@ -1810,7 +1829,7 @@ img {
 
 .hero-feature-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(220, 38, 38, 0.12);
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.12);
   border-color: #FCA5A5;
 }
 
@@ -3754,6 +3773,81 @@ textarea.form-control {
                     url('../images/temples/tirupati.jpg');
 }
 
+.temple-hero-somnath {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/somnath.jpg');
+}
+
+.temple-hero-ayodhya {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/ayodhya.jpg');
+}
+
+.temple-hero-badrinath {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/badrinath.jpg');
+}
+
+.temple-hero-dagdusheth {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/dagdusheth-ganpati.jpg');
+}
+
+.temple-hero-dwarkadhish {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/dwarkadhish.jpg');
+}
+
+.temple-hero-gajanan {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/gajanan-maharaj-shegaon.jpg');
+}
+
+.temple-hero-jagannath {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/jagannath-puri.jpg');
+}
+
+.temple-hero-kashi {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/kashi-vishwanath.jpg');
+}
+
+.temple-hero-mahakaleshwar {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/mahakaleshwar-ujjain-day.jpg');
+}
+
+.temple-hero-mahalaxmi {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/mahalaxmi-kolhapur.jpg');
+}
+
+.temple-hero-mathura {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/mathura-vrindavan.jpg');
+}
+
+.temple-hero-omkareshwar {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/omkareshwar.jpg');
+}
+
+.temple-hero-rameswaram {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/rameswaram.jpg');
+}
+
+.temple-hero-shirdi {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/sai-baba-shirdi.jpg');
+}
+
+.temple-hero-vaishno {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.30) 100%), 
+                    url('../images/temples/vaishno-devi.jpg');
+}
+
 .temple-hero-container {
   position: relative;
   z-index: 2;
@@ -4488,29 +4582,30 @@ textarea.form-control {
 /* ==========================================================================
    Shiplystic-Style Mega Dropdown for Temples Menu
    ========================================================================== */
-.dropdown.shiplystic-mega-dropdown-wrapper {
+.nav-container {
   position: relative;
 }
 
+@media (min-width: 769px) {
+  .dropdown.shiplystic-mega-dropdown-wrapper {
+    position: static !important;
+  }
+}
+
 .dropdown.shiplystic-mega-dropdown-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 18px;
+  display: none;
 }
 
 .dropdown-menu.shiplystic-mega-menu {
   position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-48%) translateY(8px);
-  width: 820px;
-  max-width: 95vw;
+  top: calc(100% - 2px);
+  left: 50% !important;
+  transform: translateX(-50%) translateY(0) !important;
+  width: 960px;
+  max-width: calc(100vw - 32px);
   background: #FFFFFF !important;
   border-radius: 20px !important;
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.2), 0 0 1px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0, 0, 0, 0.12) !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   padding: 0 !important;
   overflow: hidden !important;
@@ -4518,8 +4613,24 @@ textarea.form-control {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
   display: block !important;
+}
+
+/* Invisible hover bridge extending 28px upwards into navbar to prevent cursor dropouts */
+.dropdown-menu.shiplystic-mega-menu::before {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.shiplystic-mega-dropdown-wrapper > .nav-link {
+  cursor: pointer !important;
 }
 
 @media (min-width: 769px) {
@@ -4528,7 +4639,7 @@ textarea.form-control {
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    transform: translateX(-48%) translateY(0) !important;
+    transform: translateX(-50%) translateY(0) !important;
   }
 }
 
@@ -4536,46 +4647,55 @@ textarea.form-control {
   display: flex;
   background: #FFFFFF;
   align-items: stretch;
+  min-height: 310px;
 }
 
-/* 1. Left Dark Sidebar */
+/* 1. Left Dark Sidebar (Exact Shiplystic Style Matching Directory Filters) */
 .mega-sidebar {
-  width: 210px;
+  width: 215px;
   flex-shrink: 0;
   background: #0B0B0B;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 0;
+  border-radius: 20px 0 0 20px;
 }
 
 .mega-tab-btn {
-  padding: 0.95rem 1.25rem;
+  padding: 1.1rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: #CBD5E1;
-  cursor: pointer;
+  color: #9CA3AF;
+  cursor: pointer !important;
   transition: all 0.15s ease;
   position: relative;
   text-decoration: none;
   user-select: none;
   background: #0B0B0B;
+  border-left: 4px solid transparent;
+  white-space: nowrap;
 }
 
-.mega-tab-btn:first-child.active {
+.mega-tab-btn * {
+  cursor: pointer !important;
+}
+
+.mega-tab-btn:first-child {
   border-top-left-radius: 20px;
 }
 
-.mega-tab-btn:last-child.active {
+.mega-tab-btn:last-child {
   border-bottom-left-radius: 20px;
 }
 
 .mega-tab-btn .mega-chevron {
   font-size: 1rem;
   line-height: 1;
-  color: #64748B;
+  color: #6B7280;
   font-weight: 700;
   transition: transform 0.15s ease, color 0.15s ease;
 }
@@ -4586,15 +4706,16 @@ textarea.form-control {
 }
 
 .mega-tab-btn:hover .mega-chevron {
-  color: #E2E8F0;
+  color: #E5E7EB;
   transform: translateX(2px);
 }
 
+/* Active Tab: Pure white background, bold black text, signature red left border and red chevron */
 .mega-tab-btn.active {
   background: #FFFFFF !important;
   color: #111827 !important;
-  font-weight: 700;
-  margin-right: -1px;
+  font-weight: 700 !important;
+  border-left: 4px solid #DC2626 !important;
 }
 
 .mega-tab-btn.active .mega-chevron {
@@ -4603,24 +4724,27 @@ textarea.form-control {
   transform: translateX(2px);
 }
 
-/* 2. Middle Content Area */
+/* 2. Middle Content Area (Clean Typography, Submenu Text Aligned to Top) */
 .mega-content-area {
   flex: 1;
-  padding: 1.4rem 1.6rem;
+  padding: 1.45rem 1.85rem 1.25rem 1.85rem;
   background: #FFFFFF;
   min-width: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .mega-panel {
-  display: none;
+  display: none !important;
   width: 100%;
 }
 
 .mega-panel.active {
-  display: block;
-  animation: megaFadeIn 0.18s ease-out;
+  display: block !important;
+  opacity: 1 !important;
+  animation: megaFadeIn 0.15s ease-out;
 }
 
 @keyframes megaFadeIn {
@@ -4636,21 +4760,25 @@ textarea.form-control {
 
 .mega-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem 1.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.6rem;
+  row-gap: 1.05rem;
+  width: 100%;
+  align-content: flex-start;
 }
 
 .mega-item {
   display: block;
   text-decoration: none !important;
-  border-radius: 8px;
-  padding: 0.35rem 0.5rem;
-  margin: -0.35rem -0.5rem;
+  padding: 0.15rem 0;
+  margin: 0;
   transition: all 0.15s ease;
+  cursor: pointer !important;
+  user-select: none;
 }
 
-.mega-item:hover {
-  background: #FEF2F2;
+.mega-item * {
+  cursor: pointer !important;
 }
 
 .mega-item:hover .mega-item-title {
@@ -4658,76 +4786,89 @@ textarea.form-control {
 }
 
 .mega-item-title {
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   font-weight: 700;
   color: #111827;
   line-height: 1.3;
   transition: color 0.15s ease;
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer !important;
 }
 
 .mega-item-desc {
-  font-size: 0.77rem;
+  font-size: 0.78rem;
   color: #6B7280;
-  line-height: 1.4;
-  margin-top: 3px;
+  line-height: 1.42;
+  font-weight: 400;
+  cursor: pointer !important;
 }
 
-/* 3. Right Dark Featured Card */
+/* 3. Right Dark Featured Card (Pill Badge, Midnight Card, Clean Explore Link) */
 .mega-featured-card {
-  width: 220px;
+  width: 225px;
   flex-shrink: 0;
   background: #0B0E14;
-  border-radius: 16px;
-  margin: 0.75rem 0.75rem 0.75rem 0;
-  padding: 1.35rem 1.15rem;
+  border-radius: 18px;
+  margin: 0.85rem 0.85rem 0.85rem 0;
+  padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.mega-featured-btn,
+.mega-featured-btn * {
+  cursor: pointer !important;
 }
 
 .mega-badge {
   display: inline-block;
   align-self: flex-start;
-  background: rgba(220, 38, 38, 0.15);
+  background: rgba(220, 38, 38, 0.12);
   color: #EF4444;
   border: 1px solid rgba(220, 38, 38, 0.3);
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.8px;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
 }
 
 .mega-featured-title {
   color: #FFFFFF;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 800;
   line-height: 1.3;
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.5rem;
 }
 
 .mega-featured-desc {
   color: #94A3B8;
-  font-size: 0.75rem;
-  line-height: 1.45;
-  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  margin: 0 0 1.8rem;
 }
 
 .mega-featured-btn {
   color: #FFFFFF !important;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 700;
   text-decoration: none !important;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 8px;
   transition: all 0.2s ease;
   margin-top: auto;
-  padding-top: 0.6rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0;
+  border-top: none;
 }
 
 .mega-featured-btn:hover {
@@ -4735,7 +4876,7 @@ textarea.form-control {
 }
 
 .mega-featured-btn:hover .mega-arrow {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
@@ -4759,3 +4900,422 @@ textarea.form-control {
   color: #F87171 !important;
   transform: translateX(6px) !important;
 }
+
+/* ==========================================================================
+   Luxury "Service Coming Soon" Modal (Shiplystic Red & Obsidian System)
+   ========================================================================== */
+.coming-soon-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(9, 9, 11, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.coming-soon-backdrop.active {
+  display: flex !important;
+}
+
+.coming-soon-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 70px -10px rgba(0, 0, 0, 0.45), 0 0 1px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.18);
+  animation: modalPopIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.coming-soon-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coming-soon-close:hover {
+  background: #DC2626;
+  border-color: #DC2626;
+  color: #FFFFFF;
+  transform: rotate(90deg);
+}
+
+.coming-soon-hero {
+  background: linear-gradient(145deg, #09090B 0%, #18181B 65%, #0B0E14 100%);
+  padding: 2.5rem 2rem 1.8rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.coming-soon-glow {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.35) 0%, rgba(220, 38, 38, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.coming-soon-icon-ring {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.1rem;
+  border-radius: 50%;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1.5px solid rgba(220, 38, 38, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 28px rgba(220, 38, 38, 0.3);
+  position: relative;
+}
+
+.coming-soon-icon-inner {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #18181B 0%, #09090B 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coming-soon-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  background: rgba(220, 38, 38, 0.14);
+  color: #EF4444;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  padding: 0.28rem 0.85rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.coming-soon-title {
+  color: #FFFFFF;
+  font-size: 1.55rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.coming-soon-body {
+  padding: 1.8rem 2rem 2.2rem;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.coming-soon-desc {
+  color: #4B5563;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.coming-soon-trust-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.6rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.coming-soon-trust-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.coming-soon-trust-text strong {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+
+.coming-soon-trust-text span {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748B;
+  line-height: 1.35;
+}
+
+.coming-soon-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-coming-soon-primary {
+  background: #DC2626;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-coming-soon-primary:hover {
+  background: #B91C1C;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
+}
+
+.btn-coming-soon-secondary {
+  background: #FFFFFF;
+  color: #1E293B;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 50px;
+  padding: 0.75rem 1.6rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-coming-soon-secondary:hover {
+  border-color: #DC2626;
+  color: #DC2626;
+  background: #FEF2F2;
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   COOKIE CONSENT BANNER ("ASK FOR COOKIES")
+   ============================================================ */
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  max-width: 460px;
+  width: calc(100% - 48px);
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-top: 3.5px solid #DC2626;
+  border-radius: 18px;
+  padding: 1.3rem 1.45rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16), 0 4px 14px rgba(0, 0, 0, 0.06);
+  z-index: 99999;
+  transform: translateY(140%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  color: #1E293B;
+}
+
+.cookie-consent-banner.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cookie-consent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.cookie-consent-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.cookie-consent-title-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.cookie-consent-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.cookie-consent-close:hover {
+  color: #0F172A;
+  background: #F1F5F9;
+}
+
+.cookie-consent-body {
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.55;
+  margin-bottom: 1.1rem;
+}
+
+.cookie-consent-body a {
+  color: #DC2626;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.btn-cookie-accept {
+  background: #DC2626;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px;
+  padding: 0.58rem 1.3rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.btn-cookie-accept:hover {
+  background: #B91C1C;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(220, 38, 38, 0.4);
+}
+
+.btn-cookie-reject {
+  background: #F8FAFC;
+  color: #475569;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 50px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.btn-cookie-reject:hover {
+  background: #EDF2F7;
+  color: #0F172A;
+  border-color: #94A3B8;
+  transform: translateY(-1px);
+}
+
+.btn-cookie-preferences {
+  background: transparent;
+  color: #64748B;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  transition: color 0.2s ease;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.15rem;
+}
+
+.btn-cookie-preferences:hover {
+  color: #DC2626;
+}
+
+@media (max-width: 640px) {
+  .cookie-consent-banner {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
+    max-width: 100%;
+    padding: 1.1rem 1.2rem;
+    border-radius: 16px;
+  }
+  
+  .cookie-consent-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-cookie-accept,
+  .btn-cookie-reject {
+    width: 100%;
+    padding: 0.65rem 1rem;
+  }
+}
+
+

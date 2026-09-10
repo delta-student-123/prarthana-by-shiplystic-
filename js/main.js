@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Mobile dropdown toggle (tap to open/close)
+    // Dropdown toggle (tap to open/close on mobile, navigate naturally on desktop)
     document.querySelectorAll('.dropdown > .nav-link').forEach(dropLink => {
       dropLink.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
@@ -53,18 +53,73 @@ document.addEventListener('DOMContentLoaded', () => {
             dropLink.innerHTML = dropLink.innerHTML.replace('▴', '▾');
           }
         }
+        // On desktop, clicking "Temples ▾" naturally opens the Temples page (temples.html)
       });
     });
+
+    // Ensure clicking inside the mega menu (tabs, background, cards) never closes it prematurely
+    document.querySelectorAll('.shiplystic-mega-menu').forEach(menu => {
+      menu.addEventListener('click', (e) => {
+        // If clicking a genuine link (temple page link, explore all link), let it navigate naturally
+        if (e.target.closest('a')) {
+          return;
+        }
+        e.stopPropagation();
+      });
+    });
+
+    // Close pinned desktop dropdown when clicking anywhere outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.shiplystic-mega-dropdown-wrapper')) {
+        document.querySelectorAll('.shiplystic-mega-dropdown-wrapper.open').forEach(el => {
+          el.classList.remove('open');
+        });
+      }
+    });
+
+    // Desktop Hover-Intent Grace Period (allows smooth diagonal cursor movement to tabs 3 & 4)
+    const initMegaDropdownHover = () => {
+      const wrappers = document.querySelectorAll('.shiplystic-mega-dropdown-wrapper');
+      wrappers.forEach(wrapper => {
+        let closeTimer = null;
+        const menu = wrapper.querySelector('.shiplystic-mega-menu');
+
+        const openDropdown = () => {
+          if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+          }
+          wrapper.classList.add('open');
+        };
+
+        const closeDropdownWithGrace = () => {
+          if (closeTimer) clearTimeout(closeTimer);
+          // 350ms grace period allows smooth diagonal mouse movement across tabs without accidental closing
+          closeTimer = setTimeout(() => {
+            wrapper.classList.remove('open');
+          }, 350);
+        };
+
+        wrapper.addEventListener('mouseenter', openDropdown);
+        wrapper.addEventListener('mouseleave', closeDropdownWithGrace);
+
+        if (menu) {
+          menu.addEventListener('mouseenter', openDropdown);
+          menu.addEventListener('mouseleave', closeDropdownWithGrace);
+        }
+      });
+    };
+    initMegaDropdownHover();
   }
 
-  // Shiplystic Mega Dropdown Tab Switcher (Hover & Click)
+  // Shiplystic Mega Dropdown Tab Switcher (Ultra-responsive event delegation on mouseover, mouseenter & click)
   const initMegaDropdownTabs = () => {
-    const megaTabBtns = document.querySelectorAll('.mega-tab-btn');
-    megaTabBtns.forEach(btn => {
-      const activateTab = () => {
-        const container = btn.closest('.shiplystic-mega-menu');
-        if (!container) return;
-        
+    const sidebars = document.querySelectorAll('.mega-sidebar');
+    sidebars.forEach(sidebar => {
+      const container = sidebar.closest('.shiplystic-mega-menu');
+      if (!container) return;
+
+      const activateTab = (btn) => {
         const targetId = btn.getAttribute('data-target');
         if (!targetId) return;
 
@@ -80,10 +135,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       };
 
-      btn.addEventListener('mouseenter', activateTab);
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        activateTab();
+      // Event delegation catches all movements into tabs (Devi & Shakti Peeths, Char Dham, etc.)
+      sidebar.addEventListener('mouseover', (e) => {
+        const btn = e.target.closest('.mega-tab-btn');
+        if (btn && !btn.classList.contains('active')) {
+          activateTab(btn);
+        }
+      });
+
+      sidebar.addEventListener('mouseenter', (e) => {
+        const btn = e.target.closest('.mega-tab-btn');
+        if (btn) {
+          activateTab(btn);
+        }
+      }, true);
+
+      sidebar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.mega-tab-btn');
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+          activateTab(btn);
+        }
       });
     });
   };
@@ -145,6 +218,33 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (err) {
     console.warn('Active nav link highlight error:', err);
   }
+
+  // Global Coming Soon Modal Controls
+  window.showComingSoon = function() {
+    const modal = document.getElementById('comingSoonModal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeComingSoon = function() {
+    const modal = document.getElementById('comingSoonModal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  const csModal = document.getElementById('comingSoonModal');
+  if (csModal) {
+    csModal.addEventListener('click', function(e) {
+      if (e.target === this) window.closeComingSoon();
+    });
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') window.closeComingSoon();
+  });
 
   // Interactive Occasion Tab Switcher
   window.switchOccasionTab = function(tabId, btnElement) {
@@ -807,22 +907,22 @@ window.openLegalModal = function(type) {
         <div>
           <h5 style="color: #111827; margin-bottom: 0.5rem; font-weight: 800;">Main Pages</h5>
           <ul style="padding-left: 1.2rem; margin: 0;">
-            <li><a href="index.html" style="color: #DC2626;">Home</a></li>
-            <li><a href="services/index.html" style="color: #DC2626;">Services Overview</a></li>
-            <li><a href="services/prarthana.html" style="color: #DC2626;">Book Prarthana Service</a></li>
-            <li><a href="track.html" style="color: #DC2626;">Track Delivery</a></li>
-            <li><a href="about.html" style="color: #DC2626;">About Us</a></li>
-            <li><a href="contact.html" style="color: #DC2626;">Contact Support</a></li>
-            <li><a href="faq.html" style="color: #DC2626;">FAQs</a></li>
+            <li><a href="/" style="color: #DC2626;">Home</a></li>
+            <li><a href="/services" style="color: #DC2626;">Services Overview</a></li>
+            <li><a href="/book-prarthana" style="color: #DC2626;">Book Prarthana Service</a></li>
+            <li><a href="/track-delivery" style="color: #DC2626;">Track Delivery</a></li>
+            <li><a href="/about-us" style="color: #DC2626;">About Us</a></li>
+            <li><a href="/contact-us" style="color: #DC2626;">Contact Support</a></li>
+            <li><a href="/faqs" style="color: #DC2626;">FAQs</a></li>
           </ul>
         </div>
         <div>
           <h5 style="color: #111827; margin-bottom: 0.5rem; font-weight: 800;">Featured Sanctums</h5>
           <ul style="padding-left: 1.2rem; margin: 0;">
-            <li><a href="temples/mahakaleshwar-ujjain.html" style="color: #DC2626;">Mahakaleshwar Ujjain</a></li>
-            <li><a href="temples/omkareshwar.html" style="color: #DC2626;">Omkareshwar Jyotirlinga</a></li>
-            <li><a href="temples/mahalaxmi-kolhapur.html" style="color: #DC2626;">Mahalaxmi Kolhapur</a></li>
-            <li><a href="temples/sai-baba-shirdi.html" style="color: #DC2626;">Sai Baba Shirdi</a></li>
+            <li><a href="/temples/mahakaleshwar-ujjain" style="color: #DC2626;">Mahakaleshwar Ujjain</a></li>
+            <li><a href="/temples/omkareshwar" style="color: #DC2626;">Omkareshwar Jyotirlinga</a></li>
+            <li><a href="/temples/mahalaxmi-kolhapur" style="color: #DC2626;">Mahalaxmi Kolhapur</a></li>
+            <li><a href="/temples/sai-baba-shirdi" style="color: #DC2626;">Sai Baba Shirdi</a></li>
           </ul>
         </div>
       </div>
@@ -858,6 +958,7 @@ window.openCookiePreferences = function() {
         <span style="background: #DC2626; color: #FFF; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 50px;">Always Active</span>
       </div>
 
+
       <div style="background: #FAFAFA; border: 1px solid #E5E7EB; padding: 1rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
         <div>
           <div style="font-weight: 800; color: #111827;">Performance & Analytics</div>
@@ -875,7 +976,7 @@ window.openCookiePreferences = function() {
       </div>
     </div>
     <div style="margin-top: 1.5rem; text-align: center;">
-      <button onclick="alert('Cookie preferences saved successfully!'); closeLegalModal();" class="btn btn-red" style="padding: 0.75rem 2rem; border-radius: 50px; font-weight: 800;">Save Preferences</button>
+      <button onclick="saveCookiePreferences();" class="btn btn-red" style="padding: 0.75rem 2rem; border-radius: 50px; font-weight: 800; cursor: pointer;">Save Preferences</button>
     </div>
   `;
 
@@ -897,3 +998,146 @@ window.closeLegalModal = function() {
     }, 300);
   }
 };
+
+// Global Coming Soon Modal Handlers
+window.showComingSoon = function() {
+  const modal = document.getElementById('comingSoonModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeComingSoon = function() {
+  const modal = document.getElementById('comingSoonModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+};
+
+// Close modal on clicking backdrop or pressing Escape
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('comingSoonModal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        window.closeComingSoon();
+      }
+    });
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('comingSoonModal');
+    if (modal && modal.classList.contains('active')) {
+      window.closeComingSoon();
+    }
+  }
+});
+
+// ============================================================
+// COOKIE CONSENT SYSTEM ("ASK FOR COOKIES")
+// ============================================================
+window.saveCookiePreferences = function() {
+  try {
+    localStorage.setItem('shiplystic_cookie_consent', 'customized');
+  } catch (e) {
+    console.warn('LocalStorage unavailable for cookie consent', e);
+  }
+  const banner = document.getElementById('cookie-consent-banner');
+  if (banner) {
+    banner.classList.remove('show');
+    setTimeout(() => {
+      if (banner.parentNode) banner.remove();
+    }, 400);
+  }
+  window.closeLegalModal();
+};
+
+function initCookieConsentBanner() {
+  try {
+    const consent = localStorage.getItem('shiplystic_cookie_consent');
+    if (consent) return; // User already made a choice
+  } catch (e) {
+    // If localStorage is disabled/restricted, proceed to display
+  }
+
+  // Prevent duplicate insertion
+  if (document.getElementById('cookie-consent-banner')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'cookie-consent-banner';
+  banner.className = 'cookie-consent-banner';
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-label', 'Cookie Consent');
+  banner.innerHTML = `
+    <div class="cookie-consent-header">
+      <div class="cookie-consent-title">
+        <span class="cookie-consent-title-icon">🍪</span>
+        <span>We Value Your Privacy</span>
+      </div>
+      <button class="cookie-consent-close" id="cookie-banner-close-btn" aria-label="Close Cookie Notice">✕</button>
+    </div>
+    <div class="cookie-consent-body">
+      We use cookies to ensure seamless temple ritual bookings, express prasad delivery tracking, and personalizing your devotional journey. Learn more in our <a href="#" onclick="openLegalModal('Cookies Policy'); return false;">Cookies Policy</a>.
+    </div>
+    <div class="cookie-consent-actions">
+      <button class="btn-cookie-accept" id="cookie-accept-all-btn">Accept All</button>
+      <button class="btn-cookie-reject" id="cookie-reject-btn">Decline Non-Essential</button>
+      <button class="btn-cookie-preferences" id="cookie-customize-btn">Manage Preferences</button>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+
+  // Smooth slide-up transition after 800ms
+  setTimeout(() => {
+    banner.classList.add('show');
+  }, 800);
+
+  const closeBanner = () => {
+    banner.classList.remove('show');
+    setTimeout(() => {
+      if (banner.parentNode) banner.remove();
+    }, 400);
+  };
+
+  document.getElementById('cookie-accept-all-btn')?.addEventListener('click', () => {
+    try {
+      localStorage.setItem('shiplystic_cookie_consent', 'accepted');
+    } catch (e) {}
+    closeBanner();
+  });
+
+  document.getElementById('cookie-reject-btn')?.addEventListener('click', () => {
+    try {
+      localStorage.setItem('shiplystic_cookie_consent', 'declined');
+    } catch (e) {}
+    closeBanner();
+  });
+
+  document.getElementById('cookie-customize-btn')?.addEventListener('click', () => {
+    if (typeof window.openCookiePreferences === 'function') {
+      window.openCookiePreferences();
+    }
+  });
+
+  document.getElementById('cookie-banner-close-btn')?.addEventListener('click', () => {
+    try {
+      localStorage.setItem('shiplystic_cookie_consent', 'dismissed');
+    } catch (e) {}
+    closeBanner();
+  });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCookieConsentBanner);
+} else {
+  initCookieConsentBanner();
+}
+
+
+

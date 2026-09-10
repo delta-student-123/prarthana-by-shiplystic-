@@ -1,0 +1,16 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about-us", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact-us", "permanent": true },
+    { "source": "/faq.html", "destination": "/faqs", "permanent": true },
+    { "source": "/gallery.html", "destination": "/gallery", "permanent": true },
+    { "source": "/testimonials.html", "destination": "/reviews", "permanent": true },
+    { "source": "/track.html", "destination": "/track-delivery", "permanent": true },
+    { "source": "/temples.html", "destination": "/temples", "permanent": true },
+    { "source": "/services/index.html", "destination": "/services", "permanent": true },
+    { "source": "/services/prarthana.html", "destination": "/book-prarthana", "permanent": true }
+  ]
+}
