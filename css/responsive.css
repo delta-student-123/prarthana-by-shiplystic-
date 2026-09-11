@@ -201,16 +201,22 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* ============================================================
+     Shiplystic-Style Mobile Dropdown (Temples Accordion)
+     ============================================================ */
   .dropdown-menu.shiplystic-mega-menu {
     position: static !important;
     width: 100% !important;
     max-width: 100% !important;
     left: 0 !important;
     transform: none !important;
-    border-radius: 12px !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
-    border: 1px solid #E2E8F0 !important;
-    margin: 0.6rem 0 !important;
+    border: none !important;
+    border-top: 1px solid #F1F5F9 !important;
+    margin: 0 !important;
+    padding: 0.25rem 0 0.8rem 0 !important;
+    background: #FFFFFF !important;
     display: none !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -219,50 +225,139 @@ body {
 
   .dropdown.open .dropdown-menu.shiplystic-mega-menu {
     display: block !important;
+    animation: mobileAccordionFade 0.2s ease-out forwards;
   }
 
   .mega-menu-inner {
     flex-direction: column !important;
     min-height: auto !important;
+    background: transparent !important;
   }
 
+  /* Hide desktop horizontal tabs on mobile */
   .mega-sidebar {
-    width: 100% !important;
-    border-radius: 12px 12px 0 0 !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    padding: 0.5rem !important;
-    gap: 0.4rem !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mega-tab-btn {
-    padding: 0.5rem 0.8rem !important;
-    font-size: 0.78rem !important;
-    border-radius: 8px !important;
-    white-space: nowrap !important;
-    margin-right: 0 !important;
-  }
-
-  .mega-tab-btn .mega-chevron {
     display: none !important;
   }
 
   .mega-content-area {
-    padding: 1rem !important;
+    padding: 0 !important;
+    background: transparent !important;
+    width: 100% !important;
+  }
+
+  /* Display all category panels in a clean vertical stack */
+  .mega-panel {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: static !important;
+    transform: none !important;
+    padding: 0 !important;
+  }
+
+  /* Clean Category Subheaders matching Shiplystic "CORE ENGINE" style */
+  .mega-panel::before {
+    display: block !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    color: #6B7280 !important;
+    text-transform: uppercase !important;
+    padding: 0.9rem 1.4rem 0.35rem 1.4rem !important;
+    line-height: 1 !important;
+  }
+
+  #mega-cat-jyotirlinga::before {
+    content: "JYOTIRLINGAS" !important;
+    padding-top: 0.5rem !important;
+  }
+
+  #mega-cat-shakti::before {
+    content: "SHAKTI PEETHS" !important;
+  }
+
+  #mega-cat-dham::before {
+    content: "CHAR DHAM" !important;
+  }
+
+  #mega-cat-shrine::before {
+    content: "REVERED SHRINES" !important;
   }
 
   .mega-grid {
+    display: flex !important;
+    flex-direction: column !important;
     grid-template-columns: 1fr !important;
-    gap: 0.85rem !important;
+    gap: 0 !important;
+    padding: 0 !important;
   }
 
+  /* Clean Single-line Links matching Shiplystic dropdown items */
+  .mega-item {
+    display: block !important;
+    padding: 0.55rem 1.4rem !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important;
+  }
+
+  .mega-item:hover,
+  .mega-item:active {
+    background: #FEF2F2 !important;
+    padding-left: 1.65rem !important;
+  }
+
+  .mega-item-title {
+    font-size: 0.93rem !important;
+    font-weight: 500 !important;
+    color: #1F2937 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+  }
+
+  .mega-item:hover .mega-item-title,
+  .mega-item:active .mega-item-title {
+    color: #DC2626 !important;
+  }
+
+  /* Hide descriptions on mobile to keep list compact & elegant like Shiplystic */
+  .mega-item-desc {
+    display: none !important;
+  }
+
+  /* Clean Explore All Link placed prominently at top of mobile dropdown */
   .mega-featured-card {
+    display: block !important;
+    order: -1 !important;
+    background: #FFF5F5 !important;
+    border: 1px solid #FEE2E2 !important;
+    border-radius: 8px !important;
+    margin: 0.5rem 1.2rem 0.6rem 1.2rem !important;
+    padding: 0.75rem 1rem !important;
+    width: auto !important;
+    box-shadow: none !important;
+  }
+
+  .mega-featured-card .mega-badge,
+  .mega-featured-card .mega-featured-desc,
+  .mega-featured-card .mega-featured-title {
+    display: none !important;
+  }
+
+  .mega-featured-card .mega-featured-btn {
     display: flex !important;
-    width: calc(100% - 1.5rem) !important;
-    margin: 0 0.75rem 0.75rem !important;
-    border-radius: 12px !important;
-    padding: 1.2rem !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    color: #DC2626 !important;
+    font-weight: 700 !important;
+    font-size: 0.92rem !important;
+    background: transparent !important;
+    padding: 0 !important;
+    width: 100% !important;
+    text-decoration: none !important;
   }
 }
 
@@ -543,27 +638,60 @@ body {
     box-shadow: none !important;
   }
 
-  .luxury-breadcrumb {
-    padding: 0.28rem 0.75rem !important;
-    gap: 0.45rem !important;
+  .luxury-breadcrumb,
+  .luxury-breadcrumb.light-theme {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
     max-width: 100% !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0.24rem 0.65rem !important;
+    gap: 0.32rem !important;
     box-sizing: border-box !important;
-    flex-wrap: wrap !important;
+    border-radius: 9999px !important;
+    margin: 0 auto 0.65rem auto !important;
+  }
+
+  .luxury-breadcrumb::-webkit-scrollbar {
+    display: none !important;
   }
 
   .breadcrumb-home-link,
   .breadcrumb-crumb-link {
-    font-size: 0.75rem !important;
+    font-size: 0.74rem !important;
+    padding: 0.1rem 0.25rem !important;
+    gap: 0.25rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
   }
 
   .breadcrumb-home-icon {
     width: 12px !important;
     height: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .breadcrumb-separator {
+    flex-shrink: 0 !important;
+  }
+
+  .breadcrumb-separator svg {
+    width: 9px !important;
+    height: 9px !important;
   }
 
   .breadcrumb-current-badge {
     font-size: 0.7rem !important;
     padding: 0.18rem 0.55rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    border-radius: 9999px !important;
+    letter-spacing: 0 !important;
   }
 
   /* Temples Directory Hero Banner (Mobile 768px) */
@@ -581,6 +709,20 @@ body {
     font-size: 0.86rem !important;
     line-height: 1.55 !important;
     margin-bottom: 1.2rem !important;
+  }
+
+  /* Temples Directory Filter & Search Toolbar (Mobile) — strictly non-sticky */
+  .temples-filter-section {
+    position: static !important;
+    top: auto !important;
+    z-index: 1 !important;
+    box-shadow: none !important;
+    padding: 0.85rem 0 !important;
+  }
+
+  .temple-filter-btn {
+    padding: 0.42rem 0.85rem !important;
+    font-size: 0.76rem !important;
   }
 
   header nav .nav-links,
@@ -655,9 +797,23 @@ body {
     cursor: pointer !important;
   }
 
-  /* Prevent duplicate arrow pseudo-element */
+  /* Right-aligned accordion chevron matching Shiplystic reference */
   .dropdown>.nav-link::after {
-    display: none !important;
+    content: "" !important;
+    display: inline-block !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-right: 2px solid #64748B !important;
+    border-bottom: 2px solid #64748B !important;
+    transform: rotate(45deg) !important;
+    margin-left: auto !important;
+    margin-right: 0.2rem !important;
+    transition: transform 0.25s ease, border-color 0.25s ease !important;
+  }
+
+  .dropdown.open>.nav-link::after {
+    transform: rotate(-135deg) !important;
+    border-color: #DC2626 !important;
   }
 
   /* Mobile dropdown menu (accordion style) */
@@ -709,9 +865,9 @@ body {
     }
   }
 
-  /* Category headers inside dropdown ("Featured Temples", "Revered Shrines") */
+  /* Category headers inside simple dropdown ("Featured Temples", "Revered Shrines") */
   .dropdown-header-title,
-  .dropdown-menu>div:not(.dropdown-divider-line):not(.dropdown-item) {
+  .dropdown-menu:not(.shiplystic-mega-menu)>div:not(.dropdown-divider-line):not(.dropdown-item) {
     font-size: 0.72rem !important;
     font-weight: 800 !important;
     color: #DC2626 !important;
@@ -817,19 +973,51 @@ body {
     display: none;
   }
 
-  /* ---- HERO SECTION ---- */
+  /* ---- HERO SECTION (Mobile Landing Image Display) ---- */
   .hero-split-section {
-    padding: 2.5rem 0 2rem !important;
+    position: relative !important;
+    background-image: url('../images/temples/somnath.jpg') !important;
+    background-position: 68% center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding: 2.2rem 0 2rem !important;
+    overflow: visible !important;
+  }
+
+  .hero-bg-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.78) 0%, 
+      rgba(255, 253, 249, 0.55) 35%, 
+      rgba(255, 253, 249, 0.85) 75%, 
+      #FFFDF9 100%) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
   }
 
   .hero-container {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
     text-align: center;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .hero-left-content {
     order: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-banner-title {
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .hero-split-subtext {
+    color: #1E293B !important;
+    font-weight: 550 !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9) !important;
   }
 
   .hero-right-content {
@@ -1039,22 +1227,26 @@ body {
     flex-direction: column;
     gap: 0.75rem;
     text-align: center;
+    padding-right: 0 !important;
+    padding-bottom: 65px !important;
   }
 
-  /* ---- BOOKING WIZARD & CARDS (prarthana.html) ---- */
+  /* ---- BOOKING WIZARD & CARDS (book-prarthana) ---- */
   .booking-stepper {
     display: flex !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    white-space: nowrap !important;
-    gap: 0.6rem !important;
-    padding: 0.6rem 0.85rem !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.45rem !important;
+    padding: 0.5rem 0.9rem !important;
     border-radius: 50px !important;
-    justify-content: flex-start !important;
-    scrollbar-width: none !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 94% !important;
+    margin: 0 auto 1.2rem auto !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .booking-stepper::-webkit-scrollbar {
@@ -1062,34 +1254,46 @@ body {
   }
 
   .step-item {
-    flex-shrink: 0 !important;
-    font-size: 0.78rem !important;
+    display: flex !important;
+    align-items: center !important;
     gap: 0.35rem !important;
+    font-size: 0.76rem !important;
+    white-space: nowrap !important;
   }
 
   .step-divider {
-    display: inline-block !important;
-    width: 15px !important;
+    flex: 1 1 0% !important;
+    min-width: 8px !important;
     height: 2px !important;
-    flex-shrink: 0 !important;
+    background: #E2E8F0 !important;
+    display: block !important;
   }
 
   .booking-container {
-    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 1.5rem !important;
     padding: 1rem 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  .booking-container > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .booking-card {
-    padding: 0.85rem 0.75rem !important;
+    padding: 0.85rem 0.8rem !important;
     border-radius: 10px !important;
-    margin-bottom: 1rem !important;
+    margin: 0 auto 1rem auto !important;
     border: 1.5px solid #CBD5E1 !important;
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 94% !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
   }
@@ -1165,7 +1369,9 @@ body {
   .temple-radio-grid {
     grid-template-columns: 1fr !important;
     gap: 0.3rem !important;
-    margin-bottom: 0.9rem !important;
+    margin: 0 auto 0.9rem auto !important;
+    max-width: 92% !important;
+    width: 100% !important;
   }
 
   .temple-radio-card {
@@ -1176,6 +1382,7 @@ body {
     align-items: center !important;
     min-height: 38px !important;
     box-sizing: border-box !important;
+    width: 100% !important;
   }
 
   .temple-radio-thumb {
@@ -1222,16 +1429,92 @@ body {
     height: 15px !important;
   }
 
+  .package-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    max-width: 92% !important;
+    margin: 0 auto 1.25rem auto !important;
+  }
+
   .summary-sidebar-wrapper {
+    position: static !important;
+    top: auto !important;
     width: 100% !important;
-    margin-top: 0.85rem !important;
+    max-width: 94% !important;
+    margin: 0 auto 1.5rem auto !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
   }
 
   .order-summary-card {
-    padding: 0.85rem 0.75rem !important;
-    border-radius: 10px !important;
+    position: static !important;
+    top: auto !important;
+    padding: 1.1rem 1rem !important;
+    border-radius: 12px !important;
+    border: 1.5px solid #CBD5E1 !important;
     width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .summary-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-size: 0.82rem !important;
+    margin-bottom: 0.55rem !important;
+    min-width: 0 !important;
+  }
+
+  .summary-row > span:first-child {
+    color: #64748B !important;
+    flex-shrink: 0 !important;
+  }
+
+  .summary-row > strong,
+  .summary-row > span:last-child {
+    text-align: right !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 60% !important;
+  }
+
+  .trust-badge-box {
+    padding: 0.75rem 0.85rem !important;
+    margin-top: 1rem !important;
+    border-radius: 8px !important;
+    gap: 0.6rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    align-items: flex-start !important;
+  }
+
+  .trust-badge-box > span {
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .trust-badge-box > div {
+    min-width: 0 !important;
+    flex: 1 1 0% !important;
+  }
+
+  .trust-badge-box strong {
+    display: block !important;
+    font-size: 0.78rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  .trust-badge-box p {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    margin: 0.2rem 0 0 0 !important;
+    word-break: break-word !important;
   }
 
   .booking-card {
@@ -1733,6 +2016,416 @@ body {
     font-size: 0.85rem !important;
     line-height: 1.55 !important;
   }
+
+  /* ============================================================
+     TEMPLE SINGLE SHRINE PAGES (Mahakaleshwar Ujjain & all sanctums)
+     ============================================================ */
+  /* Main 2-Column Grid -> Clean 1-Column Stack */
+  .temple-single-grid,
+  div[style*="grid-template-columns: 2.2fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  .temple-single-main-col {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Reset sticky sidebar so it flows naturally under main content on mobile */
+  .temple-single-sidebar,
+  div[style*="position: sticky; top: 100px"],
+  div[style*="position: sticky; top: 95px"] {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+
+  /* Hero Section spacing */
+  .temple-single-hero,
+  section[style*="mahakaleshwar-ujjain-day.jpg"],
+  section[style*="kashi-vishwanath.jpg"],
+  section[style*="temples/"] {
+    padding: 1.8rem 0 2.4rem !important;
+  }
+
+  /* Hero Title typography */
+  .temple-single-title,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] h1,
+  section[style*="kashi-vishwanath.jpg"] h1,
+  section[style*="temples/"] h1 {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  /* Hero Description */
+  .temple-single-desc,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] p,
+  section[style*="kashi-vishwanath.jpg"] p,
+  section[style*="temples/"] p {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  /* Hero CTA Buttons */
+  .temple-single-actions,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] div[style*="justify-content: center; flex-wrap: wrap"],
+  section[style*="kashi-vishwanath.jpg"] div[style*="justify-content: center; flex-wrap: wrap"],
+  section[style*="temples/"] div[style*="justify-content: center; flex-wrap: wrap"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+  }
+
+  .temple-single-actions .btn,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] .btn,
+  section[style*="kashi-vishwanath.jpg"] .btn,
+  section[style*="temples/"] .btn {
+    width: 100% !important;
+    max-width: 300px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 0.65rem 1.2rem !important;
+    font-size: 0.86rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Body Section padding */
+  .temple-single-body,
+  section[style*="background: #FAFAFA"] {
+    padding: 2rem 0 3rem !important;
+  }
+
+  /* Content Cards inside Temple details */
+  .temple-single-main-col > div[style*="background: #FFFFFF"],
+  div[style*="background: #FFFFFF; padding: 2.5rem"],
+  div[style*="background: #FFFFFF; padding: 2rem"] {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.4rem !important;
+  }
+
+  .temple-single-main-col h2,
+  div[style*="background: #FFFFFF; padding: 2.5rem"] h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .temple-single-main-col p,
+  div[style*="background: #FFFFFF; padding: 2.5rem"] p {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Timing / 2-column feature boxes inside cards */
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Package Cards inside #pujas-section */
+  #pujas-section h2 {
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
+  }
+
+  #pujas-section div[style*="justify-content: space-between; align-items: flex-start"] {
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+
+  #pujas-section div[style*="text-align: right"] {
+    text-align: left !important;
+  }
+
+  #pujas-section div[style*="border-top: 1px solid #F4F4F5"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+  }
+
+  #pujas-section div[style*="border-top: 1px solid #F4F4F5"] .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Right Sidebar Cards */
+  .temple-single-sidebar div[style*="padding: 1.8rem"],
+  div[style*="background: #FFFFFF; padding: 1.8rem"],
+  .temple-booking-card,
+  .temple-support-card {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+  }
+
+  /* Temple Content Overview Card */
+  .temple-content-card {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.4rem !important;
+  }
+
+  .temple-content-title {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .temple-content-paragraph {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  .temple-callout-box {
+    padding: 1rem 1.1rem !important;
+    border-radius: 8px !important;
+    margin-top: 1rem !important;
+  }
+
+  .temple-callout-heading {
+    font-size: 0.95rem !important;
+  }
+
+  .temple-callout-text {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Temple Offerings & Packages */
+  .temple-offerings-header {
+    margin-bottom: 1.2rem !important;
+  }
+
+  .temple-offerings-title {
+    font-size: 1.3rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .temple-offerings-subtitle {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .temple-pkg-card {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .temple-pkg-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .temple-pkg-top > div:last-child {
+    text-align: left !important;
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 0.5rem !important;
+  }
+
+  .temple-pkg-name {
+    font-size: 1.18rem !important;
+    line-height: 1.3 !important;
+    margin-top: 0.3rem !important;
+  }
+
+  .temple-pkg-price {
+    font-size: 1.4rem !important;
+  }
+
+  .temple-pkg-fee-note {
+    font-size: 0.74rem !important;
+  }
+
+  .temple-pkg-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .temple-pkg-features {
+    grid-template-columns: 1fr !important;
+    gap: 0.45rem !important;
+    font-size: 0.84rem !important;
+  }
+
+  .temple-pkg-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    padding-top: 1rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .temple-pkg-footer .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.88rem !important;
+  }
+
+  .temple-pkg-trust-label {
+    font-size: 0.8rem !important;
+    text-align: center !important;
+  }
+
+  /* Temple Prasad Section */
+  .temple-prasad-section {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E4E4E7 !important;
+    margin-bottom: 1.4rem !important;
+  }
+
+  .temple-prasad-heading {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Temple Process Section */
+  .temple-process-card {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.4rem !important;
+  }
+
+  .temple-process-heading {
+    font-size: 1.25rem !important;
+    margin-bottom: 1.1rem !important;
+  }
+
+  .temple-process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .temple-step-item {
+    display: flex !important;
+    gap: 0.75rem !important;
+    align-items: flex-start !important;
+    padding: 0.4rem 0 !important;
+  }
+
+  /* Temple FAQ Section */
+  .temple-faq-section {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 14px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E4E4E7 !important;
+    margin-bottom: 1.4rem !important;
+  }
+
+  .temple-faq-heading {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  .temple-faq-question {
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    padding: 0.65rem 0.2rem !important;
+  }
+
+  .temple-faq-answer {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+    padding-bottom: 0.65rem !important;
+  }
+
+  /* Sidebar sticky reset and details */
+  .temple-sidebar-sticky {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    z-index: 1 !important;
+  }
+
+  .temple-booking-title {
+    font-size: 1.2rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .temple-booking-subtitle {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .temple-booking-btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .temple-support-card {
+    text-align: center !important;
+  }
+
+  .temple-support-title {
+    font-size: 1.08rem !important;
+  }
+
+  .temple-support-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .temple-support-tel {
+    font-size: 1.08rem !important;
+  }
+
+  /* Quick stats card on 768px */
+  .temple-stats-card {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem 0.85rem !important;
+    padding: 0.85rem 1rem !important;
+  }
+
+  .temple-stats-item {
+    border-right: none !important;
+    padding: 0.35rem 0 !important;
+  }
+
+  /* Signature CTA Banner */
+  .signature-cta-decor-left,
+  .signature-cta-decor-right {
+    opacity: 0.1 !important;
+    max-width: 100px !important;
+  }
+
+  .signature-cta-frame {
+    padding: 1.6rem 1.1rem !important;
+    min-height: auto !important;
+    border-radius: 14px !important;
+  }
+
+  .signature-cta-title {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .signature-cta-lead {
+    font-size: 0.95rem !important;
+  }
+
+  .signature-cta-desc {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 /* ============================================================
@@ -1767,9 +2460,53 @@ body {
   /* Step grids: single column on small mobile */
   .step-grid-8,
   .step-grid-4-dark,
+  #how-it-works .step-grid-4-dark,
+  #how-it-works [class*="step-grid"],
   [class*="step-grid"] {
     grid-template-columns: 1fr !important;
-    gap: 1rem !important;
+    gap: 0.85rem !important;
+  }
+
+  .step-grid-4-dark > div,
+  #how-it-works .step-grid-4-dark > div {
+    padding: 1.25rem 1.2rem !important;
+    border-radius: 14px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .step-grid-4-dark > div div[style*="font-size: 1.5rem"],
+  #how-it-works .step-grid-4-dark > div div[style*="font-size: 1.5rem"] {
+    font-size: 1.35rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .step-grid-4-dark > div h3,
+  #how-it-works .step-grid-4-dark > div h3 {
+    font-size: 1.08rem !important;
+    margin-bottom: 0.35rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .step-grid-4-dark > div p,
+  #how-it-works .step-grid-4-dark > div p {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+  }
+
+  #how-it-works {
+    padding: 3.2rem 0 !important;
+  }
+
+  #how-it-works h2 {
+    font-size: 1.55rem !important;
+    line-height: 1.3 !important;
+    margin: 0.35rem 0 0.6rem !important;
+  }
+
+  #how-it-works p[style*="max-width: 680px"] {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .why-grid-5 {
@@ -2087,24 +2824,69 @@ body {
     line-height: 1.5 !important;
   }
 
+  /* Mobile Booking Stepper (All 4 steps visible, active step expanded) */
   .booking-stepper {
-    padding: 0.45rem 0.65rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.3rem !important;
+    padding: 0.38rem 0.75rem !important;
+    border-radius: 50px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    width: 100% !important;
+    max-width: 92% !important;
+    margin: 0 auto 0.85rem auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .step-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .step-item span:not(.step-number) {
+    display: none !important;
+  }
+
+  .step-item.active span:not(.step-number) {
+    display: inline-block !important;
     font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    color: var(--primary-red) !important;
+    white-space: nowrap !important;
   }
 
   .step-number {
     width: 22px !important;
     height: 22px !important;
+    min-width: 22px !important;
     font-size: 0.7rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+  }
+
+  .step-divider {
+    flex: 1 1 0% !important;
+    min-width: 6px !important;
+    height: 2px !important;
+    background: #E2E8F0 !important;
+    display: block !important;
   }
 
   .booking-card {
-    padding: 0.65rem 0.5rem !important;
-    border-radius: 8px !important;
-    margin-bottom: 0.75rem !important;
+    padding: 0.7rem 0.65rem !important;
+    border-radius: 10px !important;
+    margin: 0 auto 0.75rem auto !important;
+    max-width: 92% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .step-heading {
@@ -2119,40 +2901,68 @@ body {
     line-height: 1.35 !important;
   }
 
+  .form-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
   .form-group {
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .form-label {
-    font-size: 0.8rem !important;
-    margin-bottom: 0.25rem !important;
+    font-size: 0.78rem !important;
+    margin-bottom: 0.2rem !important;
   }
 
   .form-control {
-    font-size: 0.84rem !important;
-    padding: 0.6rem 0.65rem !important;
+    font-size: 0.82rem !important;
+    padding: 0.55rem 0.65rem !important;
     height: auto !important;
+    border-radius: 7px !important;
   }
 
   select.form-control {
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .booking-actions-row,
+  .step1-actions,
+  .step2-actions,
+  .step3-actions {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 0.55rem !important;
+    align-items: stretch !important;
+    margin-top: 1.1rem !important;
+    width: 100% !important;
   }
 
   .booking-actions-row .btn,
-  .step1-actions .btn {
-    padding: 0.7rem 0.85rem !important;
+  .step1-actions .btn,
+  .step2-actions .btn,
+  .step3-actions .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.65rem 0.85rem !important;
     font-size: 0.84rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
   }
 
   .temple-radio-grid {
     grid-template-columns: 1fr !important;
     gap: 0.22rem !important;
-    margin-bottom: 0.75rem !important;
+    margin: 0 auto 0.75rem auto !important;
+    max-width: 92% !important;
+    width: 100% !important;
   }
 
   .temple-radio-card {
     padding: 0.2rem 0.45rem !important;
-    gap: 0.4rem !important;
+    gap: 0.35rem !important;
     border-radius: 6px !important;
     min-height: 32px !important;
     align-items: center !important;
@@ -2160,6 +2970,7 @@ body {
     display: flex !important;
     box-sizing: border-box !important;
     border-width: 1px !important;
+    width: 100% !important;
   }
 
   .temple-radio-thumb {
@@ -2208,7 +3019,15 @@ body {
 
   .package-section-title {
     font-size: 0.84rem !important;
-    margin: 0.75rem 0 0.4rem !important;
+    margin: 0.75rem auto 0.4rem auto !important;
+    max-width: 92% !important;
+  }
+
+  .package-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    max-width: 92% !important;
+    margin: 0 auto 0.75rem auto !important;
   }
 
   .package-card {
@@ -2236,29 +3055,104 @@ body {
     line-height: 1.25 !important;
   }
 
-  .booking-card {
-    padding: 0.65rem 0.5rem !important;
-    border-radius: 8px !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  .step-heading {
-    font-size: 0.92rem !important;
-    margin-bottom: 0.55rem !important;
+  .summary-sidebar-wrapper {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 92% !important;
+    margin: 0 auto 1.25rem auto !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
   }
 
   .order-summary-card {
-    padding: 0.65rem 0.55rem !important;
-    border-radius: 8px !important;
+    position: static !important;
+    top: auto !important;
+    padding: 0.85rem 0.75rem !important;
+    border-radius: 10px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: 1.5px solid #CBD5E1 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
   }
 
   .summary-title {
-    font-size: 0.86rem !important;
+    font-size: 0.88rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.35rem !important;
   }
 
   .summary-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
     font-size: 0.72rem !important;
-    padding: 0.22rem 0 !important;
+    padding: 0.2rem 0 !important;
+    margin-bottom: 0.35rem !important;
+    min-width: 0 !important;
+  }
+
+  .summary-row > span:first-child {
+    color: #64748B !important;
+    flex-shrink: 0 !important;
+    font-size: 0.72rem !important;
+  }
+
+  .summary-row > strong,
+  .summary-row > span:last-child {
+    text-align: right !important;
+    font-size: 0.72rem !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 58% !important;
+  }
+
+  .summary-row.total {
+    font-size: 0.88rem !important;
+    padding-top: 0.55rem !important;
+    margin-top: 0.55rem !important;
+  }
+
+  .summary-row.total > span:last-child {
+    font-size: 0.98rem !important;
+  }
+
+  .trust-badge-box {
+    padding: 0.6rem 0.65rem !important;
+    margin-top: 0.75rem !important;
+    border-radius: 7px !important;
+    gap: 0.45rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    align-items: flex-start !important;
+  }
+
+  .trust-badge-box > span {
+    font-size: 1.1rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .trust-badge-box > div {
+    min-width: 0 !important;
+    flex: 1 1 0% !important;
+  }
+
+  .trust-badge-box strong {
+    display: block !important;
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+  }
+
+  .trust-badge-box p {
+    font-size: 0.62rem !important;
+    line-height: 1.3 !important;
+    margin: 0.15rem 0 0 0 !important;
+    word-break: break-word !important;
   }
 
   .temple-card-item {
@@ -2296,5 +3190,199 @@ body {
     font-size: 0.78rem !important;
     line-height: 1.5 !important;
     margin-bottom: 1rem !important;
+  }
+
+  /* Temple Single Page (Small Mobile <= 480px & 320px) */
+  .temple-single-hero,
+  section[style*="mahakaleshwar-ujjain-day.jpg"],
+  section[style*="kashi-vishwanath.jpg"],
+  section[style*="temples/"] {
+    padding: 1.5rem 0 1.8rem !important;
+  }
+
+  .temple-single-title,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] h1,
+  section[style*="kashi-vishwanath.jpg"] h1,
+  section[style*="temples/"] h1 {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .temple-single-desc,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] p,
+  section[style*="kashi-vishwanath.jpg"] p,
+  section[style*="temples/"] p {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .temple-single-actions .btn,
+  section[style*="mahakaleshwar-ujjain-day.jpg"] .btn,
+  section[style*="kashi-vishwanath.jpg"] .btn,
+  section[style*="temples/"] .btn {
+    font-size: 0.8rem !important;
+    padding: 0.55rem 1rem !important;
+    max-width: 100% !important;
+  }
+
+  /* Breadcrumb compacting on small mobile (<= 480px & 320px) */
+  .luxury-breadcrumb,
+  .luxury-breadcrumb.light-theme {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0.18rem 0.48rem !important;
+    border-radius: 9999px !important;
+    gap: 0.2rem !important;
+    line-height: 1.2 !important;
+    max-width: 100% !important;
+    margin: 0 auto 0.65rem auto !important;
+  }
+
+  .luxury-breadcrumb::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .breadcrumb-crumb-link,
+  .breadcrumb-home-link {
+    font-size: 0.68rem !important;
+    padding: 0.08rem 0.16rem !important;
+    gap: 0.18rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .breadcrumb-home-icon {
+    width: 11px !important;
+    height: 11px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .breadcrumb-separator {
+    opacity: 0.55 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .breadcrumb-separator svg {
+    width: 8px !important;
+    height: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .breadcrumb-current-badge {
+    font-size: 0.64rem !important;
+    padding: 0.13rem 0.44rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    border-radius: 9999px !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Quick stats card compacting on 320px */
+  .temple-stats-card {
+    padding: 0.75rem 0.7rem !important;
+    margin-top: -1rem !important;
+    border-radius: 12px !important;
+  }
+
+  .temple-stats-item {
+    gap: 0.5rem !important;
+    padding: 0.35rem 0 !important;
+  }
+
+  .temple-stats-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .temple-stats-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .temple-stats-label {
+    font-size: 0.62rem !important;
+  }
+
+  .temple-stats-value {
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Content cards padding on 320px & small mobile */
+  .temple-single-main-col > div[style*="background: #FFFFFF"],
+  div[style*="background: #FFFFFF; padding: 2.5rem"],
+  div[style*="background: #FFFFFF; padding: 2rem"],
+  div[style*="background: #FFFFFF; padding: 1.8rem"],
+  .temple-content-card,
+  .temple-pkg-card,
+  .temple-prasad-section,
+  .temple-process-card,
+  .temple-faq-section,
+  .temple-booking-card,
+  .temple-support-card {
+    padding: 1.05rem 0.85rem !important;
+    border-radius: 12px !important;
+  }
+
+  .temple-single-main-col h2,
+  div[style*="background: #FFFFFF; padding: 2.5rem"] h2,
+  .temple-content-title,
+  .temple-offerings-title,
+  .temple-prasad-heading,
+  .temple-process-heading,
+  .temple-faq-heading {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .temple-single-main-col h3,
+  div[style*="background: #FFFFFF"] h3,
+  .temple-pkg-name,
+  .temple-booking-title {
+    font-size: 1.05rem !important;
+  }
+
+  .temple-pkg-price {
+    font-size: 1.25rem !important;
+  }
+
+  .temple-pkg-desc,
+  .temple-content-paragraph,
+  .temple-single-main-col p,
+  div[style*="background: #FFFFFF"] p {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .temple-pkg-features div {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .temple-pkg-footer .btn,
+  .temple-booking-btn {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.84rem !important;
+  }
+
+  /* 4-item Prasad & Process Grids */
+  .prasad-items-grid,
+  .temple-process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .prasad-item-card,
+  .temple-step-item {
+    padding: 0.75rem 0.65rem !important;
   }
 }

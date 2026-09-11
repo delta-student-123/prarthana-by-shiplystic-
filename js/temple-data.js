@@ -22,7 +22,7 @@ const TEMPLE_DATA = [
           "Temple Puja performed by Temple's own Priests",
           "₹501 Passed directly as Temple Donation",
           "Official Receipt & Proof Shared by Temple",
-          "Maha Prasad Hygienically Sealed & Packed",
+          "Prasad Hygienically Sealed & Packed",
           "Multi-Carrier Doorstep Delivery via Shiplystic"
         ]
       }
@@ -74,7 +74,7 @@ const TEMPLE_DATA = [
           "First Among 12 Jyotirlingas Rituals by Temple Priests",
           "₹501 Passed directly as Temple Donation",
           "Official Receipt & Proof Shared",
-          "Maha Prasad & Holy Bhasma Box",
+          "Prasad & Holy Bhasma Box",
           "Shiplystic Multi-Carrier Express Delivery"
         ]
       }
@@ -126,7 +126,7 @@ const TEMPLE_DATA = [
           "Rituals conducted by Omkareshwar Temple Priests",
           "₹501 Passed directly as Temple Donation",
           "Official Receipt & Video Proof Shared",
-          "Maha Prasad Packed for Secure Transit",
+          "Prasad Packed for Secure Transit",
           "Shiplystic Multi-Carrier Doorstep Delivery"
         ]
       }
@@ -152,7 +152,7 @@ const TEMPLE_DATA = [
           "Holy Cave Chunt & Aarti Rituals by Shrine Priests",
           "₹501 Passed directly as Temple Donation",
           "Official Board Receipt & Proof Shared",
-          "Blessed Khazana Coins & Maha Prasad Box",
+          "Blessed Khazana Coins & Prasad Box",
           "Multi-Carrier Express Doorstep Delivery"
         ]
       }
@@ -178,7 +178,7 @@ const TEMPLE_DATA = [
           "Kumkumarchana Rituals by Temple Priests",
           "₹501 Passed directly as Temple Donation",
           "Official Temple Receipt & Proof",
-          "Blessed Haldi-Kumkum & Maha Prasad",
+          "Blessed Haldi-Kumkum & Prasad",
           "Shiplystic Multi-Carrier Express Delivery"
         ]
       }
@@ -279,15 +279,15 @@ const TEMPLE_DATA = [
         price: 1999,
         popular: true,
         features: [
-          "Holy Mahaprasad Rituals by Temple Servitors / Priests",
+          "Holy Prasad Rituals by Temple Servitors / Priests",
           "₹501 Passed directly as Temple Donation",
           "Official Receipt & Proof",
-          "Authentic Khaja & Nirmalya Maha Prasad Box",
+          "Authentic Khaja & Nirmalya Prasad Box",
           "Shiplystic Multi-Carrier Doorstep Delivery"
         ]
       }
     ],
-    description: "Sacred Char Dham shrine of Lord Jagannath in Puri. Rituals conducted by traditional temple servitors with authentic Mahaprasad delivery."
+    description: "Sacred Char Dham shrine of Lord Jagannath in Puri. Rituals conducted by traditional temple servitors with authentic Prasad delivery."
   },
   {
     id: "dwarkadhish",
@@ -438,7 +438,7 @@ const TEMPLE_DATA = [
           "Atharvashirsha Avartan & Modak Bhog by Trust Priests",
           "₹501 Passed directly as Temple Trust Donation",
           "Official Trust Receipt & Confirmation",
-          "Special Dagdusheth Modak & Dry Fruit Maha Prasad Box",
+          "Special Dagdusheth Modak & Dry Fruit Prasad Box",
           "Express Temperature-Controlled Delivery"
         ]
       }
@@ -464,7 +464,7 @@ const TEMPLE_DATA = [
           "Samadhi Mandir Pooja & Aarti Invocations by Sansthan Sevaks",
           "₹501 Passed directly as Temple Donation",
           "Official Sansthan Trust Receipt",
-          "Authentic Shegaon Mahaprasad Box & Sacred Angavastra",
+          "Authentic Shegaon Prasad Box & Sacred Angavastra",
           "Multi-Carrier Express Doorstep Delivery"
         ]
       }

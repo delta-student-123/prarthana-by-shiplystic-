@@ -13,313 +13,365 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png?v=2">
   <link rel="manifest" href="site.webmanifest">
   
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
+<body class="contact-body">
 
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container top-bar-content">
-      <div>
-        <span>📦 Powered by Shiplystic Ecosystem — Ship. Track. Scale.</span>
-      </div>
-      <div class="safety-pill-badge">
-        <span>🛡️ Safety Notice: No direct payment links or OTPs requested</span>
-      </div>
-      <div>
-        <span>📞 Support: +91 9422799941</span>
-      </div>
-    </div>
-  </div>
-
-        <!-- Navigation Header -->
-  <header class="header-nav">
+  <!-- Navigation Header (Clean White Header, No Border) -->
+  <header class="header-nav contact-header">
     <div class="container nav-container">
       <a href="/" class="brand-logo" id="main-brand-logo">
-        <img src="images/logo/shiplystic-logo-horizontal.png" alt="Prarthana by Shiplystic" style="height: 54px;">
+        <img src="images/logo/shiplystic-logo-horizontal.png" alt="Prarthana by Shiplystic" style="height: 52px;">
       </a>
 
       <nav>
         <ul class="nav-links">
-          <li><a href="/" class="nav-link">Home</a></li>
+          <li>
+            <a href="/" class="nav-link-home-item">
+              <span class="home-text-badge">Home</span>
+              <span class="home-active-bar"></span>
+            </a>
+          </li>
           <li><a href="/services" class="nav-link">Services Overview</a></li>
-                                                  <li class="dropdown shiplystic-mega-dropdown-wrapper">
+          <li class="dropdown shiplystic-mega-dropdown-wrapper">
             <a href="/temples" class="nav-link">Temples ▾</a>
-                        <div class="dropdown-menu shiplystic-mega-menu">
+            <div class="dropdown-menu shiplystic-mega-menu">
               <div class="mega-menu-inner">
-                
-                <!-- 1. Left Dark Sidebar (Exact Match to Temples Directory Filters) -->
                 <div class="mega-sidebar">
-                  <div class="mega-tab-btn active" data-target="mega-cat-jyotirlinga">
-                    <span>Jyotirlingas (5)</span>
-                    <span class="mega-chevron">›</span>
-                  </div>
-                  <div class="mega-tab-btn" data-target="mega-cat-shakti">
-                    <span>Shakti Peeths (2)</span>
-                    <span class="mega-chevron">›</span>
-                  </div>
-                  <div class="mega-tab-btn" data-target="mega-cat-dham">
-                    <span>Char Dham (4)</span>
-                    <span class="mega-chevron">›</span>
-                  </div>
-                  <div class="mega-tab-btn" data-target="mega-cat-shrine">
-                    <span>Revered Shrines (7)</span>
-                    <span class="mega-chevron">›</span>
-                  </div>
+                  <div class="mega-tab-btn active" data-target="mega-cat-jyotirlinga"><span>Jyotirlingas (5)</span><span class="mega-chevron">›</span></div>
+                  <div class="mega-tab-btn" data-target="mega-cat-shakti"><span>Shakti Peeths (2)</span><span class="mega-chevron">›</span></div>
+                  <div class="mega-tab-btn" data-target="mega-cat-dham"><span>Char Dham (4)</span><span class="mega-chevron">›</span></div>
+                  <div class="mega-tab-btn" data-target="mega-cat-shrine"><span>Revered Shrines (7)</span><span class="mega-chevron">›</span></div>
                 </div>
-
-                <!-- 2. Middle Content Panels (Organized by Filter Categories) -->
                 <div class="mega-content-area">
-                  
-                  <!-- Filter 1: Jyotirlingas (5) -->
                   <div class="mega-panel active" id="mega-cat-jyotirlinga">
                     <div class="mega-grid">
-                      <a href="/temples/mahakaleshwar-ujjain" class="mega-item">
-                        <div class="mega-item-title">Shri Mahakaleshwar</div>
-                        <div class="mega-item-desc">Bhasma Aarti & Jalabhishek • Ujjain, MP</div>
-                      </a>
-                      <a href="/temples/kashi-vishwanath" class="mega-item">
-                        <div class="mega-item-title">Shri Kashi Vishwanath</div>
-                        <div class="mega-item-desc">Eternal Moksha Dham on Ganga • Varanasi, UP</div>
-                      </a>
-                      <a href="/temples/somnath" class="mega-item">
-                        <div class="mega-item-title">Shri Somnath Temple</div>
-                        <div class="mega-item-desc">First of Twelve Jyotirlingas • Veraval, Gujarat</div>
-                      </a>
-                      <a href="/temples/kedarnath" class="mega-item">
-                        <div class="mega-item-title">Shri Kedarnath Dham</div>
-                        <div class="mega-item-desc">Himalayan Sacred Jyotirlinga • Rudraprayag, UK</div>
-                      </a>
-                      <a href="/temples/omkareshwar" class="mega-item">
-                        <div class="mega-item-title">Shri Omkareshwar</div>
-                        <div class="mega-item-desc">Narmada Island Sacred Sanctum • Khandwa, MP</div>
-                      </a>
+                      <a href="/temples/mahakaleshwar-ujjain" class="mega-item"><div class="mega-item-title">Shri Mahakaleshwar</div><div class="mega-item-desc">Bhasma Aarti & Jalabhishek • Ujjain, MP</div></a>
+                      <a href="/temples/kashi-vishwanath" class="mega-item"><div class="mega-item-title">Shri Kashi Vishwanath</div><div class="mega-item-desc">Eternal Moksha Dham on Ganga • Varanasi, UP</div></a>
+                      <a href="/temples/somnath" class="mega-item"><div class="mega-item-title">Shri Somnath Temple</div><div class="mega-item-desc">First of Twelve Jyotirlingas • Veraval, Gujarat</div></a>
+                      <a href="/temples/kedarnath" class="mega-item"><div class="mega-item-title">Shri Kedarnath Dham</div><div class="mega-item-desc">Himalayan Sacred Jyotirlinga • Rudraprayag, UK</div></a>
+                      <a href="/temples/omkareshwar" class="mega-item"><div class="mega-item-title">Shri Omkareshwar</div><div class="mega-item-desc">Narmada Island Sacred Sanctum • Khandwa, MP</div></a>
                     </div>
                   </div>
-
-                  <!-- Filter 2: Shakti Peeths (2) -->
                   <div class="mega-panel" id="mega-cat-shakti">
                     <div class="mega-grid">
-                      <a href="/book-prarthana" class="mega-item">
-                        <div class="mega-item-title">Mata Vaishno Devi Shrine</div>
-                        <div class="mega-item-desc">Holy Trikuta Hills Sanctum • Katra, J&K</div>
-                      </a>
-                      <a href="/temples/mahalaxmi-kolhapur" class="mega-item">
-                        <div class="mega-item-title">Shri Mahalaxmi Temple</div>
-                        <div class="mega-item-desc">Supreme Shaktipeeth of Wealth • Kolhapur, Maharashtra</div>
-                      </a>
+                      <a href="/temples/kamakhya" class="mega-item"><div class="mega-item-title">Maa Kamakhya Devalaya</div><div class="mega-item-desc">Prime Tantric Shakti Peeth • Guwahati, Assam</div></a>
+                      <a href="/temples/mahalaxmi-kolhapur" class="mega-item"><div class="mega-item-title">Shri Ambabai Mahalaxmi</div><div class="mega-item-desc">Dakshin Kashi Shakti Peeth • Kolhapur, Maharashtra</div></a>
                     </div>
                   </div>
-
-                  <!-- Filter 3: Char Dham (4) -->
                   <div class="mega-panel" id="mega-cat-dham">
                     <div class="mega-grid">
-                      <a href="/temples/jagannath-puri" class="mega-item">
-                        <div class="mega-item-title">Shri Jagannath Temple</div>
-                        <div class="mega-item-desc">Sacred Chariot Dham & Mahaprasad • Puri, Odisha</div>
-                      </a>
-                      <a href="/temples/dwarkadhish" class="mega-item">
-                        <div class="mega-item-title">Shri Dwarkadhish Temple</div>
-                        <div class="mega-item-desc">Supreme Krishna Jagat Mandir • Dwarka, Gujarat</div>
-                      </a>
-                      <a href="/temples/badrinath" class="mega-item">
-                        <div class="mega-item-title">Shri Badrinath Dham</div>
-                        <div class="mega-item-desc">Himalayan Sacred Vaikuntha Dham • Chamoli, UK</div>
-                      </a>
-                      <a href="/temples/rameswaram" class="mega-item">
-                        <div class="mega-item-title">Shri Ramanathaswamy Temple</div>
-                        <div class="mega-item-desc">Historic Island Jyotirlinga Dham • Rameswaram, TN</div>
-                      </a>
+                      <a href="/temples/badrinath" class="mega-item"><div class="mega-item-title">Shri Badrinath Dham</div><div class="mega-item-desc">Maha Vishnu Himalayan Abode • Chamoli, Uttarakhand</div></a>
+                      <a href="/temples/jagannath-puri" class="mega-item"><div class="mega-item-title">Shri Jagannath Temple</div><div class="mega-item-desc">Prasad & Ratha Yatra Sanctum • Puri, Odisha</div></a>
+                      <a href="/temples/dwarkadhish" class="mega-item"><div class="mega-item-title">Shri Dwarkadhish Mandir</div><div class="mega-item-desc">Mokshapuri Kingdom of Sri Krishna • Dwarka, Gujarat</div></a>
+                      <a href="/temples/rameshwaram" class="mega-item"><div class="mega-item-title">Shri Ramanathaswamy</div><div class="mega-item-desc">Southern Ocean Jyotirlinga Dham • Rameswaram, TN</div></a>
                     </div>
                   </div>
-
-                  <!-- Filter 4: Revered Shrines (7) -->
                   <div class="mega-panel" id="mega-cat-shrine">
                     <div class="mega-grid">
-                      <a href="/temples/siddhivinayak" class="mega-item">
-                        <div class="mega-item-title">Shri Siddhivinayak Temple</div>
-                        <div class="mega-item-desc">Vighnaharta Ganesha Shrine • Prabhadevi, Mumbai</div>
-                      </a>
-                      <a href="/temples/sai-baba-shirdi" class="mega-item">
-                        <div class="mega-item-title">Shri Sai Baba Sansthan</div>
-                        <div class="mega-item-desc">Holy Samadhi Mandir & Kakad Aarti • Shirdi, Maharashtra</div>
-                      </a>
-                      <a href="/temples/tirupati-balaji" class="mega-item">
-                        <div class="mega-item-title">Shri Tirupati Balaji</div>
-                        <div class="mega-item-desc">Sri Venkateswara Swamy • Tirumala, Andhra Pradesh</div>
-                      </a>
-                      <a href="/temples/ayodhya-ram-mandir" class="mega-item">
-                        <div class="mega-item-title">Shri Ram Janmabhoomi Mandir</div>
-                        <div class="mega-item-desc">Shri Ram Lalla Sacred Janmabhoomi • Ayodhya, UP</div>
-                      </a>
-                      <a href="/temples/mathura-vrindavan" class="mega-item">
-                        <div class="mega-item-title">Mathura-Vrindavan Shrines</div>
-                        <div class="mega-item-desc">Divine Krishna & Radha Rani Sanctum • Mathura, UP</div>
-                      </a>
-                      <a href="/temples/dagdusheth-ganpati" class="mega-item">
-                        <div class="mega-item-title">Shreemant Dagdusheth Ganpati</div>
-                        <div class="mega-item-desc">Navasacha Ganpati Mandir • Pune, Maharashtra</div>
-                      </a>
-                      <a href="/temples/gajanan-maharaj-shegaon" class="mega-item">
-                        <div class="mega-item-title">Shri Gajanan Maharaj Sansthan</div>
-                        <div class="mega-item-desc">Sant Shri Gajanan Maharaj Samadhi • Shegaon, Maharashtra</div>
-                      </a>
+                      <a href="/temples/sai-baba-shirdi" class="mega-item"><div class="mega-item-title">Shri Sai Baba Sansthan</div><div class="mega-item-desc">Shraddha & Saburi Universal Sanctum • Shirdi, Maharashtra</div></a>
+                      <a href="/temples/siddhivinayak-mumbai" class="mega-item"><div class="mega-item-title">Shri Siddhivinayak Temple</div><div class="mega-item-desc">Navasacha Ganapati Sanctum • Mumbai, Maharashtra</div></a>
+                      <a href="/temples/tirupati-balaji" class="mega-item"><div class="mega-item-title">Tirupati Balaji Mandir</div><div class="mega-item-desc">Sri Venkateswara Swamy • Tirumala, Andhra Pradesh</div></a>
+                      <a href="/temples/ayodhya-ram-mandir" class="mega-item"><div class="mega-item-title">Shri Ram Janmabhoomi Mandir</div><div class="mega-item-desc">Shri Ram Lalla Sacred Janmabhoomi • Ayodhya, UP</div></a>
+                      <a href="/temples/mathura-vrindavan" class="mega-item"><div class="mega-item-title">Mathura-Vrindavan Shrines</div><div class="mega-item-desc">Divine Krishna & Radha Rani Sanctum • Mathura, UP</div></a>
+                      <a href="/temples/dagdusheth-ganpati" class="mega-item"><div class="mega-item-title">Shreemant Dagdusheth Ganpati</div><div class="mega-item-desc">Navasacha Ganpati Mandir • Pune, Maharashtra</div></a>
+                      <a href="/temples/gajanan-maharaj-shegaon" class="mega-item"><div class="mega-item-title">Shri Gajanan Maharaj Sansthan</div><div class="mega-item-desc">Sant Shri Gajanan Maharaj Samadhi • Shegaon, Maharashtra</div></a>
                     </div>
                   </div>
-
                 </div>
-
-                <!-- 3. Right Dark Featured Card (All 18 Temples) -->
                 <div class="mega-featured-card">
                   <div>
                     <div class="mega-badge">ALL TEMPLES (18)</div>
                     <h4 class="mega-featured-title">Partner with Devotion</h4>
                     <p class="mega-featured-desc">Authentic priest rituals with 100% transparent pass-through dakshina and doorstep Prasad delivery.</p>
                   </div>
-                  <a href="/temples" class="mega-featured-btn">
-                    <span>Explore All 18 Temples</span>
-                    <span class="mega-arrow">→</span>
-                  </a>
+                  <a href="/temples" class="mega-featured-btn"><span>Explore All 18 Temples</span><span class="mega-arrow">→</span></a>
                 </div>
-
               </div>
             </div>
           </li>
           <li><a href="/track-delivery" class="nav-link">Track Delivery</a></li>
           <li><a href="/about-us" class="nav-link">About Us</a></li>
-          <li><a href="/contact-us" class="nav-link active">Contact</a></li>
-          <!-- Mobile-only Book button inside nav menu -->
-          <li class="mobile-nav-book-btn">
-            <a href="/book-prarthana" class="btn btn-red" style="margin: 0.8rem 1rem; display: block; text-align: center; border-radius: 8px;">🛕 Book Prarthana Service</a>
-          </li>
+          <li><a href="/contact-us" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="/book-prarthana" class="btn btn-red" id="header-cta-btn">Book Prarthana Service</a>
+      <a href="/book-prarthana" class="btn btn-pill-cta" id="header-cta-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Book Prarthana Service</span>
+      </a>
       <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="contact-hero-banner" style="
-    background: linear-gradient(180deg, rgba(9, 9, 11, 0.4) 0%, rgba(153, 27, 27, 0.25) 50%, rgba(9, 9, 11, 0.45) 100%), 
-                url('images/temples/omkareshwar.jpg') center/cover no-repeat;
-    padding: 4rem 0 3.5rem;
-    color: #FFF;
-    text-align: center;
-    border-bottom: 3px solid var(--primary-red);
-  ">
-    <div class="container">
-      <!-- Luxury Breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <div class="luxury-breadcrumb">
-          <a href="/" class="breadcrumb-home-link">
-            <svg class="breadcrumb-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-            <span>Home</span>
-          </a>
-          <span class="breadcrumb-separator">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </span>
-          <span class="breadcrumb-current-badge">
-            <span>📞</span> Contact Support
-          </span>
-        </div>
-      </nav>
-      <h1 class="contact-hero-title" style="color: #FFF; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.85);">Get in Touch</h1>
-      <p class="contact-hero-subtitle" style="color: #FFFFFF; font-size: 0.95rem; max-width: 650px; margin: 0 auto; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
-        For Prarthana bookings, tracking, or general queries — our support team is here to assist.
-      </p>
-    </div>
-  </section>
+  <!-- Main Contact Page Canvas -->
+  <main class="contact-bg-canvas">
+    
+    <!-- Top-Left Organic Blush Shape -->
+    <svg class="contact-bg-blob-tl" viewBox="0 0 440 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-40 -40 C60 -60, 160 -20, 220 30 C300 95, 260 170, 180 210 C100 250, -20 240, -60 210 Z" fill="#FEE2E2" opacity="0.55"/>
+    </svg>
+    <!-- Top-Right Organic Blush Shape -->
+    <svg class="contact-bg-blob-tr" viewBox="0 0 620 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M640 -40 C560 -50, 460 -30, 390 40 C320 110, 360 190, 440 240 C520 290, 600 310, 660 280 Z" fill="#FEE2E2" opacity="0.6"/>
+      <path d="M660 40 C580 40, 520 100, 480 160 C440 220, 490 280, 560 310 Z" fill="#FECACA" opacity="0.3"/>
+    </svg>
 
-  <!-- Contact Form & Details Grid -->
-  <section class="contact-main-section" style="padding: 3.5rem 0; background: var(--bg-light);">
-    <div class="container contact-grid-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
+    <div class="contact-container">
       
-      <!-- Contact Info Box -->
-      <div class="contact-info-card" style="background: #FFF; padding: 2rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-light);">
-        <h2 class="contact-card-title" style="font-size: 1.5rem; color: #09090B; margin-bottom: 1.2rem; font-weight: 800;">Support Contacts</h2>
-        
-        <div class="contact-item" style="margin-bottom: 1.5rem;">
-          <strong style="display: block; font-size: 0.95rem; color: var(--primary-red);">📞 Phone Helpline</strong>
-          <p class="contact-val" style="font-size: 1.1rem; font-weight: 800; color: #09090B; margin-top: 0.2rem;">+91 9422799941</p>
+      <!-- Top Hero Header Row -->
+      <div class="contact-hero-row">
+        <div class="contact-hero-left">
+          <span class="contact-eyebrow-tag">WE'RE HERE TO HELP</span>
+          <h1 class="contact-main-heading">Get in <span class="highlight-red">Touch</span></h1>
+          <p class="contact-sub-text">
+            Have a question, need support or assistance regarding our Prarthana services? We'd love to hear from you.
+          </p>
+          <div class="contact-red-accent-bar"></div>
         </div>
 
-        <div class="contact-item" style="margin-bottom: 1.5rem;">
-          <strong style="display: block; font-size: 0.95rem; color: var(--primary-red);">📧 Email Address</strong>
-          <p class="contact-val" style="font-size: 0.95rem; font-weight: 700; color: #09090B; margin-top: 0.2rem; word-break: break-all;">prarthana@shiplystic.com</p>
-        </div>
-
-        <div class="contact-item" style="margin-bottom: 1.8rem;">
-          <strong style="display: block; font-size: 0.95rem; color: var(--primary-red);">📍 Registered Office</strong>
-          <p class="contact-address-text" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.6;"> 
-Headquarters - India<br>
-<strong>SHIPLYSTIC PRIVATE LIMITED</strong><br>
-Office No. 601/603, 6th Floor, "White Square",<br>
-Near Wakad Bridge, Hinjewadi,<br>
-Pune 411057</p>
-        </div>
-
-        <h3 class="contact-subheading" style="font-size: 1.1rem; color: #09090B; margin-bottom: 0.8rem; font-weight: 800;">Quick Links</h3>
-        <div class="contact-quick-links" style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem;">
-          <a href="/track-delivery" style="color: var(--primary-red); font-weight: 700;">➔ Track Your Prasad Delivery</a>
-          <a href="/faqs" style="color: var(--primary-red); font-weight: 700;">➔ Frequently Asked Questions</a>
-          <a href="/book-prarthana" style="color: var(--primary-red); font-weight: 700;">➔ Book a New Prarthana</a>
+        <!-- Right Hero Artwork: Temple Skyline -->
+        <div class="contact-hero-art-wrapper">
+          <div class="temple-skyline-art">
+            <img src="images/banners/temple-skyline-proper.png" alt="Sacred Temples of India" class="temple-skyline-img" width="440" height="165">
+          </div>
         </div>
       </div>
 
-      <!-- Contact Message Form -->
-      <div class="contact-form-card" style="background: #FFF; padding: 2rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-light);">
-        <h2 class="contact-card-title" style="font-size: 1.5rem; color: #09090B; margin-bottom: 1.2rem; font-weight: 800;">Send Us a Message</h2>
+      <!-- Two-Column Cards Grid -->
+      <div class="contact-cards-grid">
         
-        <form onsubmit="event.preventDefault(); window.showToast('Thank you! Your message has been received by Shiplystic Support.');">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" placeholder="Enter your full name" required>
+        <!-- Left Card: Support Contacts -->
+        <div class="contact-card support-contacts-card">
+          <div>
+            <div class="contact-card-header">
+              <div class="contact-header-badge">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <h2 class="contact-card-title">Support Contacts</h2>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Phone Number *</label>
-              <input type="tel" class="form-control" placeholder="Enter 10-digit mobile number" required>
+            <div class="contact-items-list">
+              <!-- Phone Helpline -->
+              <div class="contact-info-row">
+                <div class="info-icon-pill">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div class="info-details">
+                  <div class="info-details-label">Phone Helpline</div>
+                  <div class="info-details-val"><a href="tel:+919422799941">+91 9422799941</a></div>
+                </div>
+              </div>
+
+              <!-- Email Address -->
+              <div class="contact-info-row">
+                <div class="info-icon-pill">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                </div>
+                <div class="info-details">
+                  <div class="info-details-label">Email Address</div>
+                  <div class="info-details-val info-details-email"><a href="mailto:prarthana@shiplystic.com">prarthana@shiplystic.com</a></div>
+                </div>
+              </div>
+
+              <!-- Registered Office -->
+              <div class="contact-info-row">
+                <div class="info-icon-pill">
+                  <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="info-details">
+                  <div class="info-details-label">Registered Office</div>
+                  <div class="info-details-address">
+                    Headquarters - India<br>
+                    <strong>SHIPLYSTIC PRIVATE LIMITED</strong><br>
+                    Office No. 601/603, 6th Floor, "White Square",<br>
+                    Near Wakad Bridge, Hinjewadi,<br>
+                    Pune 411057
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Email Address *</label>
-              <input type="email" class="form-control" placeholder="Enter your email" required>
+          <!-- Quick Links -->
+          <div class="contact-quicklinks-section">
+            <div class="quicklinks-header">
+              <div class="quicklinks-icon-pill">
+                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              </div>
+              <h3 class="quicklinks-title">Quick Links</h3>
             </div>
-
-            <div class="form-group">
-              <label class="form-label">Query Type *</label>
-              <select class="form-control">
-                <option>Booking Help</option>
-                <option>Track My Prasad</option>
-                <option>Temple Request</option>
-                <option>Donation Query</option>
-                <option>Other</option>
-              </select>
+            <div class="quicklinks-grid">
+              <a href="/track-delivery" class="quicklink-item"><span class="ql-arrow">➔</span> Track Your Prasad Delivery</a>
+              <a href="/faqs" class="quicklink-item"><span class="ql-arrow">➔</span> Frequently Asked Questions</a>
+              <a href="/book-prarthana" class="quicklink-item"><span class="ql-arrow">➔</span> Book a New Parthana</a>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label">Message *</label>
-            <textarea class="form-control" rows="4" placeholder="How can we assist you?" required></textarea>
+          <!-- Botanical Leaf/Petal Motif in Bottom-Right matching crop -->
+          <svg class="card-petal-motif" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Curved stalk -->
+            <path d="M98 132 C92 110, 84 88, 86 65" stroke="#FCA5A5" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <!-- Branch to inner red leaf -->
+            <path d="M85 82 C86 76, 88 72, 89 67" stroke="#FCA5A5" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            
+            <!-- Bottom small leaf pointing left -->
+            <path d="M88 112 C78 114, 70 120, 72 125 C78 126, 86 122, 89 116 Z" fill="#FEE2E2" opacity="0.85"/>
+            <!-- Tiny bud right -->
+            <path d="M91 102 C96 100, 99 104, 98 108 C94 109, 91 106, 91 102 Z" fill="#FEE2E2" opacity="0.8"/>
+            
+            <!-- Large spreading left leaf -->
+            <path d="M86 86 C65 72, 45 74, 46 88 C55 102, 76 102, 86 88 Z" fill="#FDE8E8" opacity="0.9"/>
+            <!-- Large top right petal -->
+            <path d="M86 65 C85 40, 96 22, 110 24 C118 36, 112 62, 88 68 Z" fill="#FEE2E2" opacity="0.85"/>
+            
+            <!-- Inner vibrant red leaf inside top right petal -->
+            <path d="M88 66 C87 56, 90 48, 97 43 C102 46, 101 54, 95 62 C92 65, 89 66, 88 66 Z" fill="#DC2626"/>
+            <!-- Mid-rib line inside red leaf -->
+            <path d="M89 65 C91 58, 94 51, 97 44" stroke="#B91C1C" stroke-width="0.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Right Card: Send Us a Message -->
+        <div class="contact-card">
+          <div class="contact-card-header" style="margin-bottom: 1.5rem;">
+            <div class="contact-header-badge">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div>
+              <h2 class="contact-card-title">Send Us a Message</h2>
+              <p class="contact-card-sub">Fill in the details below and we'll get back to you as soon as possible.</p>
+            </div>
           </div>
 
-          <button type="submit" class="btn btn-red" style="width: 100%; padding: 0.85rem; font-size: 0.95rem; font-weight: 800; border-radius: 8px;">Send Message ➔</button>
-        </form>
+          <form class="message-form-container" onsubmit="event.preventDefault(); window.showToast('Thank you! Your message has been received by Shiplystic Support.'); this.reset();">
+            
+            <!-- Row 1: Full Name & Phone Number -->
+            <div class="form-2col-row">
+              <div class="modern-form-group">
+                <label class="modern-field-label">
+                  <span class="field-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </span>
+                  Full Name <span class="req-star">*</span>
+                </label>
+                <input type="text" class="modern-input-field" placeholder="Enter your full name" required>
+              </div>
+
+              <div class="modern-form-group">
+                <label class="modern-field-label">
+                  <span class="field-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                  </span>
+                  Phone Number <span class="req-star">*</span>
+                </label>
+                <input type="tel" class="modern-input-field" placeholder="Enter 10-digit mobile number" required>
+              </div>
+            </div>
+
+            <!-- Row 2: Email Address & Query Type -->
+            <div class="form-2col-row">
+              <div class="modern-form-group">
+                <label class="modern-field-label">
+                  <span class="field-icon-circle">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                  </span>
+                  Email Address <span class="req-star">*</span>
+                </label>
+                <input type="email" class="modern-input-field" placeholder="Enter your email" required>
+              </div>
+
+              <div class="modern-form-group">
+                <label class="modern-field-label">
+                  <span class="field-icon-circle">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+                  </span>
+                  Query Type <span class="req-star">*</span>
+                </label>
+                <div class="modern-select-wrapper">
+                  <select class="modern-input-field modern-select-field" required>
+                    <option value="Booking Help" selected>Booking Help</option>
+                    <option value="Track My Prasad">Track My Prasad</option>
+                    <option value="Temple Request">Temple Request</option>
+                    <option value="Donation Query">Donation Query</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <svg class="modern-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Message -->
+            <div class="modern-form-group">
+              <label class="modern-field-label">
+                <span class="field-icon-circle">
+                  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                Message <span class="req-star">*</span>
+              </label>
+              <textarea class="modern-input-field modern-textarea-field" rows="4" placeholder="How can we assist you?" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="modern-submit-btn">
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              <span>Send Message ➔</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Blooming Lotus Ornament matching crop_lotus_zoom -->
+      <div class="contact-bottom-ornament">
+        <span class="ornament-rule"></span>
+        <div class="ornament-lotus-icon">
+          <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Base petals (horizontal red) -->
+            <path d="M15 28 C20 27, 26 29, 29 32 C23 34, 16 33, 15 28 Z" fill="#DC2626"/>
+            <path d="M45 28 C40 27, 34 29, 31 32 C37 34, 44 33, 45 28 Z" fill="#DC2626"/>
+            
+            <!-- Outer spreading petals (rose/coral) -->
+            <path d="M13 22 C17 21, 23 25, 27 30 C20 31, 15 28, 13 22 Z" fill="#FB7185"/>
+            <path d="M47 22 C43 21, 37 25, 33 30 C40 31, 45 28, 47 22 Z" fill="#FB7185"/>
+            
+            <!-- Middle petals (vibrant crimson) -->
+            <path d="M20 14 C23 15, 27 22, 28.5 30 C23 30, 19 24, 20 14 Z" fill="#F43F5E"/>
+            <path d="M40 14 C37 15, 33 22, 31.5 30 C37 30, 41 24, 40 14 Z" fill="#F43F5E"/>
+            
+            <!-- Inner petals (deep crimson) -->
+            <path d="M25 9 C28 12, 29.5 20, 29.5 30 C26 29, 23 20, 25 9 Z" fill="#E11D48"/>
+            <path d="M35 9 C32 12, 30.5 20, 30.5 30 C34 29, 37 20, 35 9 Z" fill="#E11D48"/>
+            
+            <!-- Central tallest upright petal (pure ruby red) -->
+            <path d="M30 4 C27 10, 27 20, 30 30 C33 20, 33 10, 30 4 Z" fill="#DC2626"/>
+          </svg>
+        </div>
+        <span class="ornament-rule"></span>
       </div>
 
     </div>
-  </section>
 
-    <!-- Footer -->
+    <!-- Bottom Corner Wave Lines -->
+    <svg class="contact-bg-waves-bl" viewBox="0 0 380 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-40 220 C80 180, 160 140, 260 190 C320 220, 350 170, 380 175" stroke="#FCA5A5" stroke-width="1.2" opacity="0.4" fill="none"/>
+      <path d="M-30 240 C90 200, 180 160, 280 200 C330 230, 360 190, 400 195" stroke="#F87171" stroke-width="0.8" opacity="0.25" fill="none"/>
+      <path d="M-50 200 C70 160, 140 120, 240 180 C290 210, 330 150, 360 155" stroke="#FECACA" stroke-width="1.5" opacity="0.4" fill="none"/>
+    </svg>
+    <svg class="contact-bg-waves-br" viewBox="0 0 380 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M420 220 C300 180, 220 140, 120 190 C60 220, 30 170, 0 175" stroke="#FCA5A5" stroke-width="1.2" opacity="0.4" fill="none"/>
+      <path d="M410 240 C290 200, 200 160, 100 200 C50 230, 20 190, -20 195" stroke="#F87171" stroke-width="0.8" opacity="0.25" fill="none"/>
+      <path d="M430 200 C310 160, 240 120, 140 180 C90 210, 50 150, 20 155" stroke="#FECACA" stroke-width="1.5" opacity="0.4" fill="none"/>
+    </svg>
+  </main>
+
+  <!-- Footer -->
   <footer class="footer-dark" style="background: #09090B; color: #A1A1AA; padding: 4.5rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
     <div class="container" style="max-width: 1200px;">
       <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 2.5rem;">
@@ -337,17 +389,17 @@ Pune 411057</p>
             </a>
           </div>
           <div class="footer-social-links" style="display: flex; gap: 0.8rem;">
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+            <a href="https://www.facebook.com/shiplystic/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook @shiplystic" title="Follow @shiplystic on Facebook">
               <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+            <a href="https://www.instagram.com/shiplystic_com/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram @shiplystic_com" title="Follow @shiplystic_com on Instagram">
               <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+            <a href="https://www.youtube.com/@Shiplystic" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="YouTube @Shiplystic" title="Subscribe to @Shiplystic on YouTube">
               <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
-            <a href="https://whatsapp.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
-              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <a href="https://www.linkedin.com/company/shiplystic/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn @shiplystic" title="Follow Shiplystic on LinkedIn">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
             </a>
           </div>
         </div>
@@ -407,5 +459,11 @@ Pune 411057</p>
   </footer>
 
   <script src="js/main.js"></script>
+  <!-- Floating WhatsApp Support Button -->
+  <a id="whatsapp-float-btn" href="https://wa.me/919422799941?text=Hello%20Shiplystic%20Prarthana,%20I%20would%20like%20to%20inquire%20about%20Prarthana%20services" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat on WhatsApp" title="Chat on WhatsApp with Devotee Support">
+    <span class="whatsapp-float-pulse"></span>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+
 </body>
 </html>

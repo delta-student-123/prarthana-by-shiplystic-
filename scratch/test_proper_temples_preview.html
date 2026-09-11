@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proper Temple Design Test</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #F8FAFC;
+      padding: 30px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .preview-card {
+      background: #FFFDFD;
+      border-radius: 24px;
+      padding: 36px 48px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+      max-width: 1140px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-bg-blob-tl {
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 320px;
+      height: 220px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .contact-bg-blob-tr {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 480px;
+      height: 300px;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-card">
+    <!-- Top-Left Organic Blush Shape -->
+    <svg class="contact-bg-blob-tl" viewBox="0 0 440 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-40 -40 C60 -60, 160 -20, 220 30 C300 95, 260 170, 180 210 C100 250, -20 240, -60 210 Z" fill="#FEE2E2" opacity="0.55"/>
+    </svg>
+    <!-- Top-Right Organic Blush Shape -->
+    <svg class="contact-bg-blob-tr" viewBox="0 0 620 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M640 -40 C560 -50, 460 -30, 390 40 C320 110, 360 190, 440 240 C520 290, 600 310, 660 280 Z" fill="#FEE2E2" opacity="0.6"/>
+      <path d="M660 40 C580 40, 520 100, 480 160 C440 220, 490 280, 560 310 Z" fill="#FECACA" opacity="0.3"/>
+    </svg>
+
+    <div class="contact-hero-row" style="position: relative; z-index: 2;">
+      <div class="contact-hero-left">
+        <span class="contact-eyebrow-tag">WE'RE HERE TO HELP</span>
+        <h1 class="contact-main-heading">Get in <span class="highlight-red">Touch</span></h1>
+        <p class="contact-sub-text">
+          Have a question, need support or assistance regarding our Prarthana services? We'd love to hear from you.
+        </p>
+        <div class="contact-red-accent-bar"></div>
+      </div>
+
+      <div class="contact-hero-art-wrapper">
+        <div class="prayers-script-box">
+          <div class="prayers-script-text">Your Prayers</div>
+          <div class="prayers-script-sub">
+            Our Priority
+            <svg class="script-swoosh-svg" viewBox="0 0 125 12" fill="none">
+              <path d="M2 4 C35 12, 85 12, 122 3" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="temple-skyline-art" style="width: 380px; height: 145px;">
+          <img src="../images/banners/temple-skyline-proper.png" alt="Sacred Temples" style="width: 100%; height: 100%; object-fit: contain; object-position: bottom right; display: block;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -39,21 +39,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dropdown toggle (tap to open/close on mobile, navigate naturally on desktop)
     document.querySelectorAll('.dropdown > .nav-link').forEach(dropLink => {
+      // Strip any hardcoded arrow text from HTML
+      dropLink.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.nodeValue = node.nodeValue.replace(/[▾▴▼▲]/g, '').trim();
+        }
+      });
+
+      // Ensure dropdown chevron icon exists for the temple menu
+      let icon = dropLink.querySelector('.nav-dropdown-icon');
+      if (!icon) {
+        icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        icon.setAttribute('class', 'nav-dropdown-icon');
+        icon.setAttribute('width', '10');
+        icon.setAttribute('height', '10');
+        icon.setAttribute('viewBox', '0 0 24 24');
+        icon.setAttribute('fill', 'none');
+        icon.setAttribute('stroke', 'currentColor');
+        icon.setAttribute('stroke-width', '2.8');
+        icon.setAttribute('stroke-linecap', 'round');
+        icon.setAttribute('stroke-linejoin', 'round');
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+        dropLink.appendChild(icon);
+      }
+
       dropLink.addEventListener('click', (e) => {
+        const parent = dropLink.parentElement;
         if (window.innerWidth <= 768) {
           e.preventDefault();
           e.stopPropagation();
-          const parent = dropLink.parentElement;
-          const isOpen = parent.classList.toggle('open');
-
-          // Flip arrow indicator
-          if (isOpen && dropLink.innerHTML.includes('▾')) {
-            dropLink.innerHTML = dropLink.innerHTML.replace('▾', '▴');
-          } else if (!isOpen && dropLink.innerHTML.includes('▴')) {
-            dropLink.innerHTML = dropLink.innerHTML.replace('▴', '▾');
-          }
+          parent.classList.toggle('open');
+        } else if (e.target.closest('.nav-dropdown-icon')) {
+          // On desktop, clicking the dropdown icon directly toggles the menu without navigation
+          e.preventDefault();
+          e.stopPropagation();
+          parent.classList.toggle('open');
         }
-        // On desktop, clicking "Temples ▾" naturally opens the Temples page (temples.html)
+        // On desktop, clicking the text "Temples" navigates naturally to /temples
       });
     });
 
@@ -386,10 +409,10 @@ document.addEventListener('DOMContentLoaded', () => {
       phase: "Phase 2: Temple Process",
       phaseClass: "phase-2-badge",
       title: "Prasad Arranged",
-      desc: "Sacred Maha Prasad (bhasma, kumkum, sacred dry fruits, chandan) is arranged subject to temple availability directly from the temple.",
-      highlights: ["✓ Authentic Temple Maha Prasad", "✓ Subject to Temple Availability", "✓ Pure & Sacred Handling"],
+      desc: "Sacred Prasad (bhasma, kumkum, sacred dry fruits, chandan) is arranged subject to temple availability directly from the temple.",
+      highlights: ["✓ Authentic Temple Prasad", "✓ Subject to Temple Availability", "✓ Pure & Sacred Handling"],
       icon: "🪔",
-      visualTitle: "Blessed Temple Maha Prasad",
+      visualTitle: "Blessed Temple Prasad",
       ctaText: "Explore Package Details ➔",
       ctaLink: "services/prarthana.html"
     },
@@ -398,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
       phase: "Phase 3: Fulfillment",
       phaseClass: "phase-3-badge",
       title: "Securely Packed",
-      desc: "The blessed Maha Prasad is placed inside tamper-evident, eco-friendly protective packaging to ensure maximum hygiene and safety in transit.",
+      desc: "The blessed Prasad is placed inside tamper-evident, eco-friendly protective packaging to ensure maximum hygiene and safety in transit.",
       highlights: ["✓ Tamper-Evident Protective Box", "✓ Hygienic & Eco-Friendly Packaging", "✓ Complete Sacred Protection"],
       icon: "🔒",
       visualTitle: "Hygienic Sealed Prasad Box",
@@ -422,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
       phase: "Phase 3: Delivery",
       phaseClass: "phase-3-badge",
       title: "Delivered to Your Doorstep",
-      desc: "Your sacred Maha Prasad and donation proof are safely delivered directly to your doorstep with devotion and care.",
+      desc: "Your sacred Prasad and donation proof are safely delivered directly to your doorstep with devotion and care.",
       highlights: ["✓ Safe Doorstep Handover", "✓ Zero OTP / Payment Link Request", "✓ Devotional Fulfillment Complete"],
       icon: "🏠",
       visualTitle: "Doorstep Prasad Handover",
@@ -584,7 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // STEP 6
         `<div class="step-visual-top-bar">
           <span class="step-visual-title-badge">🪔 STEP 6 PREVIEW</span>
-          <span style="font-size:0.75rem; color:#A1A1AA;">Maha Prasad Contents</span>
+          <span style="font-size:0.75rem; color:#A1A1AA;">Prasad Contents</span>
         </div>
         <div class="step-visual-content-box">
           <div style="font-size:0.78rem; color:#94A3B8; margin-bottom:0.5rem;">Authentic Temple Prasad Package:</div>
@@ -1141,3 +1164,27 @@ if (document.readyState === 'loading') {
 
 
 
+
+// Floating WhatsApp Support Button Initializer (Site-wide safety fallback)
+function initWhatsAppFloat() {
+  if (document.getElementById('whatsapp-float-btn')) return;
+  const waBtn = document.createElement('a');
+  waBtn.id = 'whatsapp-float-btn';
+  waBtn.className = 'whatsapp-float-btn';
+  waBtn.href = 'https://wa.me/919422799941?text=Hello%20Shiplystic%20Prarthana,%20I%20would%20like%20to%20inquire%20about%20Prarthana%20services';
+  waBtn.target = '_blank';
+  waBtn.rel = 'noopener noreferrer';
+  waBtn.setAttribute('aria-label', 'Chat on WhatsApp');
+  waBtn.setAttribute('title', 'Chat on WhatsApp with Devotee Support');
+  waBtn.innerHTML = `
+    <span class="whatsapp-float-pulse"></span>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  `;
+  document.body.appendChild(waBtn);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initWhatsAppFloat);
+} else {
+  initWhatsAppFloat();
+}
