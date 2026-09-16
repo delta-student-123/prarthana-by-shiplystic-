@@ -1,0 +1,943 @@
+/* ==========================================================================
+   PRARTHANA BY SHIPLYSTIC — REAL & ATTRACTIVE CONTACT US REDESIGN
+   ========================================================================== */
+
+/* Page Background & Atmosphere */
+.contact-page-wrapper {
+  background: linear-gradient(180deg, #FDFBF7 0%, #FAF6F0 40%, #F5EFE6 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 75px);
+  padding-bottom: 5rem;
+}
+
+/* Subtle Sacred Background Watermark */
+.contact-page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  height: 600px;
+  background: radial-gradient(circle at 50% 10%, rgba(220, 38, 38, 0.045) 0%, rgba(217, 119, 6, 0.025) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION (Real, Spiritual, Atmospheric)
+   -------------------------------------------------------------------------- */
+.contact-hero-premium {
+  position: relative;
+  padding: 3.5rem 0 2.8rem;
+  z-index: 2;
+  background: 
+    linear-gradient(180deg, rgba(9, 9, 11, 0.68) 0%, rgba(15, 15, 20, 0.58) 50%, rgba(9, 9, 11, 0.75) 100%),
+    url('../images/temples/temples-banner.jpg') center center / cover no-repeat;
+  border-bottom: 3px solid #DC2626;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  color: #FFFFFF;
+}
+
+.contact-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Luxury Breadcrumbs styling in hero */
+.contact-hero-container .luxury-breadcrumb,
+.contact-hero-container .luxury-breadcrumb.light-theme {
+  background: rgba(24, 24, 27, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  margin-bottom: 1.15rem;
+}
+
+.contact-hero-container .breadcrumb-home-link,
+.contact-hero-container .luxury-breadcrumb.light-theme .breadcrumb-home-link {
+  color: #FFFFFF;
+}
+
+.contact-hero-container .breadcrumb-home-icon,
+.contact-hero-container .luxury-breadcrumb.light-theme .breadcrumb-home-icon {
+  color: #FFFFFF;
+}
+
+.contact-hero-container .breadcrumb-home-link:hover,
+.contact-hero-container .luxury-breadcrumb.light-theme .breadcrumb-home-link:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.contact-hero-container .breadcrumb-separator,
+.contact-hero-container .luxury-breadcrumb.light-theme .breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contact-hero-container .breadcrumb-current-badge,
+.contact-hero-container .luxury-breadcrumb.light-theme .breadcrumb-current-badge {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* Live Support Status Pill */
+.contact-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(24, 24, 27, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(220, 38, 38, 0.40);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  padding: 0.45rem 1.15rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FEF08A;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.status-dot-pulse {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  background: #22C55E;
+  border-radius: 50%;
+}
+
+.status-dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.5);
+  animation: pulse-ring 1.8s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.contact-hero-title {
+  font-size: 2.85rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.contact-hero-title span.text-gradient {
+  color: #FFFFFF;
+  -webkit-text-fill-color: #FFFFFF;
+  background: none;
+  display: inline-block;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.contact-hero-subtitle {
+  font-size: 1.1rem;
+  color: #F1F5F9;
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0 auto 1.8rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Quick Trust Stats Badges */
+.contact-hero-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.hero-trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(24, 24, 27, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-trust-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  background: rgba(24, 24, 27, 0.92);
+}
+
+.hero-trust-chip svg {
+  color: #EF4444;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. FOUR TOUCHPOINT ACTION CARDS
+   -------------------------------------------------------------------------- */
+.contact-channels-grid {
+  max-width: 1200px;
+  margin: 0 auto 2.25rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-channel-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E7E5E4;
+  padding: 1.6rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px -6px rgba(28, 25, 23, 0.04);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-channel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+.contact-channel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px -8px rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+.channel-card-phone:hover::before { background: #DC2626; }
+.channel-card-whatsapp:hover::before { background: #16A34A; }
+.channel-card-email:hover::before { background: #D97706; }
+.channel-card-office:hover::before { background: #4F46E5; }
+
+.channel-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.contact-channel-card:hover .channel-icon-wrap {
+  transform: scale(1.08);
+}
+
+.channel-icon-phone { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+.channel-icon-whatsapp { background: #F0FDF4; color: #16A34A; border: 1px solid #BBF7D0; }
+.channel-icon-email { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+.channel-icon-office { background: #EEF2FF; color: #4F46E5; border: 1px solid #C7D2FE; }
+
+.channel-meta-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #78716C;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.channel-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1C1917;
+  margin: 0 0 0.4rem;
+  line-height: 1.25;
+}
+
+.channel-desc {
+  font-size: 0.85rem;
+  color: #71717A;
+  line-height: 1.45;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.channel-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.65rem 0.95rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: #F5F5F4;
+  color: #292524;
+}
+
+.channel-card-phone .channel-action-btn { background: #FEF2F2; color: #DC2626; }
+.channel-card-phone:hover .channel-action-btn { background: #DC2626; color: #FFFFFF; }
+
+.channel-card-whatsapp .channel-action-btn { background: #F0FDF4; color: #16A34A; }
+.channel-card-whatsapp:hover .channel-action-btn { background: #16A34A; color: #FFFFFF; }
+
+.channel-card-email .channel-action-btn { background: #FFFBEB; color: #B45309; }
+.channel-card-email:hover .channel-action-btn { background: #D97706; color: #FFFFFF; }
+
+.channel-card-office .channel-action-btn { background: #EEF2FF; color: #4338CA; }
+.channel-card-office:hover .channel-action-btn { background: #4F46E5; color: #FFFFFF; }
+
+/* --------------------------------------------------------------------------
+   3. MAIN TWO-COLUMN SECTION (Form + Real Office HQ Map & Trust)
+   -------------------------------------------------------------------------- */
+.contact-main-grid {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1.75rem;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+/* Form Card */
+.contact-form-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E7E5E4;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.05);
+  padding: 1.75rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card-header {
+  margin-bottom: 1.35rem;
+  border-bottom: 1px solid #F5F5F4;
+  padding-bottom: 1rem;
+}
+
+.form-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #FEF2F2;
+  color: #DC2626;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.form-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #18181B;
+  margin: 0 0 0.25rem;
+  line-height: 1.25;
+}
+
+.form-card-subtitle {
+  font-size: 0.82rem;
+  color: #71717A;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Topic / Query Selector Pills */
+.topic-selector-wrap {
+  margin-bottom: 1.2rem;
+}
+
+.topic-selector-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3F3F46;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.topic-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.topic-pill {
+  border: 1px solid #E4E4E7;
+  background: #FAFAFA;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #52525B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.topic-pill:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-color: #FECACA;
+}
+
+.topic-pill.active {
+  background: #DC2626;
+  color: #FFFFFF;
+  border-color: #DC2626;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+}
+
+/* Form Fields */
+.form-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.contact-field-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #27272A;
+  margin-bottom: 0.35rem;
+}
+
+.contact-field-label span.req {
+  color: #DC2626;
+  margin-left: 2px;
+}
+
+.contact-field-wrap {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #A1A1AA;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.field-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.field-icon-textarea {
+  top: 14px;
+  transform: none;
+}
+
+.contact-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem 0.65rem 2.35rem;
+  border-radius: 10px;
+  border: 1.5px solid #E4E4E7;
+  background: #FFFFFF;
+  font-family: inherit;
+  font-size: 0.84rem;
+  color: #18181B;
+  transition: all 0.2s ease;
+}
+
+.contact-input::placeholder {
+  color: #A1A1AA;
+  font-size: 0.82rem;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: #DC2626;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
+}
+
+.contact-input:focus ~ .field-icon {
+  color: #DC2626;
+}
+
+select.contact-input {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.2rem;
+  cursor: pointer;
+}
+
+.select-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #71717A;
+  pointer-events: none;
+}
+
+textarea.contact-input {
+  min-height: 95px;
+  resize: vertical;
+  padding-top: 0.75rem;
+}
+
+/* Submit Button */
+.contact-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 0.78rem 1.35rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
+  transition: all 0.25s ease;
+  margin-top: 0.5rem;
+}
+
+.contact-submit-btn:hover {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(220, 38, 38, 0.35);
+}
+
+.contact-submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-privacy-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  color: #71717A;
+  margin-top: 0.85rem;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   4. RIGHT COLUMN (Office Location Map + Devotee Trust Pillars)
+   -------------------------------------------------------------------------- */
+.contact-side-col {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* Real Office Location Card */
+.contact-office-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E7E5E4;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.05);
+  padding: 1.15rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.office-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.office-header-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.office-header-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.office-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #18181B;
+  margin: 0 0 0.1rem;
+  line-height: 1.2;
+}
+
+.office-corp-name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #DC2626;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.office-address-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.76rem;
+  color: #334155;
+  line-height: 1.38;
+  margin-bottom: 0.6rem;
+}
+
+.office-address-box strong {
+  color: #0F172A;
+}
+
+/* Interactive Map Preview */
+.office-map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  height: 110px;
+  min-height: 110px;
+  max-height: 110px;
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.office-map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.office-timings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #F1F5F9;
+  margin-top: auto;
+}
+
+.timing-item-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.1rem;
+}
+
+.timing-item-val {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+/* 4 Trust Pillars Card */
+.contact-trust-card {
+  background: linear-gradient(135deg, #18181B 0%, #27272A 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.25rem 1.35rem;
+  color: #FFFFFF;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.contact-trust-card::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.trust-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  letter-spacing: -0.01em;
+}
+
+.trust-card-title svg {
+  width: 20px;
+  height: 20px;
+  color: #EF4444;
+}
+
+.trust-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.trust-feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.trust-icon-disc {
+  width: 32px;
+  height: 32px;
+  font-size: 0.95rem;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.trust-feature-text {
+  flex: 1;
+}
+
+.trust-feature-text h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #F4F4F5;
+  margin: 0 0 0.2rem;
+  line-height: 1.25;
+}
+
+.trust-feature-text p {
+  font-size: 0.78rem;
+  color: #CBD5E1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. DEVOTEE FAQ ACCORDION SECTION
+   -------------------------------------------------------------------------- */
+.contact-faq-section {
+  max-width: 900px;
+  margin: 3.5rem auto 2rem;
+  padding: 3rem 1.5rem 0;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #E7E5E4;
+}
+
+.contact-faq-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.contact-faq-header .faq-tag {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #DC2626;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.contact-faq-header h3 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #18181B;
+  margin: 0 0 0.6rem;
+}
+
+.contact-faq-header p {
+  font-size: 0.95rem;
+  color: #71717A;
+  margin: 0;
+}
+
+.faq-accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.faq-accordion-item {
+  background: #FFFFFF;
+  border: 1px solid #E7E5E4;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faq-accordion-item:hover {
+  border-color: rgba(220, 38, 38, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+}
+
+.faq-question-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 1.25rem 1.4rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1C1917;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.faq-chevron {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #F5F5F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background 0.2s ease;
+  color: #78716C;
+}
+
+.faq-accordion-item.open .faq-chevron {
+  transform: rotate(180deg);
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.faq-answer-pane {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+  padding: 0 1.4rem;
+}
+
+.faq-accordion-item.open .faq-answer-pane {
+  max-height: 280px;
+  padding-bottom: 1.25rem;
+}
+
+.faq-answer-pane p {
+  font-size: 0.9rem;
+  color: #52525B;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE DESIGN (Tablets & Mobile)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero-title {
+    font-size: 2.15rem;
+  }
+  .contact-hero-subtitle {
+    font-size: 0.98rem;
+  }
+  .contact-channels-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .contact-form-card {
+    padding: 1.6rem 1.25rem;
+  }
+  .form-input-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .contact-office-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .office-timings-grid {
+    grid-template-columns: 1fr;
+  }
+}

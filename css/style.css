@@ -3454,7 +3454,7 @@ textarea.form-control {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: #E2E8F0;
+  color: #FFFFFF;
   text-decoration: none;
   font-size: 0.82rem;
   font-weight: 600;
@@ -3465,32 +3465,32 @@ textarea.form-control {
 
 .breadcrumb-home-link:hover {
   color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .breadcrumb-home-icon {
   width: 14px;
   height: 14px;
-  color: #F59E0B;
+  color: #FFFFFF;
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
 .breadcrumb-home-link:hover .breadcrumb-home-icon {
   transform: scale(1.15);
-  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
 }
 
 .breadcrumb-separator {
   display: inline-flex;
   align-items: center;
-  color: #EF4444;
-  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0.9;
   flex-shrink: 0;
 }
 
 .breadcrumb-crumb-link {
-  color: #CBD5E1;
+  color: #FFFFFF;
   text-decoration: none;
   font-size: 0.82rem;
   font-weight: 600;
@@ -3501,7 +3501,7 @@ textarea.form-control {
 
 .breadcrumb-crumb-link:hover {
   color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .breadcrumb-current-badge {

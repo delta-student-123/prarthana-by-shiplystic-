@@ -1,0 +1,756 @@
+import re
+
+header_and_hero = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Shiplystic Prarthana - Support Helpline +91 9422799941, email, and contact form for booking queries, prasad tracking, and temple requests.">
+  <title>Get in Touch | Shiplystic Prarthana</title>
+  <link rel="canonical" href="https://shiplystic.com/contact-us">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=5">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png?v=5">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png?v=5">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png?v=5">
+  <link rel="manifest" href="../site.webmanifest">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css?v=2">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/contact-redesign.css?v=14">
+</head>
+<body class="contact-body">
+
+  <!-- 1. Safety Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+      <div>
+        <span>🔒 <strong>Important Safety Notice:</strong> Shiplystic never sends payment links or asks for OTPs before delivery.</span>
+      </div>
+      <div>
+        <span>📞 Support: +91 9422799941</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="header-nav">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo" id="main-brand-logo">
+        <img src="../images/logo/shiplystic-logo-horizontal.png" alt="Prarthana by Shiplystic" style="height: 54px;">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/services" class="nav-link">Services Overview</a></li>
+          <li class="dropdown shiplystic-mega-dropdown-wrapper">
+            <a href="/temples" class="nav-link">Temples <svg class="nav-dropdown-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+            <div class="dropdown-menu shiplystic-mega-menu">
+              <div class="mega-menu-inner">
+                
+                <!-- 1. Left Dark Sidebar (Exact Match to Temples Directory Filters) -->
+                <div class="mega-sidebar">
+                  <div class="mega-tab-btn active" data-target="mega-cat-jyotirlinga">
+                    <span>Jyotirlingas (5)</span>
+                    <span class="mega-chevron">›</span>
+                  </div>
+                  <div class="mega-tab-btn" data-target="mega-cat-shakti">
+                    <span>Shakti Peeths (2)</span>
+                    <span class="mega-chevron">›</span>
+                  </div>
+                  <div class="mega-tab-btn" data-target="mega-cat-dham">
+                    <span>Char Dham (4)</span>
+                    <span class="mega-chevron">›</span>
+                  </div>
+                  <div class="mega-tab-btn" data-target="mega-cat-shrine">
+                    <span>Revered Shrines (7)</span>
+                    <span class="mega-chevron">›</span>
+                  </div>
+                </div>
+
+                <!-- 2. Middle Content Panels (Organized by Filter Categories) -->
+                <div class="mega-content-area">
+                  
+                  <!-- Filter 1: Jyotirlingas (5) -->
+                  <div class="mega-panel active" id="mega-cat-jyotirlinga">
+                    <div class="mega-grid">
+                      <a href="/temples/mahakaleshwar-ujjain" class="mega-item">
+                        <div class="mega-item-title">Shri Mahakaleshwar</div>
+                        <div class="mega-item-desc">Bhasma Aarti &amp; Jalabhishek • Ujjain, MP</div>
+                      </a>
+                      <a href="/temples/kashi-vishwanath" class="mega-item">
+                        <div class="mega-item-title">Shri Kashi Vishwanath</div>
+                        <div class="mega-item-desc">Eternal Moksha Dham on Ganga • Varanasi, UP</div>
+                      </a>
+                      <a href="/temples/somnath" class="mega-item">
+                        <div class="mega-item-title">Shri Somnath Temple</div>
+                        <div class="mega-item-desc">First of Twelve Jyotirlingas • Veraval, Gujarat</div>
+                      </a>
+                      <a href="/temples/kedarnath" class="mega-item">
+                        <div class="mega-item-title">Shri Kedarnath Dham</div>
+                        <div class="mega-item-desc">Himalayan Sacred Jyotirlinga • Rudraprayag, UK</div>
+                      </a>
+                      <a href="/temples/omkareshwar" class="mega-item">
+                        <div class="mega-item-title">Shri Omkareshwar</div>
+                        <div class="mega-item-desc">Narmada Island Sacred Sanctum • Khandwa, MP</div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Filter 2: Shakti Peeths (2) -->
+                  <div class="mega-panel" id="mega-cat-shakti">
+                    <div class="mega-grid">
+                      <a href="/temples/vaishno-devi" class="mega-item">
+                        <div class="mega-item-title">Mata Vaishno Devi Shrine</div>
+                        <div class="mega-item-desc">Holy Trikuta Hills Sanctum • Katra, J&amp;K</div>
+                      </a>
+                      <a href="/temples/mahalaxmi-kolhapur" class="mega-item">
+                        <div class="mega-item-title">Shri Mahalaxmi Temple</div>
+                        <div class="mega-item-desc">Supreme Shaktipeeth of Wealth • Kolhapur, Maharashtra</div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Filter 3: Char Dham (4) -->
+                  <div class="mega-panel" id="mega-cat-dham">
+                    <div class="mega-grid">
+                      <a href="/temples/jagannath-puri" class="mega-item">
+                        <div class="mega-item-title">Shri Jagannath Temple</div>
+                        <div class="mega-item-desc">Sacred Chariot Dham &amp; Prasad • Puri, Odisha</div>
+                      </a>
+                      <a href="/temples/dwarkadhish" class="mega-item">
+                        <div class="mega-item-title">Shri Dwarkadhish Temple</div>
+                        <div class="mega-item-desc">Supreme Krishna Jagat Mandir • Dwarka, Gujarat</div>
+                      </a>
+                      <a href="/temples/badrinath" class="mega-item">
+                        <div class="mega-item-title">Shri Badrinath Dham</div>
+                        <div class="mega-item-desc">Himalayan Sacred Vaikuntha Dham • Chamoli, UK</div>
+                      </a>
+                      <a href="/temples/rameswaram" class="mega-item">
+                        <div class="mega-item-title">Shri Ramanathaswamy Temple</div>
+                        <div class="mega-item-desc">Historic Island Jyotirlinga Dham • Rameswaram, TN</div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Filter 4: Revered Shrines (7) -->
+                  <div class="mega-panel" id="mega-cat-shrine">
+                    <div class="mega-grid">
+                      <a href="/temples/siddhivinayak" class="mega-item">
+                        <div class="mega-item-title">Shri Siddhivinayak Temple</div>
+                        <div class="mega-item-desc">Vighnaharta Ganesha Shrine • Prabhadevi, Mumbai</div>
+                      </a>
+                      <a href="/temples/sai-baba-shirdi" class="mega-item">
+                        <div class="mega-item-title">Shri Sai Baba Sansthan</div>
+                        <div class="mega-item-desc">Holy Samadhi Mandir &amp; Kakad Aarti • Shirdi, Maharashtra</div>
+                      </a>
+                      <a href="/temples/tirupati-balaji" class="mega-item">
+                        <div class="mega-item-title">Shri Tirupati Balaji</div>
+                        <div class="mega-item-desc">Sri Venkateswara Swamy • Tirumala, Andhra Pradesh</div>
+                      </a>
+                      <a href="/temples/ayodhya-ram-mandir" class="mega-item">
+                        <div class="mega-item-title">Shri Ram Janmabhoomi Mandir</div>
+                        <div class="mega-item-desc">Shri Ram Lalla Sacred Janmabhoomi • Ayodhya, UP</div>
+                      </a>
+                      <a href="/temples/mathura-vrindavan" class="mega-item">
+                        <div class="mega-item-title">Mathura-Vrindavan Shrines</div>
+                        <div class="mega-item-desc">Divine Krishna &amp; Radha Rani Sanctum • Mathura, UP</div>
+                      </a>
+                      <a href="/temples/dagdusheth-ganpati" class="mega-item">
+                        <div class="mega-item-title">Shreemant Dagdusheth Ganpati</div>
+                        <div class="mega-item-desc">Navasacha Ganpati Mandir • Pune, Maharashtra</div>
+                      </a>
+                      <a href="/temples/gajanan-maharaj-shegaon" class="mega-item">
+                        <div class="mega-item-title">Shri Gajanan Maharaj Sansthan</div>
+                        <div class="mega-item-desc">Sant Shri Gajanan Maharaj Samadhi • Shegaon, Maharashtra</div>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- 3. Right Dark Featured Card (All 18 Temples) -->
+                <div class="mega-featured-card">
+                  <div>
+                    <div class="mega-badge">ALL TEMPLES (18)</div>
+                    <h4 class="mega-featured-title">Partner with Devotion</h4>
+                    <p class="mega-featured-desc">Authentic priest rituals with 100% transparent pass-through dakshina and doorstep Prasad delivery.</p>
+                  </div>
+                  <a href="/temples" class="mega-featured-btn">
+                    <span>Explore All 18 Temples</span>
+                    <span class="mega-arrow">→</span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </li>
+          <li><a href="/track-delivery" class="nav-link">Track Delivery</a></li>
+          <li><a href="/about-us" class="nav-link">About Us</a></li>
+          <li><a href="/contact-us" class="nav-link active">Contact</a></li>
+          <!-- Mobile-only Book button inside nav menu -->
+          <li class="mobile-nav-book-btn">
+            <a href="/book-prarthana" class="btn btn-red" style="margin: 0.8rem 1rem; display: block; text-align: center; border-radius: 8px;">🛕 Book Prarthana Service</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="/book-prarthana" class="btn btn-red" id="header-cta-btn">Book Prarthana Service</a>
+      <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Main Contact Page Canvas -->
+  <main class="contact-page-wrapper">
+    <!-- Hero Section / Breadcrumbs Banner -->
+    <section class="contact-hero-premium">
+      <div class="contact-hero-container">
+        <!-- Luxury Breadcrumb -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav" style="display: flex; justify-content: center; margin-bottom: 1.1rem;">
+          <div class="luxury-breadcrumb">
+            <a href="/" class="breadcrumb-home-link">
+              <svg class="breadcrumb-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Home</span>
+            </a>
+            <span class="breadcrumb-separator">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+            <span class="breadcrumb-current-badge">
+              <span>📿</span> Contact Us
+            </span>
+          </div>
+        </nav>
+
+        <!-- Live Support Status Pill -->
+        <div class="contact-status-pill">
+          <span class="status-dot-pulse"></span>
+          <span>Devotee Care Desk Active • 7:00 AM – 9:00 PM IST</span>
+        </div>
+
+        <h1 class="contact-hero-title">
+          We Are Here for Your <span class="text-gradient">Sacred Journey</span>
+        </h1>
+
+        <p class="contact-hero-subtitle">
+          Have a question about authentic temple pujas, consecrated Prasad dispatch, or custom family sankalps? Connect directly with our devotee support team.
+        </p>
+
+        <!-- Quick Trust Badges -->
+        <div class="contact-hero-badges">
+          <div class="hero-trust-chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>100% Priest Conducted</span>
+          </div>
+          <div class="hero-trust-chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>&lt; 15 Min Response Time</span>
+          </div>
+          <div class="hero-trust-chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Registered Pune HQ</span>
+          </div>
+          <div class="hero-trust-chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Tamper-Evident Delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Direct Action Channels -->
+    <section class="contact-channels-grid">
+      <!-- Card 1: Phone -->
+      <div class="contact-channel-card channel-card-phone">
+        <div>
+          <div class="channel-icon-wrap channel-icon-phone">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="channel-meta-tag">Immediate Helpline</span>
+          <h3 class="channel-title">+91 9422799941</h3>
+          <p class="channel-desc">Direct line with devotee care coordinators for urgent puja bookings &amp; rituals.</p>
+        </div>
+        <a href="tel:+919422799941" class="channel-action-btn">
+          <span>Call Devotee Line</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <!-- Card 2: WhatsApp -->
+      <div class="contact-channel-card channel-card-whatsapp">
+        <div>
+          <div class="channel-icon-wrap channel-icon-whatsapp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </div>
+          <span class="channel-meta-tag">Quick WhatsApp</span>
+          <h3 class="channel-title">WhatsApp Desk</h3>
+          <p class="channel-desc">Instant chat for live delivery tracking, puja photos &amp; quick inquiries.</p>
+        </div>
+        <a href="https://wa.me/919422799941?text=Namaste%20Prarthana%20Support,%20I%20need%20assistance%20with%20my%20puja%20or%20prasad%20service." target="_blank" rel="noopener noreferrer" class="channel-action-btn">
+          <span>Chat on WhatsApp</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <!-- Card 3: Email -->
+      <div class="contact-channel-card channel-card-email">
+        <div>
+          <div class="channel-icon-wrap channel-icon-email">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <span class="channel-meta-tag">Official Email</span>
+          <h3 class="channel-title" style="font-size: 1rem; word-break: break-all;">prarthana@shiplystic.com</h3>
+          <p class="channel-desc">Formal inquiries, temple priest partnerships &amp; bulk family bookings.</p>
+        </div>
+        <a href="mailto:prarthana@shiplystic.com" class="channel-action-btn">
+          <span>Send Email</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <!-- Card 4: Real Registered Office -->
+      <div class="contact-channel-card channel-card-office">
+        <div>
+          <div class="channel-icon-wrap channel-icon-office">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="channel-meta-tag">Corporate HQ</span>
+          <h3 class="channel-title">Hinjewadi, Pune</h3>
+          <p class="channel-desc">White Square, 6th Floor, Near Wakad Bridge, Pune 411057, Maharashtra.</p>
+        </div>
+        <a href="#office-location-section" class="channel-action-btn">
+          <span>View Headquarters</span>
+          <span>➔</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Grid: Form + Real Office Location Map & Trust -->
+    <section class="contact-main-grid">
+      <!-- Left: Contact Form -->
+      <div class="contact-form-card">
+        <div class="form-card-header">
+          <div class="form-header-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Devotee Assistance Desk</span>
+          </div>
+          <h2 class="form-card-title">Send Us a Message</h2>
+          <p class="form-card-subtitle">
+            Fill in your details below. Our temple coordination desk will contact you promptly.
+          </p>
+        </div>
+
+        <form id="prarthana-contact-form" onsubmit="handleContactSubmit(event)">
+          <!-- Query Selector Pills -->
+          <div class="topic-selector-wrap">
+            <span class="topic-selector-label">What can we help you with?</span>
+            <div class="topic-pills-row" id="topic-pills-container">
+              <span class="topic-pill active" data-topic="Prasad Delivery Status">📦 Track Prasad</span>
+              <span class="topic-pill" data-topic="Temple Puja Inquiry">🛕 Temple Puja</span>
+              <span class="topic-pill" data-topic="Custom Sankalp & Gotra">📜 Family Sankalp</span>
+              <span class="topic-pill" data-topic="Temple Onboarding">🏢 Temple Request</span>
+              <span class="topic-pill" data-topic="General Devotee Help">❓ Other Assistance</span>
+            </div>
+            <input type="hidden" name="query_topic" id="selected-query-topic" value="Prasad Delivery Status">
+          </div>
+
+          <div class="form-input-grid">
+            <!-- Full Name -->
+            <div>
+              <label class="contact-field-label">
+                <span>Devotee Full Name <span class="req">*</span></span>
+              </label>
+              <div class="contact-field-wrap">
+                <input type="text" class="contact-input" placeholder="e.g. Rajesh Sharma" required>
+                <div class="field-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label class="contact-field-label">
+                <span>WhatsApp / Mobile Number <span class="req">*</span></span>
+              </label>
+              <div class="contact-field-wrap">
+                <input type="tel" class="contact-input" placeholder="+91 98765 43210" required>
+                <div class="field-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email Address -->
+            <div>
+              <label class="contact-field-label">
+                <span>Email Address <span class="req">*</span></span>
+              </label>
+              <div class="contact-field-wrap">
+                <input type="email" class="contact-input" placeholder="e.g. devotee@example.com" required>
+                <div class="field-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sacred Temple Selection -->
+            <div>
+              <label class="contact-field-label">
+                <span>Associated Sacred Temple</span>
+              </label>
+              <div class="contact-field-wrap">
+                <select class="contact-input">
+                  <option value="General Inquiry" selected>General / Multiple Temples</option>
+                  <option value="Shri Kashi Vishwanath, Varanasi">Shri Kashi Vishwanath, Varanasi</option>
+                  <option value="Shri Mahakaleshwar, Ujjain">Shri Mahakaleshwar, Ujjain</option>
+                  <option value="Shri Ram Janmabhoomi, Ayodhya">Shri Ram Janmabhoomi, Ayodhya</option>
+                  <option value="Shri Kedarnath Dham">Shri Kedarnath Dham, Uttarakhand</option>
+                  <option value="Shri Badrinath Dham">Shri Badrinath Dham, Uttarakhand</option>
+                  <option value="Shri Somnath Temple">Shri Somnath Temple, Gujarat</option>
+                  <option value="Shri Jagannath Temple, Puri">Shri Jagannath Temple, Puri</option>
+                  <option value="Shri Dwarkadhish Mandir, Dwarka">Shri Dwarkadhish Mandir, Dwarka</option>
+                  <option value="Shri Ramanathaswamy, Rameswaram">Shri Ramanathaswamy, Rameswaram</option>
+                  <option value="Shri Omkareshwar, MP">Shri Omkareshwar, Khandwa</option>
+                  <option value="Maa Kamakhya Devalaya, Guwahati">Maa Kamakhya Devalaya, Guwahati</option>
+                  <option value="Shri Ambabai Mahalaxmi, Kolhapur">Shri Ambabai Mahalaxmi, Kolhapur</option>
+                  <option value="Tirupati Balaji Mandir, Tirumala">Tirupati Balaji Mandir, Tirumala</option>
+                  <option value="Shri Siddhivinayak, Mumbai">Shri Siddhivinayak, Mumbai</option>
+                  <option value="Shri Sai Baba Sansthan, Shirdi">Shri Sai Baba Sansthan, Shirdi</option>
+                  <option value="Shreemant Dagdusheth Ganpati, Pune">Shreemant Dagdusheth Ganpati, Pune</option>
+                  <option value="Shri Gajanan Maharaj, Shegaon">Shri Gajanan Maharaj, Shegaon</option>
+                  <option value="Mathura-Vrindavan Shrines">Mathura-Vrindavan Shrines</option>
+                </select>
+                <div class="field-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
+                </div>
+                <div class="select-chevron">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Message Area -->
+            <div class="form-group-full">
+              <label class="contact-field-label">
+                <span>Devotee Message or Puja Details <span class="req">*</span></span>
+              </label>
+              <div class="contact-field-wrap">
+                <textarea class="contact-input" rows="4" placeholder="Please describe your inquiry, tracking order number, or family names/gotra for puja sankalp..." required></textarea>
+                <div class="field-icon field-icon-textarea">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Devotee Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <div class="form-privacy-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>100% Confidential & Sacred • We strictly safeguard your family details.</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right: Real Office Location & Trust Pillars -->
+      <div class="contact-side-col">
+        <!-- Real Office Location Card with Embedded Interactive Map -->
+        <div class="contact-office-card" id="office-location-section">
+          <div class="office-card-header">
+            <div class="office-header-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h3 class="office-title">Registered Headquarters</h3>
+              <p class="office-corp-name">SHIPLYSTIC PRIVATE LIMITED</p>
+            </div>
+          </div>
+
+          <div class="office-address-box">
+            Office No. 601/603, 6th Floor, <strong>"White Square"</strong>,<br>
+            Near Wakad Bridge, Hinjewadi,<br>
+            Pune 411057, Maharashtra, India.
+          </div>
+
+          <!-- Real Interactive Google Maps Iframe for Hinjewadi Pune -->
+          <div class="office-map-container">
+            <iframe 
+              title="Shiplystic Headquarters Map"
+              src="https://maps.google.com/maps?q=White+Square+Hinjewadi+Pune+411057&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="office-timings-grid">
+            <div>
+              <div class="timing-item-label">Devotee Support</div>
+              <div class="timing-item-val">7:00 AM – 9:00 PM IST (Mon–Sun)</div>
+            </div>
+            <div>
+              <div class="timing-item-label">Prasad Logistics</div>
+              <div class="timing-item-val">24/7 Express Dispatch</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Pillars of Devotee Trust -->
+        <div class="contact-trust-card">
+          <h3 class="trust-card-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>The Prarthana Promise</span>
+          </h3>
+
+          <div class="trust-features-list">
+            <div class="trust-feature-row">
+              <div class="trust-icon-disc">🛕</div>
+              <div class="trust-feature-text">
+                <h4>100% Priest-Conducted Pujas</h4>
+                <p>Performed by certified temple priests according to authentic Vedic rituals.</p>
+              </div>
+            </div>
+
+            <div class="trust-feature-row">
+              <div class="trust-icon-disc">📜</div>
+              <div class="trust-feature-text">
+                <h4>Official Mandir Receipts</h4>
+                <p>Direct pass-through donation transparency with digital official temple receipts.</p>
+              </div>
+            </div>
+
+            <div class="trust-feature-row">
+              <div class="trust-icon-disc">📦</div>
+              <div class="trust-feature-text">
+                <h4>Tamper-Evident Sacred Seal</h4>
+                <p>Prasad is packaged in food-grade, moisture-sealed containers with security holograms.</p>
+              </div>
+            </div>
+
+            <div class="trust-feature-row">
+              <div class="trust-icon-disc">🛰️</div>
+              <div class="trust-feature-text">
+                <h4>GPS Doorstep Tracking</h4>
+                <p>Live tracking alerts from the temple sanctum gate directly to your family's doorstep.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Devotee FAQ Accordion Section (Completely Separated Standalone Section) -->
+    <section class="contact-faq-section">
+      <div class="contact-faq-header">
+        <span class="faq-tag">Quick Answers</span>
+        <h3>Frequently Asked Questions</h3>
+        <p>Immediate answers to common queries regarding pujas and prasad delivery.</p>
+      </div>
+
+      <div class="faq-accordion-container" id="contact-faq-accordion">
+        <div class="faq-accordion-item open">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How do I track my consecrated Prasad box after puja?</span>
+            <div class="faq-chevron">▾</div>
+          </button>
+          <div class="faq-answer-pane">
+            <p>Once the priests complete the rituals at the temple sanctum, your Prasad box is sealed and assigned a Shiplystic Express AWB tracking number. You will receive live SMS and WhatsApp tracking updates, or you can enter your tracking code anytime on our <a href="/track-delivery" style="color:#DC2626; font-weight:700;">Track Delivery</a> page.</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>Can I provide custom Gotra and family member names for the Sankalp?</span>
+            <div class="faq-chevron">▾</div>
+          </button>
+          <div class="faq-answer-pane">
+            <p>Yes, absolutely. During booking or via this contact desk, you can submit the names, Gotra, Nakshatra, and specific intentions of up to 4 family members. The head temple priest will audibly recite your Sankalp before commencing the sacred ritual.</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>How long does Prasad delivery take after the puja is performed?</span>
+            <div class="faq-chevron">▾</div>
+          </button>
+          <div class="faq-answer-pane">
+            <p>Prasad is collected immediately after the conclusion of the daily morning/evening aarti, placed into food-grade, moisture-sealed containers, and dispatched within 24 hours. Transit typically takes 2–4 business days depending on your location across India.</p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span>What should I do if I need to update my shipping address?</span>
+            <div class="faq-chevron">▾</div>
+          </button>
+          <div class="faq-answer-pane">
+            <p>If your prasad has not yet left the temple dispatch hub, you can instantly message our WhatsApp helpline at <a href="https://wa.me/919422799941" style="color:#16A34A; font-weight:700;">+91 9422799941</a> or call us with your booking ID, and our logistics team will update your delivery destination immediately.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-dark" style="background: #09090B; color: #A1A1AA; padding: 4.5rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="container" style="max-width: 1200px;">
+      <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 2.5rem;">
+        
+        <div class="footer-col">
+          <a href="/" class="brand-logo" style="margin-bottom: 1.2rem; display: inline-block;">
+            <img src="../images/logo/prarthana-footer-logo.png" alt="Prarthana by Shiplystic" style="height: 52px; width: auto; object-fit: contain;">
+          </a>
+          <p style="color: #A1A1AA; font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.2rem; max-width: 320px;">
+            Shiplystic Prarthana operates as a technology and logistics coordination ecosystem facilitating temple puja bookings, transparent donation pass-through, and secure doorstep prasad delivery.
+          </p>
+          <div style="font-size: 0.85rem; margin-bottom: 1rem;">
+            <a href="https://shiplystic.com" target="_blank" rel="noopener noreferrer" class="footer-powered-link" style="color: #EF4444; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s ease;" onmouseenter="this.style.opacity='0.8'; this.style.textDecoration='underline';" onmouseleave="this.style.opacity='1'; this.style.textDecoration='none';" title="Visit Shiplystic (Opens in new tab)">
+              Powered by Shiplystic
+            </a>
+          </div>
+          <div class="footer-social-links" style="display: flex; gap: 0.8rem;">
+            <a href="https://www.facebook.com/shiplystic/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook @shiplystic" title="Follow @shiplystic on Facebook">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/shiplystic_com/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram @shiplystic_com" title="Follow @shiplystic_com on Instagram">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@Shiplystic" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="YouTube @Shiplystic" title="Subscribe to @Shiplystic on YouTube">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/shiplystic/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn @shiplystic" title="Follow Shiplystic on LinkedIn">
+              <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: #FFF; font-weight: 800; font-size: 1.05rem; margin-bottom: 1.2rem;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><a href="/" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Home</a></li>
+            <li><a href="/services" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Services Overview</a></li>
+            <li><a href="/temples" style="color: #FFFFFF; font-weight: 700; text-decoration: none; font-size: 0.9rem;">All Temples (18)</a></li>
+            <li><a href="/book-prarthana" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Book Prarthana Service</a></li>
+            <li><a href="/track-delivery" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Track Delivery</a></li>
+            <li><a href="/about-us" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">About Us</a></li>
+            <li><a href="/contact-us" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: #FFF; font-weight: 800; font-size: 1.05rem; margin-bottom: 1.2rem;">Featured Temples</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><a href="/temples/mahakaleshwar-ujjain" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Mahakaleshwar Ujjain</a></li>
+            <li><a href="/temples/omkareshwar" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Omkareshwar Jyotirlinga</a></li>
+            <li><a href="/temples/mahalaxmi-kolhapur" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Mahalaxmi Kolhapur</a></li>
+            <li><a href="/temples/sai-baba-shirdi" style="color: #A1A1AA; text-decoration: none; font-size: 0.9rem;">Shri Sai Baba Shirdi</a></li>
+            <li><a href="/temples" style="color: #EF4444; font-weight: 700; text-decoration: none; font-size: 0.88rem;">+ View All 18 Temples ➔</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: #FFF; font-weight: 800; font-size: 1.05rem; margin-bottom: 1.2rem;">Devotee Support</h4>
+          <p style="color: #A1A1AA; font-size: 0.88rem; line-height: 1.6; margin-bottom: 0.8rem;">
+            Have questions about temple selections, special festival occasions, or tracking?
+          </p>
+          <div style="font-weight: 800; color: #FFF; font-size: 1.1rem; margin-bottom: 0.4rem;">📞 +91 9422799941</div>
+          <div style="color: #A1A1AA; font-size: 0.85rem;">Dedicated Devotee Support (9 AM – 8 PM)</div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; color: #71717A; font-size: 0.85rem;">
+        <div>© 2026 Shiplystic Prarthana. All rights reserved.</div>
+        <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;">
+          <a href="#" onclick="openLegalModal('Privacy Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Privacy Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Terms of Service'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Terms of Service</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Refund Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Refund Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Cookies Policy'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Policy</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openCookiePreferences(); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Cookies Preferences</a>
+          <span style="color: #3F3F46;">•</span>
+          <a href="#" onclick="openLegalModal('Sitemap'); return false;" style="color: #A1A1AA; text-decoration: none; transition: color 0.2s;" onmouseenter="this.style.color='#FFF'" onmouseleave="this.style.color='#A1A1AA'">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+
+  <!-- Interactive Contact Page Scripts -->
+  <script>
+    // Query topic selector pills
+    document.addEventListener('DOMContentLoaded', function() {
+      const pills = document.querySelectorAll('.topic-pill');
+      const topicInput = document.getElementById('selected-query-topic');
+      pills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          pills.forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          if (topicInput) {
+            topicInput.value = this.getAttribute('data-topic') || this.textContent.trim();
+          }
+        });
+      });
+    });
+
+    // Form submission handler with Toast
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      if (window.showToast) {
+        window.showToast('🙏 Thank you! Your devotee inquiry has been received. Our team will contact you shortly.');
+      } else {
+        alert('Thank you! Your devotee inquiry has been received.');
+      }
+      event.target.reset();
+    }
+
+    // FAQ Accordion toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-accordion-item');
+      if (item) {
+        item.classList.toggle('open');
+      }
+    }
+  </script>
+
+  <script src="../js/main.js"></script>
+  <!-- Floating WhatsApp Support Button -->
+  <a id="whatsapp-float-btn" href="https://wa.me/919422799941?text=Hello%20Shiplystic%20Prarthana,%20I%20would%20like%20to%20inquire%20about%20Prarthana%20services" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat on WhatsApp" title="Chat on WhatsApp with Devotee Support">
+    <span class="whatsapp-float-pulse"></span>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+
+</body>
+</html>
+'''
+
+with open('contact-us/index.html', 'w', encoding='utf-8') as f:
+    f.write(header_and_hero)
+
+# Now generate root contact.html
+root_html = header_and_hero.replace('../images/', 'images/')
+root_html = root_html.replace('../css/', 'css/')
+root_html = root_html.replace('../js/', 'js/')
+root_html = root_html.replace('../favicon', 'favicon')
+root_html = root_html.replace('../site.webmanifest', 'site.webmanifest')
+root_html = root_html.replace('href="https://shiplystic.com/contact-us"', 'href="https://shiplystic.com/contact"')
+
+with open('contact.html', 'w', encoding='utf-8') as f:
+    f.write(root_html)
+
+print("Both contact-us/index.html and contact.html cleanly generated!")
