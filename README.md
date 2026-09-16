@@ -51,14 +51,14 @@ shiplystic-prarthana-website/
    - Glassmorphism navbar, sticky header shadows, glowing badges, and Google Fonts (`Cinzel` for headings & `Plus Jakarta Sans` for body).
 
 2. **Interactive Prarthana Booking Portal (`services/prarthana.html`)**:
-   - 4-step interactive wizard:
-     - **Step 1**: Select Temple Sanctuary & Puja Package Offerings (Rudrabhishek, Bhasma Aarti, Kumkumarchana, etc.)
-     - **Step 2**: Enter Primary Devotee Name, Gotra, Rashi, Family Names & Special Sankalp Wish
-     - **Step 3**: Shipping Address, Pincode & Payment Simulation (UPI/GPay/Card)
-     - **Step 4**: Instant Confirmation with unique Order Tracking ID generation saved to `localStorage`.
+    - 4-step interactive wizard:
+      - **Step 1**: Select Sacred Temple & Puja Package Offerings (Rudrabhishek, Bhasma Aarti, Kumkumarchana, etc.)
+      - **Step 2**: Enter Primary Devotee Name, Gotra, Rashi, Family Names & Special Sankalp Wish
+      - **Step 3**: Shipping Address, Pincode & Payment Simulation (UPI/GPay/Card)
+      - **Step 4**: Instant Confirmation with unique Order Tracking ID generation saved to `localStorage`.
 
 3. **Live Prasad Delivery Tracker (`track.html`)**:
-   - Real-time tracking stepper showing order progress from `Sankalp Received` to `Priest Assigned`, `Puja Video Recorded`, `Packed`, and `Delivered`.
+    - Real-time tracking timeline showing order progress from `Order Confirmed` to `Authorized Priest Assigned`, `Puja & Gotra Sankalp Performed`, `Prasad Sealed & Packed`, and `Doorstep Delivery`.
    - Reads tracking IDs generated during booking or allows searching any tracking ID.
 
 4. **100% Fully Responsive Layout**:

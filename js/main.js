@@ -577,12 +577,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // STEP 4
         `<div class="step-visual-top-bar">
           <span class="step-visual-title-badge">🌸 STEP 4 PREVIEW</span>
-          <span style="font-size:0.75rem; color:#A1A1AA;">Temple Sanctuary</span>
+          <span style="font-size:0.75rem; color:#A1A1AA;">Sacred Temple</span>
         </div>
         <div class="step-visual-content-box" style="text-align:center;">
           <div style="font-size:2.5rem; margin-bottom:0.5rem;">🪔</div>
           <div style="font-weight:800; color:#FFF; font-size:0.92rem; margin-bottom:0.3rem;">Authentic Temple Puja Conducted</div>
-          <div style="font-size:0.76rem; color:#94A3B8;">Conducted strictly inside the garbhagriha by genuine temple trust pandit ji.</div>
+          <div style="font-size:0.76rem; color:#94A3B8;">Conducted strictly inside the garbhagriha by authorized temple priests.</div>
         </div>
         <div class="step-visual-footer">
           <span style="color:#EF4444;">✓ 100% Genuine Priests</span>
@@ -760,19 +760,19 @@ function renderTrackingResult(orderId) {
     id: orderId.toUpperCase(),
     date: "02 Sep 2026",
     temple: "Shri Mahakaleshwar Temple, Ujjain",
-    package: "Mahakal Bhasma Aarti Sankalp",
-    total: 2650,
+    package: "Shri Mahakaleshwar Puja & Prasad Package",
+    total: 1999,
     devotee: "Ramesh Sharma",
     gotra: "Kashyap",
     status: "Puja Performed & Prasad Packed",
     statusStep: 3,
     history: [
-      { status: "Order Placed & Sankalp Received", time: "02 Sep, 09:30 AM", done: true },
-      { status: "Pandit Ji Assigned at Temple", time: "02 Sep, 10:15 AM", done: true },
-      { status: "Puja Performed & Video Recorded", time: "02 Sep, 11:45 AM", done: true },
-      { status: "Prasad Hygienically Packed", time: "02 Sep, 01:20 PM", done: true },
-      { status: "In Transit via Shiplystic Express", time: "Expected 03 Sep", done: false },
-      { status: "Delivered to Doorstep", time: "Expected 04 Sep", done: false }
+      { status: "Order Confirmed & Sankalp Received", time: "02 Sep, 09:30 AM", done: true },
+      { status: "Authorized Temple Priest Assigned", time: "02 Sep, 10:15 AM", done: true },
+      { status: "Sacred Puja & Gotra Sankalp Performed", time: "02 Sep, 11:45 AM", done: true },
+      { status: "Prasad Sanctified, Sealed & Packed", time: "02 Sep, 01:20 PM", done: true },
+      { status: "Dispatched & In Transit via Shiplystic", time: "Expected 03 Sep", done: false },
+      { status: "Delivered to Your Doorstep", time: "Expected 04 Sep", done: false }
     ]
   };
 
@@ -816,7 +816,7 @@ function renderTrackingResult(orderId) {
           ${step.done ? '✓' : idx + 1}
         </div>
         <div>
-          <h4 style="font-size: 1rem; color: ${step.done ? '#DC2626' : '#9CA3AF'}; margin-bottom: 0.2rem;">${step.status}</h4>
+          <h4 style="font-size: 1rem; color: ${step.done ? '#DC2626' : '#9CA3AF'}; margin-bottom: 0.2rem; font-weight: 700;">${step.status}</h4>
           <span style="font-size: 0.82rem; color: #6B7280;">${step.time}</span>
         </div>
       `;

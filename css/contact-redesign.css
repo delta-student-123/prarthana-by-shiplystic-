@@ -33,7 +33,7 @@
   padding: 3.5rem 0 2.8rem;
   z-index: 2;
   background: 
-    linear-gradient(180deg, rgba(9, 9, 11, 0.68) 0%, rgba(15, 15, 20, 0.58) 50%, rgba(9, 9, 11, 0.75) 100%),
+    linear-gradient(180deg, rgba(9, 9, 11, 0.22) 0%, rgba(15, 15, 20, 0.12) 40%, rgba(9, 9, 11, 0.38) 100%),
     url('../images/temples/temples-banner.jpg') center center / cover no-repeat;
   border-bottom: 3px solid #DC2626;
   margin-bottom: 2.5rem;
@@ -137,7 +137,7 @@
   line-height: 1.18;
   letter-spacing: -0.02em;
   margin: 0 0 1rem;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 4px 24px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 4px 28px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
 .contact-hero-title span.text-gradient {
@@ -145,17 +145,17 @@
   -webkit-text-fill-color: #FFFFFF;
   background: none;
   display: inline-block;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 4px 24px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 4px 28px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
 .contact-hero-subtitle {
   font-size: 1.1rem;
-  color: #F1F5F9;
+  color: #FFFFFF;
   line-height: 1.65;
   max-width: 680px;
   margin: 0 auto 1.8rem;
-  font-weight: 500;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 4px 22px rgba(0, 0, 0, 0.85);
 }
 
 /* Quick Trust Stats Badges */
