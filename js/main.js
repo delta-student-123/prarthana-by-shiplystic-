@@ -722,17 +722,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Live Order Tracking Lookup Handler (for track.html)
+  // Live Order & Shipment Tracking Lookup Handler (for track.html & /track-delivery)
   const trackForm = document.getElementById('tracking-search-form');
   if (trackForm) {
-    // Check URL parameters for id
+    // Check URL parameters for id, awb, or tracking
     const urlParams = new URLSearchParams(window.location.search);
-    const orderIdParam = urlParams.get('id');
+    const trackingQuery = urlParams.get('id') || urlParams.get('awb') || urlParams.get('tracking');
 
-    if (orderIdParam) {
+    if (trackingQuery) {
       const input = document.getElementById('tracking-input');
-      if (input) input.value = orderIdParam;
-      renderTrackingResult(orderIdParam);
+      if (input) input.value = trackingQuery;
+      renderTrackingResult(trackingQuery);
     }
 
     trackForm.addEventListener('submit', (e) => {
@@ -745,84 +745,403 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Render Tracking Stepper Result
-function renderTrackingResult(orderId) {
+/* ==========================================================================
+   Shipment Tracking API Integration (Endpoint: admin.shiplystic.com/api/track-multiple)
+   ========================================================================== */
+
+// Helper to copy AWB or Order ID
+window.copyTrackingId = function(id) {
+  if (!id) return;
+  const text = id.trim();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      if (typeof window.showToast === 'function') {
+        window.showToast('✓ Tracking ID copied to clipboard!');
+      }
+    }).catch(() => {});
+  }
+};
+
+// Helper to run sample tracking search
+window.trackSampleOrder = function(sampleId) {
+  const code = sampleId || 'PRARTHANA-892341';
+  const input = document.getElementById('tracking-input') || document.getElementById('home-track-input');
+  if (input) input.value = code;
+  renderTrackingResult(code);
+};
+
+// Format date nicely
+function formatTrackingDate(val) {
+  if (!val) return 'Calculating...';
+  const d = new Date(val);
+  if (isNaN(d.getTime())) return String(val);
+  return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+// Format timestamp with time
+function formatTrackingTimestamp(val) {
+  if (!val) return '';
+  const d = new Date(val);
+  if (isNaN(d.getTime())) return String(val);
+  return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }) + ', ' + d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+}
+
+// Fetch live tracking from Shiplystic Shipment Tracking API
+async function fetchLiveTracking(query) {
+  // Support single or multiple comma-separated AWBs
+  const awbList = Array.isArray(query)
+    ? query
+    : String(query).split(',').map(s => s.trim()).filter(Boolean);
+
+  if (awbList.length === 0) {
+    throw new Error('Please enter a valid tracking number.');
+  }
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+  try {
+    const response = await fetch('https://admin.shiplystic.com/api/track-multiple', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        AwbNumbers: awbList
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Tracking API responded with HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    clearTimeout(timeoutId);
+    throw err;
+  }
+}
+
+// Main Tracking Renderer (Async)
+async function renderTrackingResult(orderIdOrAwb) {
+  const cleanQuery = String(orderIdOrAwb || '').trim();
+  if (!cleanQuery) return;
+
   const resultCard = document.getElementById('tracking-result-card');
   const errorCard = document.getElementById('tracking-error-card');
+  const loadingCard = document.getElementById('tracking-loading-card');
+  const initialInfo = document.getElementById('track-initial-info');
 
   if (!resultCard) return;
 
-  const orders = JSON.parse(localStorage.getItem('shiplystic_orders') || '[]');
-  const foundOrder = orders.find(o => o.id.toUpperCase() === orderId.toUpperCase());
+  // Show loading card & hide other containers
+  if (initialInfo) initialInfo.style.display = 'none';
+  if (errorCard) errorCard.style.display = 'none';
+  resultCard.style.display = 'none';
+  if (loadingCard) {
+    loadingCard.style.display = 'block';
+    loadingCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
-  // Default Mock fallback if not in localStorage
-  const displayOrder = foundOrder || {
-    id: orderId.toUpperCase(),
+  // Check local bookings in localStorage or demo ID
+  const orders = JSON.parse(localStorage.getItem('shiplystic_orders') || '[]');
+  const localOrder = orders.find(o => o.id && o.id.toUpperCase() === cleanQuery.toUpperCase());
+  const isSampleDemo = cleanQuery.toUpperCase() === 'PRARTHANA-892341';
+
+  let apiSuccess = false;
+  let shipmentData = null;
+
+  try {
+    const apiData = await fetchLiveTracking(cleanQuery);
+    if (apiData && apiData.success && Array.isArray(apiData.results) && apiData.results.length > 0) {
+      shipmentData = apiData.results[0];
+      apiSuccess = true;
+    } else if (apiData && Array.isArray(apiData) && apiData.length > 0) {
+      shipmentData = apiData[0];
+      apiSuccess = true;
+    }
+  } catch (err) {
+    console.warn('Live tracking API network/fetch error:', err.message);
+    apiSuccess = false;
+  }
+
+  if (loadingCard) loadingCard.style.display = 'none';
+
+  if (apiSuccess && shipmentData) {
+    renderApiShipment(shipmentData, cleanQuery, localOrder);
+  } else if (localOrder || isSampleDemo) {
+    renderLocalOrder(localOrder, cleanQuery);
+  } else {
+    renderTrackingErrorCard(cleanQuery);
+  }
+}
+
+// Render Live API Shipment Result Card
+function renderApiShipment(shipment, query, localOrder) {
+  const resultCard = document.getElementById('tracking-result-card');
+  if (!resultCard) return;
+
+  const awb = shipment.awb || shipment.awbNumber || shipment.AwbNumber || shipment.tracking_number || query;
+  const rawStatus = shipment.status || shipment.Status || shipment.current_status || shipment.shipment_status || 'In Transit';
+  const courier = shipment.courier || shipment.Courier || shipment.courier_name || shipment.partner || 'Shiplystic Express';
+  const origin = shipment.origin || shipment.pickup_city || shipment.pickupCity || shipment.source || 'Temple Sanctum';
+  const destination = shipment.destination || shipment.delivery_city || shipment.deliveryCity || shipment.dest || 'Devotee Address';
+  const edd = shipment.expected_delivery_date || shipment.edd || shipment.Edd || shipment.delivery_date || '';
+  const orderId = shipment.orderId || shipment.enteredOrderId || shipment.OrderId || (localOrder ? localOrder.id : '');
+  const events = shipment.tracking || shipment.events || shipment.history || shipment.scans || [];
+
+  // Update Header Elements
+  const idLabel = document.getElementById('track-id-type-label');
+  if (idLabel) idLabel.textContent = 'Live Shipment AWB Number';
+
+  const resId = document.getElementById('track-res-id');
+  if (resId) resId.textContent = awb;
+
+  const courierBadge = document.getElementById('track-courier-partner');
+  if (courierBadge) {
+    courierBadge.innerHTML = `⚡ ${courier}`;
+    courierBadge.style.display = 'inline-flex';
+  }
+
+  const orderRef = document.getElementById('track-order-ref');
+  if (orderRef) {
+    if (orderId) {
+      orderRef.textContent = `Order: ${orderId}`;
+      orderRef.style.display = 'inline-block';
+    } else {
+      orderRef.style.display = 'none';
+    }
+  }
+
+  // Update Status Pill with appropriate styles
+  const statusPill = document.getElementById('track-res-status');
+  if (statusPill) {
+    const sLower = rawStatus.toLowerCase();
+    statusPill.textContent = rawStatus;
+    statusPill.className = 'track-status-pill';
+    if (sLower.includes('deliver')) {
+      statusPill.classList.add('track-status-delivered');
+    } else if (sLower.includes('out for delivery') || sLower.includes('out_for_delivery')) {
+      statusPill.classList.add('track-status-outfordelivery');
+    } else if (sLower.includes('transit') || sLower.includes('dispatched') || sLower.includes('picked')) {
+      statusPill.classList.add('track-status-intransit');
+    } else {
+      statusPill.classList.add('track-status-default');
+    }
+  }
+
+  // Update Route Banner
+  const routeBanner = document.getElementById('track-route-banner');
+  if (routeBanner) {
+    routeBanner.style.display = 'grid';
+    const originEl = document.getElementById('track-res-origin');
+    if (originEl) originEl.textContent = origin;
+    const destEl = document.getElementById('track-res-destination');
+    if (destEl) destEl.textContent = destination;
+    const eddEl = document.getElementById('track-res-edd');
+    if (eddEl) {
+      eddEl.textContent = edd ? `Expected Delivery: ${formatTrackingDate(edd)}` : 'Express Doorstep Delivery';
+    }
+  }
+
+  // Update Temple Booking Details if matched
+  const templePills = document.getElementById('track-order-summary-pills');
+  if (templePills) {
+    if (localOrder) {
+      templePills.style.display = 'grid';
+      document.getElementById('track-res-temple').textContent = localOrder.temple || 'Authorized Temple Sanctum';
+      document.getElementById('track-res-package').textContent = localOrder.package || 'Vedic Puja & Sanctum Prasad';
+      document.getElementById('track-res-devotee').textContent = localOrder.devotee || 'Devotee';
+      document.getElementById('track-res-gotra').textContent = localOrder.gotra || 'Vedic Gotra';
+    } else {
+      templePills.style.display = 'none';
+    }
+  }
+
+  // Populate Milestones Timeline
+  const timelineContainer = document.getElementById('track-timeline');
+  if (timelineContainer) {
+    timelineContainer.innerHTML = '';
+
+    if (Array.isArray(events) && events.length > 0) {
+      events.forEach((ev, idx) => {
+        const isLatest = idx === 0;
+        const evTitle = ev.status || ev.activity || ev.event || ev.remark || ev.description || 'Milestone Update';
+        const evTime = formatTrackingTimestamp(ev.time || ev.date || ev.timestamp || ev.scan_date_time || '');
+        const evLocation = ev.location || ev.city || ev.hub || '';
+
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'track-event-card';
+        itemDiv.innerHTML = `
+          <div class="track-event-dot ${isLatest ? 'active' : 'completed'}">
+            ${isLatest ? '●' : '✓'}
+          </div>
+          <div style="flex: 1;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h4 style="font-size: 1rem; font-weight: 800; color: ${isLatest ? '#DC2626' : '#1E293B'}; margin: 0;">
+                ${evTitle}
+              </h4>
+              ${evTime ? `<span style="font-size: 0.8rem; color: #64748B; font-weight: 600;">${evTime}</span>` : ''}
+            </div>
+            ${evLocation ? `<div style="font-size: 0.84rem; color: #475569; display: flex; align-items: center; gap: 0.35rem;"><span>📍</span> ${evLocation}</div>` : ''}
+          </div>
+        `;
+        timelineContainer.appendChild(itemDiv);
+      });
+    } else {
+      // Default Milestone Flow when events array is empty
+      const defaultSteps = [
+        { title: "Sacred Gotra Sankalp & Puja Consecrated", time: "Sanctum Ritual Complete", done: true, location: origin },
+        { title: "Prasad Sealed in Tamper-Proof Holy Box", time: "Dispatched", done: true, location: origin },
+        { title: `In Transit via ${courier}`, time: "Live GPS Tracking Active", done: true, location: "En Route to " + destination },
+        { title: "Out for Doorstep Delivery", time: edd ? formatTrackingDate(edd) : "Expected Soon", done: rawStatus.toLowerCase().includes('out'), location: destination },
+        { title: "Delivered with Temple Blessings", time: edd ? formatTrackingDate(edd) : "Pending", done: rawStatus.toLowerCase().includes('deliver'), location: destination }
+      ];
+
+      defaultSteps.forEach((step, idx) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'track-event-card';
+        itemDiv.innerHTML = `
+          <div class="track-event-dot ${step.done ? (idx === 2 ? 'active' : 'completed') : 'pending'}">
+            ${step.done ? '✓' : idx + 1}
+          </div>
+          <div style="flex: 1;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h4 style="font-size: 0.98rem; font-weight: 800; color: ${step.done ? '#1E293B' : '#94A3B8'}; margin: 0;">
+                ${step.title}
+              </h4>
+              <span style="font-size: 0.8rem; color: #64748B; font-weight: 600;">${step.time}</span>
+            </div>
+            <div style="font-size: 0.82rem; color: #64748B;">📍 ${step.location}</div>
+          </div>
+        `;
+        timelineContainer.appendChild(itemDiv);
+      });
+    }
+  }
+
+  resultCard.style.display = 'block';
+  resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Render Local Order / Demo Temple Booking Result
+function renderLocalOrder(localOrder, query) {
+  const resultCard = document.getElementById('tracking-result-card');
+  if (!resultCard) return;
+
+  const displayOrder = localOrder || {
+    id: query.toUpperCase(),
     date: "02 Sep 2026",
     temple: "Shri Mahakaleshwar Temple, Ujjain",
     package: "Shri Mahakaleshwar Puja & Prasad Package",
     total: 1999,
     devotee: "Ramesh Sharma",
     gotra: "Kashyap",
+    origin: "Ujjain",
+    destination: "Mumbai",
     status: "Puja Performed & Prasad Packed",
-    statusStep: 3,
     history: [
-      { status: "Order Confirmed & Sankalp Received", time: "02 Sep, 09:30 AM", done: true },
-      { status: "Authorized Temple Priest Assigned", time: "02 Sep, 10:15 AM", done: true },
-      { status: "Sacred Puja & Gotra Sankalp Performed", time: "02 Sep, 11:45 AM", done: true },
-      { status: "Prasad Sanctified, Sealed & Packed", time: "02 Sep, 01:20 PM", done: true },
-      { status: "Dispatched & In Transit via Shiplystic", time: "Expected 03 Sep", done: false },
-      { status: "Delivered to Your Doorstep", time: "Expected 04 Sep", done: false }
+      { status: "Order Confirmed & Sankalp Received", time: "02 Sep, 09:30 AM", location: "Shiplystic Gateway", done: true },
+      { status: "Authorized Temple Priest Assigned", time: "02 Sep, 10:15 AM", location: "Mahakaleshwar Sanctum", done: true },
+      { status: "Sacred Puja & Gotra Sankalp Performed", time: "02 Sep, 11:45 AM", location: "Main Garbhagriha, Ujjain", done: true },
+      { status: "Prasad Sanctified, Sealed & Packed", time: "02 Sep, 01:20 PM", location: "Sanctum Dispatch Unit", done: true },
+      { status: "Dispatched & In Transit via Shiplystic Express", time: "03 Sep, 08:30 AM", location: "Central Logistics Hub", done: true },
+      { status: "Delivered to Your Doorstep", time: "Expected 04 Sep", location: "Devotee Destination", done: false }
     ]
   };
 
-  if (errorCard) errorCard.style.display = 'none';
-  const initialInfo = document.getElementById('track-initial-info');
-  if (initialInfo) initialInfo.style.display = 'none';
-  resultCard.style.display = 'block';
+  const idLabel = document.getElementById('track-id-type-label');
+  if (idLabel) idLabel.textContent = 'Temple Booking Order ID';
 
-  document.getElementById('track-res-id').textContent = displayOrder.id;
-  document.getElementById('track-res-temple').textContent = displayOrder.temple;
-  document.getElementById('track-res-package').textContent = displayOrder.package;
-  document.getElementById('track-res-devotee').textContent = displayOrder.devotee;
-  document.getElementById('track-res-gotra').textContent = displayOrder.gotra;
-  document.getElementById('track-res-status').textContent = displayOrder.status;
+  const resId = document.getElementById('track-res-id');
+  if (resId) resId.textContent = displayOrder.id;
+
+  const courierBadge = document.getElementById('track-courier-partner');
+  if (courierBadge) {
+    courierBadge.innerHTML = '⚡ Shiplystic Express';
+    courierBadge.style.display = 'inline-flex';
+  }
+
+  const orderRef = document.getElementById('track-order-ref');
+  if (orderRef) orderRef.style.display = 'none';
+
+  const statusPill = document.getElementById('track-res-status');
+  if (statusPill) {
+    statusPill.textContent = displayOrder.status || 'Puja Performed';
+    statusPill.className = 'track-status-pill track-status-intransit';
+  }
+
+  const routeBanner = document.getElementById('track-route-banner');
+  if (routeBanner) {
+    routeBanner.style.display = 'grid';
+    const originEl = document.getElementById('track-res-origin');
+    if (originEl) originEl.textContent = displayOrder.origin || 'Ujjain';
+    const destEl = document.getElementById('track-res-destination');
+    if (destEl) destEl.textContent = displayOrder.destination || 'Mumbai';
+    const eddEl = document.getElementById('track-res-edd');
+    if (eddEl) eddEl.textContent = 'Expected Delivery: 2–3 Days';
+  }
+
+  const templePills = document.getElementById('track-order-summary-pills');
+  if (templePills) {
+    templePills.style.display = 'grid';
+    document.getElementById('track-res-temple').textContent = displayOrder.temple || 'Sacred Temple Sanctum';
+    document.getElementById('track-res-package').textContent = displayOrder.package || 'Puja & Prasad Service';
+    document.getElementById('track-res-devotee').textContent = displayOrder.devotee || 'Devotee';
+    document.getElementById('track-res-gotra').textContent = displayOrder.gotra || 'Kashyap';
+  }
 
   const timelineContainer = document.getElementById('track-timeline');
   if (timelineContainer) {
     timelineContainer.innerHTML = '';
-    displayOrder.history.forEach((step, idx) => {
-      const stepDiv = document.createElement('div');
-      stepDiv.style.display = 'flex';
-      stepDiv.style.gap = '1rem';
-      stepDiv.style.alignItems = 'flex-start';
-      stepDiv.style.marginBottom = '1.5rem';
-      stepDiv.style.position = 'relative';
-
-      stepDiv.innerHTML = `
-        <div style="
-          width: 32px; 
-          height: 32px; 
-          border-radius: 50%; 
-          background: ${step.done ? '#DC2626' : '#E5E7EB'}; 
-          color: ${step.done ? '#FFF' : '#6B7280'};
-          display: flex; 
-          align-items: center; 
-          justify-content: center; 
-          font-weight: bold;
-          flex-shrink: 0;
-          z-index: 2;
-        ">
+    const historyList = displayOrder.history || [];
+    historyList.forEach((step, idx) => {
+      const isLatest = step.done && (!historyList[idx + 1] || !historyList[idx + 1].done);
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'track-event-card';
+      itemDiv.innerHTML = `
+        <div class="track-event-dot ${step.done ? (isLatest ? 'active' : 'completed') : 'pending'}">
           ${step.done ? '✓' : idx + 1}
         </div>
-        <div>
-          <h4 style="font-size: 1rem; color: ${step.done ? '#DC2626' : '#9CA3AF'}; margin-bottom: 0.2rem; font-weight: 700;">${step.status}</h4>
-          <span style="font-size: 0.82rem; color: #6B7280;">${step.time}</span>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem;">
+            <h4 style="font-size: 0.98rem; font-weight: 800; color: ${step.done ? '#1E293B' : '#94A3B8'}; margin: 0;">
+              ${step.status}
+            </h4>
+            <span style="font-size: 0.8rem; color: #64748B; font-weight: 600;">${step.time}</span>
+          </div>
+          ${step.location ? `<div style="font-size: 0.82rem; color: #64748B;">📍 ${step.location}</div>` : ''}
         </div>
       `;
-      timelineContainer.appendChild(stepDiv);
+      timelineContainer.appendChild(itemDiv);
     });
   }
+
+  resultCard.style.display = 'block';
+  resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Render Tracking Error Card
+function renderTrackingErrorCard(query) {
+  const errorCard = document.getElementById('tracking-error-card');
+  if (!errorCard) return;
+
+  const errMsg = document.getElementById('track-error-msg');
+  if (errMsg) {
+    errMsg.innerHTML = `We couldn't locate any active shipment or booking record matching <strong style="color: #991B1B;">"${query}"</strong>.`;
+  }
+
+  const waBtn = document.getElementById('track-whatsapp-help-btn');
+  if (waBtn) {
+    waBtn.href = `https://wa.me/919422799941?text=Hello%20Shiplystic%20Prarthana,%20I%20need%20assistance%20tracking%20my%20shipment%20${encodeURIComponent(query)}`;
+  }
+
+  errorCard.style.display = 'block';
+  errorCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // Xpressbees Tracking Mode Switcher Pill Handler
@@ -834,7 +1153,7 @@ function selectTrackPill(mode) {
   if (mode === 'awb') {
     if (awbPill) { awbPill.className = 'xpress-pill active'; }
     if (orderPill) { orderPill.className = 'xpress-pill inactive'; }
-    inputs.forEach(input => input.placeholder = 'Enter AWB number (e.g. AWB-98214)...');
+    inputs.forEach(input => input.placeholder = 'Enter AWB number (e.g. AWB123456789)...');
   } else {
     if (awbPill) { awbPill.className = 'xpress-pill inactive'; }
     if (orderPill) { orderPill.className = 'xpress-pill active'; }
