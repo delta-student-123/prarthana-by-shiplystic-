@@ -1,0 +1,666 @@
+/* ==========================================================================
+   Shiplystic Prarthana - Dedicated Cookies Policy Stylesheet
+   File: css/cookies-policy.css
+   ========================================================================== */
+
+/* Cookies Page Main Wrapper */
+.cookies-page-main {
+  background-color: #F8FAFC;
+  padding-bottom: 5rem;
+}
+
+/* Hero Section */
+.cookies-hero-banner {
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.8) 0%, rgba(15, 15, 20, 0.72) 60%, rgba(9, 9, 11, 0.88) 100%),
+              url('../images/temples/tirupati.jpg') center/cover no-repeat;
+  padding: 4rem 0 3.5rem;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  border-bottom: 3px solid var(--primary-red, #DC2626);
+}
+
+.cookies-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.cookies-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(220, 38, 38, 0.95);
+  color: #FFFFFF;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+}
+
+.cookies-hero-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 0.85rem;
+  line-height: 1.2;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.cookies-hero-subtitle {
+  font-size: 1.05rem;
+  color: #E2E8F0;
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 740px;
+  margin: 0 auto 1.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Metadata Chips */
+.cookies-meta-chips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.cookies-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #F8FAFC;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Key Trust Strip (3 Cards) */
+.cookies-trust-strip {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 2rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.cookies-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cookies-trust-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem;
+  background: #FAFAFA;
+  border: 1px solid #F1F5F9;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.cookies-trust-card:hover {
+  transform: translateY(-2px);
+  border-color: #FCA5A5;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.08);
+}
+
+.trust-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #FEF2F2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  border: 1px solid #FEE2E2;
+}
+
+.trust-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 0.25rem;
+}
+
+.trust-card-desc {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Two Column Layout: Sidebar + Document Content */
+.cookies-layout-container {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Sticky Sidebar Navigation */
+.cookies-sidebar {
+  position: sticky;
+  top: 90px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.sidebar-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #DC2626;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav-link:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-left-color: #DC2626;
+}
+
+.sidebar-nav-link.active {
+  background: #FEF2F2;
+  color: #DC2626;
+  font-weight: 700;
+  border-left-color: #DC2626;
+}
+
+/* Sidebar Preferences CTA Button */
+.sidebar-pref-btn {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-radius: 8px;
+  color: #DC2626;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+  margin-bottom: 0.75rem;
+  font-family: inherit;
+}
+
+.sidebar-pref-btn:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+/* Sidebar Quick Help Card */
+.sidebar-support-card {
+  background: linear-gradient(135deg, #18181B 0%, #09090B 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: #FFFFFF;
+  margin-top: 1.25rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.support-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+}
+
+.support-card-sub {
+  font-size: 0.8rem;
+  color: #A1A1AA;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.support-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: #DC2626;
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.support-card-btn:hover {
+  background: #B91C1C;
+  color: #FFFFFF;
+}
+
+/* Document Content Body */
+.cookies-content-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 2.75rem 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Section Styling */
+.cookies-section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 110px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #DC2626;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #FEF2F2;
+  border: 1px solid #FEE2E2;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  line-height: 1.35;
+}
+
+.section-title span {
+  font-size: 1.3rem;
+}
+
+.cookies-p {
+  font-size: 0.96rem;
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.cookies-p strong {
+  color: #1E293B;
+  font-weight: 600;
+}
+
+/* Highlighted Callout Boxes */
+.cookies-callout {
+  background: #F8FAFC;
+  border-left: 4px solid #DC2626;
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.cookies-callout.cookies-callout-warning {
+  background: #FFFBEB;
+  border-left-color: #D97706;
+}
+
+.cookies-callout.cookies-callout-success {
+  background: #F0FDF4;
+  border-left-color: #16A34A;
+}
+
+.cookies-callout-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cookies-callout-body {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Sub-card Grid */
+.cookies-subgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.cookies-subcard {
+  background: #FAFAFA;
+  border: 1px solid #F1F5F9;
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.cookies-subcard-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cookies-subcard-text {
+  font-size: 0.86rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Cookies Table */
+.cookies-table-container {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+}
+
+.cookies-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.cookies-table th {
+  background: #F8FAFC;
+  color: #1E293B;
+  font-weight: 700;
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cookies-table td {
+  padding: 0.9rem 1.15rem;
+  border-bottom: 1px solid #F1F5F9;
+  color: #475569;
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.cookies-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cookies-table tr:hover td {
+  background: #FAFAFA;
+}
+
+/* Browser Guide Cards */
+.browser-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.browser-guide-card {
+  background: #FAFAFA;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 1.15rem 1rem;
+  text-align: center;
+}
+
+.browser-guide-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.browser-guide-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.35rem;
+}
+
+.browser-guide-desc {
+  font-size: 0.8rem;
+  color: #64748B;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Grievance Card */
+.grievance-officer-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.grievance-icon {
+  font-size: 2.2rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.grievance-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 0.2rem;
+}
+
+.grievance-role {
+  font-size: 0.85rem;
+  color: #DC2626;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.grievance-contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.grievance-contact-row strong {
+  color: #1E293B;
+}
+
+.grievance-contact-row a {
+  color: #DC2626;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Accordion FAQs */
+.cookies-faq-item {
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.cookies-faq-item:hover {
+  border-color: #CBD5E1;
+}
+
+.cookies-faq-item.open {
+  border-color: #FCA5A5;
+}
+
+.cookies-faq-btn {
+  width: 100%;
+  background: #FFFFFF;
+  border: none;
+  padding: 1.1rem 1.25rem;
+  text-align: left;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0F172A;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+
+.cookies-faq-btn:hover {
+  background: #F8FAFC;
+}
+
+.cookies-faq-item.open .cookies-faq-btn {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.cookies-faq-chevron {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  transition: transform 0.25s ease;
+}
+
+.cookies-faq-item.open .cookies-faq-chevron {
+  transform: rotate(180deg);
+  color: #DC2626;
+}
+
+.cookies-faq-body {
+  display: none;
+  padding: 1rem 1.25rem 1.25rem;
+  background: #FFFFFF;
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.65;
+  border-top: 1px solid #FEE2E2;
+}
+
+.cookies-faq-item.open .cookies-faq-body {
+  display: block;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .cookies-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cookies-layout-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .cookies-sidebar {
+    position: static;
+    top: auto;
+  }
+
+  .cookies-content-card {
+    padding: 2rem 1.75rem;
+  }
+
+  .browser-guide-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cookies-hero-title {
+    font-size: 2rem;
+  }
+
+  .cookies-trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cookies-subgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cookies-content-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .browser-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grievance-officer-card {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,434 @@
+/* ==========================================================================
+   Shiplystic Prarthana - Temple Donation Receipt Styles
+   Matches Official Temple Management Committee Donation Receipt Format
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&display=swap');
+
+/* Modal Backdrop & Window */
+.receipt-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(9, 9, 11, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.receipt-modal-backdrop.active {
+  display: flex !important;
+}
+
+.receipt-modal-window {
+  background: #18181B;
+  border-radius: 16px;
+  max-width: 780px;
+  width: 100%;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: receiptModalFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes receiptModalFade {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Modal Toolbar */
+.receipt-modal-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.4rem;
+  background: #27272A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #F4F4F5;
+}
+
+.receipt-toolbar-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.receipt-toolbar-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn-receipt-action {
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-receipt-print {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+.btn-receipt-print:hover {
+  background: #B91C1C;
+  transform: translateY(-1px);
+}
+
+.btn-receipt-close {
+  background: #3F3F46;
+  color: #E4E4E7;
+}
+
+.btn-receipt-close:hover {
+  background: #52525B;
+  color: #FFFFFF;
+}
+
+.receipt-modal-body {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  background: #18181B;
+  overflow-y: auto;
+  max-height: calc(88vh - 60px);
+}
+
+/* ==========================================================================
+   Receipt Document Container (Warm Vintage Parchment Style)
+   ========================================================================== */
+.temple-receipt-container {
+  background: #F4EFE6 !important;
+  color: #1C1917;
+  max-width: 660px;
+  width: 100%;
+  padding: 2.8rem 3rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  font-family: 'Noto Sans Devanagari', 'Nirmala UI', 'Mangal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Diagonal Background Watermark */
+.receipt-watermark {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-32deg);
+  font-size: 4.8rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: rgba(163, 145, 126, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+/* Receipt Header */
+.receipt-header {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.receipt-seal-wrapper {
+  margin: 0 auto 0.6rem;
+  display: inline-block;
+}
+
+.receipt-seal-svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.receipt-trust-hindi {
+  font-family: 'Noto Sans Devanagari', 'Nirmala UI', 'Mangal', sans-serif !important;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #452B19;
+  margin: 0.35rem 0 0.15rem;
+  letter-spacing: 0 !important;
+}
+
+.receipt-trust-eng {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #452B19;
+  letter-spacing: 0.6px;
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+}
+
+.receipt-location {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #C2410C;
+  margin-bottom: 0.6rem;
+}
+
+/* Divider Line */
+.receipt-divider-line {
+  height: 2px;
+  background: #5E3D23;
+  margin: 0.6rem 0 1rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Banner Pill */
+.receipt-banner-wrap {
+  text-align: center;
+  margin-bottom: 1.3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.receipt-banner {
+  display: inline-block;
+  background: #5E3D23;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: 0 !important;
+  padding: 0.38rem 1.6rem;
+  border-radius: 2px;
+  font-family: 'Noto Sans Devanagari', 'Nirmala UI', 'Mangal', sans-serif !important;
+}
+
+/* Receipt Body Grid */
+.receipt-body {
+  position: relative;
+  z-index: 2;
+}
+
+.receipt-row-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.receipt-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #382417;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0 !important;
+  font-family: 'Noto Sans Devanagari', 'Nirmala UI', 'Mangal', sans-serif !important;
+}
+
+.receipt-value {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #1C1917;
+}
+
+.receipt-value.large-value {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #1C1917;
+}
+
+.receipt-value.italic-value {
+  font-size: 0.96rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #292524;
+}
+
+.receipt-field-block {
+  margin: 0.35rem 0;
+}
+
+.receipt-dashed-sep {
+  border-bottom: 1.5px dashed #A89F91;
+  margin: 0.65rem 0;
+  width: 100%;
+}
+
+/* Footer (QR Code & Signatory) */
+.receipt-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 1.6rem;
+  padding-top: 0.8rem;
+  position: relative;
+  z-index: 2;
+}
+
+.receipt-qr-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.receipt-qr-img {
+  width: 90px;
+  height: 90px;
+  background: #FFFFFF;
+  padding: 3px;
+  border: 1px solid #D6D3D1;
+  border-radius: 2px;
+}
+
+.receipt-qr-caption {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #44403C;
+  margin-top: 0.3rem;
+  letter-spacing: 0.2px;
+}
+
+.receipt-sign-block {
+  text-align: center;
+  min-width: 200px;
+}
+
+.receipt-sign-line {
+  height: 2px;
+  background: #292524;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
+.receipt-sign-hindi {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #1C1917;
+}
+
+.receipt-sign-eng {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1C1917;
+}
+
+/* ==========================================================================
+   Print Stylesheet (@media print)
+   Isolates receipt perfectly on 1 page without blank spaces
+   ========================================================================== */
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #F4EFE6 !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Only hide website sections when printing from main page */
+  body:not(.receipt-print-frame-body) > *:not(#receiptPreviewModal):not(#receipt-print-iframe) {
+    display: none !important;
+  }
+
+  body.receipt-print-frame-body {
+    background: #F4EFE6 !important;
+    display: block !important;
+  }
+
+  #receiptPreviewModal {
+    display: block !important;
+    position: static !important;
+    background: #F4EFE6 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .receipt-modal-window {
+    background: #F4EFE6 !important;
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  .receipt-modal-toolbar {
+    display: none !important;
+  }
+
+  .receipt-modal-body {
+    padding: 0 !important;
+    background: #F4EFE6 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .temple-receipt-container {
+    position: static !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 1.4cm 1.8cm !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #F4EFE6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 6mm;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .temple-receipt-container {
+    padding: 1.8rem 1.4rem 1.6rem;
+  }
+  .receipt-trust-hindi {
+    font-size: 1.2rem;
+  }
+  .receipt-trust-eng {
+    font-size: 0.76rem;
+  }
+  .receipt-watermark {
+    font-size: 3rem;
+  }
+  .receipt-row-3col {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .receipt-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .receipt-sign-block {
+    width: 100%;
+  }
+}

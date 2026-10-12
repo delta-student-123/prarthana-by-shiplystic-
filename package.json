@@ -1,0 +1,22 @@
+{
+  "name": "prarthana-by-shiplystic",
+  "version": "1.0.0",
+  "description": "Prarthana by Shiplystic - Sacred Temple Puja & Doorstep Prasad Delivery",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "shiplystic",
+    "prarthana",
+    "puja",
+    "temple",
+    "cashfree"
+  ],
+  "author": "Shiplystic",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}

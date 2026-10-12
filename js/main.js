@@ -1093,6 +1093,15 @@ function renderLocalOrder(localOrder, query) {
     document.getElementById('track-res-package').textContent = displayOrder.package || 'Puja & Prasad Service';
     document.getElementById('track-res-devotee').textContent = displayOrder.devotee || 'Devotee';
     document.getElementById('track-res-gotra').textContent = displayOrder.gotra || 'Kashyap';
+
+    const receiptBtn = document.getElementById('btn-track-download-receipt');
+    if (receiptBtn) {
+      receiptBtn.onclick = () => {
+        if (typeof downloadDonationReceipt === 'function') {
+          downloadDonationReceipt(displayOrder.id);
+        }
+      };
+    }
   }
 
   const timelineContainer = document.getElementById('track-timeline');
@@ -1205,10 +1214,15 @@ window.openLegalModal = function(type) {
       <p style="margin-bottom: 1rem;">At <strong>Shiplystic Prarthana</strong>, we prioritize the confidentiality and sanctity of your personal and spiritual information.</p>
       <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">1. Information We Collect</h4>
       <p>We collect devotee details including Name, Sankalp Gotra, Family Member Names, Shipping Address, Email, and Phone Number strictly for ritual execution and Prasad express delivery.</p>
-      <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">2. Sankalp Video Proof Privacy</h4>
-      <p>Personalized ritual video proof recorded by authentic temple priests is stored securely and shared only with the booking devotee via private stream/link.</p>
+      <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">2. Sacred Sankalp Sanctity</h4>
+      <p>Devotee prayer intentions and family Gotra are transmitted solely to authorized priests for sacred Vedic chanting during sanctum rituals.</p>
       <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">3. Data Protection</h4>
       <p>Your address and phone details are encrypted during express transit via Shiplystic logistics partners. We never sell or share your data with third parties.</p>
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed #E2E8F0; text-align: center;">
+        <a href="/privacy-policy" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #DC2626; color: #FFFFFF; padding: 0.55rem 1.25rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);">
+          <span>📜 Open Dedicated Privacy Policy Page ➔</span>
+        </a>
+      </div>
     `;
   } else if (type === 'Terms of Service') {
     titleText = '📜 Terms of Service';
@@ -1220,6 +1234,11 @@ window.openLegalModal = function(type) {
       <p>Prasad (Vibhuti, Kumkum, Ladoos, Dry Fruits, Dry Flowers) is collected directly post-Aarti and dispatched in tamper-evident sealed packaging via Shiplystic Express Delivery.</p>
       <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">3. Delivery Timelines</h4>
       <p>Express domestic delivery takes 2–5 business days depending on location. Real-time GPS tracking is updated on the Track Delivery page.</p>
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed #E2E8F0; text-align: center;">
+        <a href="/terms-of-service" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #DC2626; color: #FFFFFF; padding: 0.55rem 1.25rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);">
+          <span>📜 Open Dedicated Terms of Service Page ➔</span>
+        </a>
+      </div>
     `;
   } else if (type === 'Refund Policy') {
     titleText = '🛡️ Refund & Cancellation Policy';
@@ -1231,6 +1250,11 @@ window.openLegalModal = function(type) {
       <p>Bookings can be cancelled up to 24 hours prior to the scheduled Puja date for a full refund by contacting our Devotee Support at <strong>+91 9422799941</strong>.</p>
       <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">3. Damaged Prasad Package</h4>
       <p>If your Prasad box arrives damaged or tampered, we will re-dispatch a fresh sanctum Prasad box free of charge or issue a full refund.</p>
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed #E2E8F0; text-align: center;">
+        <a href="/refund-policy" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #DC2626; color: #FFFFFF; padding: 0.55rem 1.25rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);">
+          <span>🛡️ Open Dedicated Refund & Cancellation Page ➔</span>
+        </a>
+      </div>
     `;
   } else if (type === 'Cookies Policy') {
     titleText = '🍪 Cookies Policy';
@@ -1240,35 +1264,15 @@ window.openLegalModal = function(type) {
       <p>Necessary for site security, user authentication, cart persistence, and tracking number lookups.</p>
       <h4 style="color: #111827; margin: 1.2rem 0 0.4rem; font-weight: 800;">2. Performance & Preferences</h4>
       <p>Used to remember your preferred temple filters, selected gotra options, and currency settings.</p>
-    `;
-  } else if (type === 'Sitemap') {
-    titleText = '🗺️ Website Sitemap';
-    bodyHTML = `
-      <p style="margin-bottom: 1rem; font-weight: 700; color: #DC2626;">Quick Navigation Links:</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-        <div>
-          <h5 style="color: #111827; margin-bottom: 0.5rem; font-weight: 800;">Main Pages</h5>
-          <ul style="padding-left: 1.2rem; margin: 0;">
-            <li><a href="/" style="color: #DC2626;">Home</a></li>
-            <li><a href="/services" style="color: #DC2626;">Services Overview</a></li>
-            <li><a href="/book-prarthana" style="color: #DC2626;">Book Prarthana Service</a></li>
-            <li><a href="/track-delivery" style="color: #DC2626;">Track Delivery</a></li>
-            <li><a href="/about-us" style="color: #DC2626;">About Us</a></li>
-            <li><a href="/contact-us" style="color: #DC2626;">Contact Support</a></li>
-            <li><a href="/faqs" style="color: #DC2626;">FAQs</a></li>
-          </ul>
-        </div>
-        <div>
-          <h5 style="color: #111827; margin-bottom: 0.5rem; font-weight: 800;">Featured Sanctums</h5>
-          <ul style="padding-left: 1.2rem; margin: 0;">
-            <li><a href="/temples/mahakaleshwar-ujjain" style="color: #DC2626;">Mahakaleshwar Ujjain</a></li>
-            <li><a href="/temples/omkareshwar" style="color: #DC2626;">Omkareshwar Jyotirlinga</a></li>
-            <li><a href="/temples/mahalaxmi-kolhapur" style="color: #DC2626;">Mahalaxmi Kolhapur</a></li>
-            <li><a href="/temples/sai-baba-shirdi" style="color: #DC2626;">Sai Baba Shirdi</a></li>
-          </ul>
-        </div>
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed #E2E8F0; text-align: center;">
+        <a href="/cookies-policy" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #DC2626; color: #FFFFFF; padding: 0.55rem 1.25rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);">
+          <span>🍪 Open Dedicated Cookies Policy Page ➔</span>
+        </a>
       </div>
     `;
+  } else if (type === 'Sitemap') {
+    window.location.href = '/sitemap';
+    return;
   }
 
   title.innerHTML = titleText;
@@ -1282,51 +1286,7 @@ window.openLegalModal = function(type) {
 };
 
 window.openCookiePreferences = function() {
-  ensureLegalModalContainer();
-  const overlay = document.getElementById('legal-modal-overlay');
-  const modalBox = document.getElementById('legal-modal-box');
-  const title = document.getElementById('legal-modal-title');
-  const content = document.getElementById('legal-modal-content');
-
-  title.innerHTML = '⚙️ Cookies Preferences';
-  content.innerHTML = `
-    <p style="margin-bottom: 1.2rem;">Manage your cookie settings to control data collection on Shiplystic Prarthana.</p>
-    <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <div style="background: #FAFAFA; border: 1px solid #E5E7EB; padding: 1rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
-        <div>
-          <div style="font-weight: 800; color: #111827;">Essential Cookies</div>
-          <div style="font-size: 0.8rem; color: #6B7280;">Required for checkout, tracking, & security</div>
-        </div>
-        <span style="background: #DC2626; color: #FFF; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 50px;">Always Active</span>
-      </div>
-
-
-      <div style="background: #FAFAFA; border: 1px solid #E5E7EB; padding: 1rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
-        <div>
-          <div style="font-weight: 800; color: #111827;">Performance & Analytics</div>
-          <div style="font-size: 0.8rem; color: #6B7280;">Helps us optimize page loading & service speed</div>
-        </div>
-        <input type="checkbox" checked style="width: 20px; height: 20px; accent-color: #DC2626; cursor: pointer;">
-      </div>
-
-      <div style="background: #FAFAFA; border: 1px solid #E5E7EB; padding: 1rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
-        <div>
-          <div style="font-weight: 800; color: #111827;">Functional Preferences</div>
-          <div style="font-size: 0.8rem; color: #6B7280;">Remembers your selected gotra & temple filters</div>
-        </div>
-        <input type="checkbox" checked style="width: 20px; height: 20px; accent-color: #DC2626; cursor: pointer;">
-      </div>
-    </div>
-    <div style="margin-top: 1.5rem; text-align: center;">
-      <button onclick="saveCookiePreferences();" class="btn btn-red" style="padding: 0.75rem 2rem; border-radius: 50px; font-weight: 800; cursor: pointer;">Save Preferences</button>
-    </div>
-  `;
-
-  overlay.style.display = 'flex';
-  setTimeout(() => {
-    overlay.style.opacity = '1';
-    modalBox.style.transform = 'translateY(0)';
-  }, 10);
+  window.location.href = '/cookie-preferences';
 };
 
 window.closeLegalModal = function() {

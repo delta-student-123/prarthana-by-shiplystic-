@@ -1,0 +1,589 @@
+/* ==========================================================================
+   Shiplystic Prarthana - Dedicated Privacy Policy Stylesheet
+   File: css/privacy-policy.css
+   ========================================================================== */
+
+/* Privacy Page Main Wrapper */
+.privacy-page-main {
+  background-color: #F8FAFC;
+  padding-bottom: 5rem;
+}
+
+/* Hero Section */
+.privacy-hero-banner {
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.78) 0%, rgba(15, 15, 20, 0.7) 60%, rgba(9, 9, 11, 0.85) 100%),
+              url('../images/temples/kashi-vishwanath.jpg') center/cover no-repeat;
+  padding: 4rem 0 3.5rem;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  border-bottom: 3px solid var(--primary-red);
+}
+
+.privacy-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.privacy-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(220, 38, 38, 0.95);
+  color: #FFFFFF;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+}
+
+.privacy-hero-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 0.85rem;
+  line-height: 1.2;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.privacy-hero-subtitle {
+  font-size: 1.05rem;
+  color: #E2E8F0;
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Metadata Chips */
+.privacy-meta-chips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.privacy-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #F8FAFC;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Key Trust Strip (4 Cards) */
+.privacy-trust-strip {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 2rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.privacy-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.privacy-trust-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem;
+  background: #FAFAFA;
+  border: 1px solid #F1F5F9;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.privacy-trust-card:hover {
+  transform: translateY(-2px);
+  border-color: #FCA5A5;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.08);
+}
+
+.trust-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #FEF2F2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  border: 1px solid #FEE2E2;
+}
+
+.trust-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 0.25rem;
+}
+
+.trust-card-desc {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Two Column Layout: Sidebar + Document Content */
+.privacy-layout-container {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Sticky Sidebar Navigation */
+.privacy-sidebar {
+  position: sticky;
+  top: 90px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.sidebar-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #DC2626;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav-link:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-left-color: #DC2626;
+}
+
+.sidebar-nav-link.active {
+  background: #FEF2F2;
+  color: #DC2626;
+  font-weight: 700;
+  border-left-color: #DC2626;
+}
+
+/* Sidebar Quick Help Card */
+.sidebar-support-card {
+  background: linear-gradient(135deg, #18181B 0%, #09090B 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: #FFFFFF;
+  margin-top: 1.25rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.support-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+}
+
+.support-card-sub {
+  font-size: 0.8rem;
+  color: #A1A1AA;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.support-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: #DC2626;
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.support-card-btn:hover {
+  background: #B91C1C;
+  color: #FFFFFF;
+}
+
+/* Document Content Body */
+.privacy-content-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 2.75rem 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Section Styling */
+.privacy-section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 110px;
+}
+
+.privacy-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #DC2626;
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1.3;
+}
+
+.privacy-p {
+  font-size: 0.98rem;
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.privacy-p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-p strong {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+/* Highlight Boxes */
+.privacy-callout {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-left: 4px solid #DC2626;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.privacy-callout-warning {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-left: 4px solid #F59E0B;
+}
+
+.privacy-callout-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #991B1B;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.privacy-callout-warning .privacy-callout-title {
+  color: #92400E;
+}
+
+.privacy-callout-body {
+  font-size: 0.92rem;
+  color: #4B5563;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Feature Grid inside Content */
+.privacy-subgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.privacy-subcard {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.privacy-subcard-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.privacy-subcard-text {
+  font-size: 0.88rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Legal Data Table */
+.privacy-table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+}
+
+.privacy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.privacy-table th {
+  background: #F1F5F9;
+  color: #0F172A;
+  font-weight: 700;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid #CBD5E1;
+}
+
+.privacy-table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid #F1F5F9;
+  color: #475569;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.privacy-table tr:last-child td {
+  border-bottom: none;
+}
+
+.privacy-table tr:nth-child(even) {
+  background: #FAFAFA;
+}
+
+/* Accordion FAQ */
+.privacy-faq-item {
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.privacy-faq-item.open {
+  border-color: #FCA5A5;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
+}
+
+.privacy-faq-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 1.25rem;
+  background: #FFFFFF;
+  border: none;
+  text-align: left;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0F172A;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.privacy-faq-btn:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.privacy-faq-chevron {
+  font-size: 1.1rem;
+  color: #94A3B8;
+  transition: transform 0.2s ease;
+}
+
+.privacy-faq-item.open .privacy-faq-chevron {
+  transform: rotate(180deg);
+  color: #DC2626;
+}
+
+.privacy-faq-body {
+  display: none;
+  padding: 0 1.25rem 1.2rem;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  background: #FFFFFF;
+}
+
+.privacy-faq-item.open .privacy-faq-body {
+  display: block;
+}
+
+/* Grievance Officer Card */
+.grievance-officer-card {
+  background: linear-gradient(to right, #FFF5F5, #FFFFFF);
+  border: 1px solid #FCA5A5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.grievance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #DC2626;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.grievance-details {
+  flex: 1;
+}
+
+.grievance-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 0.2rem;
+}
+
+.grievance-role {
+  font-size: 0.85rem;
+  color: #DC2626;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.grievance-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.grievance-contact-row a {
+  color: #DC2626;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .privacy-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .privacy-layout-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .privacy-sidebar {
+    position: static;
+    top: auto;
+  }
+
+  .privacy-content-card {
+    padding: 2rem 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .privacy-hero-title {
+    font-size: 2rem;
+  }
+
+  .privacy-trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-subgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-content-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .grievance-officer-card {
+    flex-direction: column;
+  }
+}

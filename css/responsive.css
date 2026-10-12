@@ -1037,8 +1037,11 @@ body {
     max-width: 100% !important;
     margin: 1.5rem 0 0 !important;
     border-radius: 16px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
     z-index: 1 !important;
+  }
+
+  .xpress-tracking-widget::before {
+    border-radius: 18px !important;
   }
 
   /* Fix track.html page-specific widget — cancel the -6.5rem negative margin */

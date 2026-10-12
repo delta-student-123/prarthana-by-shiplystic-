@@ -51,6 +51,36 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://shiplystic.com/privacy-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shiplystic.com/terms-of-service</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shiplystic.com/refund-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shiplystic.com/cookies-policy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shiplystic.com/cookie-preferences</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shiplystic.com/sitemap</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://shiplystic.com/temples/ayodhya-ram-mandir</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -132,6 +162,11 @@
   </url>
   <url>
     <loc>https://shiplystic.com/temples/tirupati-balaji</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shiplystic.com/temples/vaishno-devi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

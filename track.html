@@ -13,7 +13,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png?v=5">
   <link rel="manifest" href="site.webmanifest">
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/receipt.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -403,6 +408,22 @@
             <strong id="track-res-gotra" style="font-size: 0.92rem; color: #0F172A; line-height: 1.35; display: block;">Kashyap</strong>
           </div>
         </div>
+        
+        <!-- Temple Donation Receipt Download Action -->
+        <div id="track-receipt-download-banner" style="display: flex; justify-content: space-between; align-items: center; background: #FFFBEB; border: 1.5px solid #FDE68A; padding: 0.9rem 1.25rem; border-radius: var(--radius-sm); margin-bottom: 2rem; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.4rem;">📜</span>
+            <div>
+              <strong style="color: #78350F; font-size: 0.92rem; display: block;">Official Temple Donation Receipt Available</strong>
+              <span style="color: #92400E; font-size: 0.8rem;">₹501 Pass-Through Sanctum Donation Receipt with QR Verification</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" id="btn-track-download-receipt" onclick="downloadDonationReceipt()" class="btn" style="background: #78350F; color: #FFF; font-weight: 700; border: none; font-size: 0.85rem; padding: 0.55rem 1.15rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 6px;">
+              📄 Download Receipt (PDF)
+            </button>
+          </div>
+        </div>
 
         <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
           <span>📍</span> Live Milestone & Transit Activity
@@ -572,22 +593,24 @@
       <div class="footer-bottom">
         <div>© 2026 Shiplystic Prarthana. All rights reserved.</div>
         <div class="footer-legal-links">
-          <a href="#" onclick="openLegalModal('Privacy Policy'); return false;">Privacy Policy</a>
+          <a href="/privacy-policy">Privacy Policy</a>
           <span class="footer-dot">•</span>
-          <a href="#" onclick="openLegalModal('Terms of Service'); return false;">Terms of Service</a>
+          <a href="/terms-of-service">Terms of Service</a>
           <span class="footer-dot">•</span>
-          <a href="#" onclick="openLegalModal('Refund Policy'); return false;">Refund Policy</a>
+          <a href="/refund-policy">Refund Policy</a>
           <span class="footer-dot">•</span>
-          <a href="#" onclick="openLegalModal('Cookies Policy'); return false;">Cookies Policy</a>
+          <a href="/cookies-policy">Cookies Policy</a>
           <span class="footer-dot">•</span>
-          <a href="#" onclick="openCookiePreferences(); return false;">Cookies Preferences</a>
+          <a href="/cookie-preferences">Cookies Preferences</a>
           <span class="footer-dot">•</span>
-          <a href="#" onclick="openLegalModal('Sitemap'); return false;">Sitemap</a>
+          <a href="/sitemap">Sitemap</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <script src="js/html2pdf.bundle.min.js"></script>
+  <script src="js/receipt.js"></script>
   <script src="js/main.js"></script>
   <!-- Floating WhatsApp Support Button -->
   <a id="whatsapp-float-btn" href="https://wa.me/919422799941?text=Hello%20Shiplystic%20Prarthana,%20I%20would%20like%20to%20inquire%20about%20Prarthana%20services" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat on WhatsApp" title="Chat on WhatsApp with Devotee Support">

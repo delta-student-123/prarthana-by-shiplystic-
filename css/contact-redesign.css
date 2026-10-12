@@ -3,8 +3,12 @@
    ========================================================================== */
 
 /* Page Background & Atmosphere */
+body.contact-body {
+  background: #FFFFFF !important;
+}
+
 .contact-page-wrapper {
-  background: linear-gradient(180deg, #FDFBF7 0%, #FAF6F0 40%, #F5EFE6 100%);
+  background: #FFFFFF;
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 75px);
@@ -13,16 +17,7 @@
 
 /* Subtle Sacred Background Watermark */
 .contact-page-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1400px;
-  height: 600px;
-  background: radial-gradient(circle at 50% 10%, rgba(220, 38, 38, 0.045) 0%, rgba(217, 119, 6, 0.025) 45%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 /* --------------------------------------------------------------------------

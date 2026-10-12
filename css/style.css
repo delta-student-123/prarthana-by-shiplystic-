@@ -2403,38 +2403,92 @@ img {
   max-width: 650px;
 }
 
-/* Xpressbees-style Floating Tracking Card Widget (Red, Black & White Theme) */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes xpressBeamSpin {
+  0% {
+    --beam-angle: 0deg;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    --beam-angle: 360deg;
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes xpressCardPulse {
+  0%, 100% {
+    box-shadow: 0 16px 40px -10px rgba(136, 19, 55, 0.14), 0 0 14px rgba(220, 38, 38, 0.22);
+  }
+  50% {
+    box-shadow: 0 20px 48px -8px rgba(136, 19, 55, 0.24), 0 0 26px rgba(245, 158, 11, 0.45);
+  }
+}
+
+/* Xpressbees-style Floating Tracking Card Widget (Clean White & Divine Red Theme) */
 .xpress-tracking-widget {
-  background: #0F0F12;
-  border: 1.5px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
-  padding: 0.95rem 1.4rem 0.8rem;
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.6);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(220, 38, 38, 0.16);
+  border-radius: 20px;
+  padding: 1rem 1.5rem 0.85rem;
+  box-shadow: 0 16px 40px -10px rgba(136, 19, 55, 0.14), 0 0 14px rgba(220, 38, 38, 0.22);
   max-width: 900px;
   margin: 3rem auto -6.5rem;
-  color: #FFFFFF;
+  color: #1F2937;
   position: relative;
   z-index: 10;
+  animation: xpressCardPulse 3.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.xpress-tracking-widget:hover {
+  transform: translateY(-2px);
+}
+
+/* Animated outer gradient border beam */
+.xpress-tracking-widget::before {
+  content: '';
+  position: absolute;
+  inset: -2.5px;
+  border-radius: 22.5px;
+  padding: 2.5px;
+  box-sizing: border-box;
+  background: conic-gradient(from var(--beam-angle, 0deg), #DC2626 0%, #F59E0B 25%, #EF4444 50%, #FBBF24 75%, #DC2626 100%);
+  background-size: 250% 250%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: xpressBeamSpin 4s linear infinite;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .xpress-tabs-nav {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding-bottom: 0.4rem;
-  margin-bottom: 0.75rem;
+  border-bottom: 1.5px solid #F3F4F6;
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.8rem;
 }
 
 .xpress-tab {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-weight: 800;
-  font-size: 0.88rem;
-  color: #9CA3AF;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #6B7280;
   cursor: pointer;
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.45rem;
   position: relative;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -2442,12 +2496,13 @@ img {
 
 .xpress-tab.active {
   color: #DC2626;
+  font-weight: 800;
 }
 
 .xpress-tab.active::after {
   content: '';
   position: absolute;
-  bottom: -1px;
+  bottom: -1.5px;
   left: 0;
   right: 0;
   height: 3px;
@@ -2456,24 +2511,25 @@ img {
 }
 
 .xpress-tab:hover {
-  color: #FFFFFF;
+  color: #DC2626;
 }
 
 .xpress-search-bar {
-  background: #18181C;
-  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
   border-radius: 50px;
-  padding: 4px 4px 4px 10px;
+  padding: 4px 4px 4px 12px;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 0.6rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 0.65rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .xpress-search-bar:focus-within {
+  background: #FFFFFF;
   border-color: #DC2626;
-  box-shadow: 0 0 16px rgba(220, 38, 38, 0.35);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
 }
 
 .xpress-pills {
@@ -2484,9 +2540,9 @@ img {
 }
 
 .xpress-pill {
-  padding: 5px 13px;
+  padding: 6px 14px;
   border-radius: 50px;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 800;
   border: none;
   cursor: pointer;
@@ -2496,23 +2552,23 @@ img {
 .xpress-pill.active {
   background: #DC2626;
   color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
 }
 
 .xpress-pill.inactive {
-  background: rgba(255, 255, 255, 0.1);
-  color: #E5E7EB;
+  background: #E2E8F0;
+  color: #475569;
 }
 
 .xpress-pill.inactive:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
+  background: #CBD5E1;
+  color: #0F172A;
 }
 
 .xpress-divider {
   width: 1px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.18);
+  background: #CBD5E1;
   margin: 0 3px;
   flex-shrink: 0;
 }
@@ -2526,20 +2582,20 @@ img {
 }
 
 .xpress-search-icon {
-  color: #9CA3AF;
-  font-size: 0.9rem;
+  color: #94A3B8;
+  font-size: 0.92rem;
   flex-shrink: 0;
 }
 
 .xpress-input {
-  color-scheme: dark;
+  color-scheme: light;
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  color: #FFFFFF !important;
-  caret-color: #FFFFFF !important;
+  color: #0F172A !important;
+  caret-color: #DC2626 !important;
   font-size: 0.88rem;
   font-weight: 600;
   width: 100%;
@@ -2551,35 +2607,35 @@ img {
 .xpress-input:hover {
   background: transparent !important;
   background-color: transparent !important;
-  color: #FFFFFF !important;
+  color: #0F172A !important;
   box-shadow: none !important;
   outline: none !important;
 }
 
 .xpress-input::placeholder {
-  color: #9CA3AF;
+  color: #94A3B8;
   font-weight: 400;
 }
 
-/* Override WebKit / Chrome / Edge autofill white box and black text */
+/* Override WebKit / Chrome / Edge autofill */
 .xpress-input:-webkit-autofill,
 .xpress-input:-webkit-autofill:hover, 
 .xpress-input:-webkit-autofill:focus, 
 .xpress-input:-webkit-autofill:active {
-  -webkit-text-fill-color: #FFFFFF !important;
-  color: #FFFFFF !important;
-  caret-color: #FFFFFF !important;
-  -webkit-box-shadow: 0 0 0 1000px #18181C inset !important;
-  box-shadow: 0 0 0 1000px #18181C inset !important;
-  background-color: #18181C !important;
+  -webkit-text-fill-color: #0F172A !important;
+  color: #0F172A !important;
+  caret-color: #DC2626 !important;
+  -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+  box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+  background-color: #FFFFFF !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
 /* Firefox autofill */
 .xpress-input:-moz-autofill,
 .xpress-input:-moz-autofill-preview {
-  background-color: #18181C !important;
-  color: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
   filter: none !important;
 }
 
@@ -2593,8 +2649,8 @@ img {
   background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
   color: #FFFFFF;
   font-weight: 800;
-  font-size: 0.82rem;
-  padding: 7px 20px;
+  font-size: 0.84rem;
+  padding: 8px 22px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -2603,23 +2659,23 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  box-shadow: 0 3px 12px rgba(220, 38, 38, 0.4);
+  box-shadow: 0 3px 12px rgba(220, 38, 38, 0.35);
 }
 
 .xpress-btn:hover {
   background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
   transform: translateY(-1px);
-  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.5);
+  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.45);
 }
 
 .xpress-footer-meta {
   display: flex;
   align-items: center;
   gap: 1.4rem;
-  font-size: 0.74rem;
-  color: #E5E7EB;
+  font-size: 0.76rem;
+  color: #475569;
   font-weight: 600;
-  margin-top: 0.4rem;
+  margin-top: 0.45rem;
   flex-wrap: wrap;
 }
 
@@ -2631,6 +2687,7 @@ img {
 
 .xpress-meta-item span {
   color: #DC2626;
+  font-weight: 800;
 }
 
 @media (max-width: 768px) {

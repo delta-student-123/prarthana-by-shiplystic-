@@ -114,30 +114,131 @@
   color: #09090B;
 }
 
-/* Temple Filter Pills */
-.filter-pills {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+/* Temple Live Search & Filter Bar */
+.temple-search-container {
+  margin-bottom: 1.25rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.1rem;
 }
 
-.filter-pill {
-  padding: 0.5rem 1.2rem;
-  border-radius: var(--radius-full);
+.temple-search-bar-wrap {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.temple-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #94A3B8;
+  pointer-events: none;
+}
+
+.temple-search-input {
+  width: 100%;
+  padding: 0.65rem 2.6rem 0.65rem 2.5rem;
+  border-radius: 50px;
+  border: 1.5px solid #CBD5E1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0F172A;
   background: #FFFFFF;
-  border: 1.5px solid var(--bg-black);
-  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.temple-search-input:focus {
+  border-color: var(--primary-red) !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12) !important;
+}
+
+.temple-search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #E2E8F0;
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  color: #475569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.temple-search-clear:hover {
+  background: var(--primary-red);
+  color: #FFFFFF;
+}
+
+.temple-filter-chips {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.temple-chip-btn {
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  border: 1.5px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #475569;
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  color: #09090B;
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.filter-pill.active, .filter-pill:hover {
+.temple-chip-btn:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  background: #FEF2F2;
+}
+
+.temple-chip-btn.active {
   background: var(--primary-red);
   color: #FFFFFF;
   border-color: var(--primary-red);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+}
+
+.temple-count-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+  background: #F1F5F9;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid #E2E8F0;
+}
+
+@media (max-width: 640px) {
+  .temple-search-container {
+    padding: 0.75rem 0.85rem;
+  }
+  .temple-filter-chips {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .temple-chip-btn {
+    flex-shrink: 0;
+  }
 }
 
 /* Temple Selector Grid */
