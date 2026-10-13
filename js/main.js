@@ -1474,6 +1474,102 @@ if (document.readyState === 'loading') {
 // Supported: English (Default), Hindi, Marathi, Malayalam, Punjabi, Odia, Assamese, Urdu, Nepali
 // ==========================================================================
 
+// Immediately and permanently eradicate Google Translate top banner & body displacement
+(function suppressGoogleBannerImmediately() {
+  const css = `
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    iframe.goog-te-banner-frame,
+    iframe.skiptranslate,
+    iframe[id*=":1.container"],
+    iframe[id*=":2.container"],
+    iframe[id*=":"],
+    .VIpgJd-ZVi9I-ORHb-OEVmcd,
+    .VIpgJd-ZVi9I-ORHb,
+    [class*="VIpgJd-ZVi9I"],
+    div[id*=":"][class*="skiptranslate"],
+    body > .skiptranslate,
+    body > div.skiptranslate:not(.shiplystic-lang-selector),
+    body > iframe.skiptranslate,
+    #goog-gt-tt,
+    .goog-tooltip,
+    .goog-tooltip:hover {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0px !important;
+      width: 0px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      border: none !important;
+      z-index: -9999 !important;
+    }
+    html, body,
+    body.translated-ltr,
+    body.translated-rtl,
+    html.translated-ltr,
+    html.translated-rtl {
+      top: 0px !important;
+      margin-top: 0px !important;
+      padding-top: 0px !important;
+      position: static !important;
+      transform: none !important;
+    }
+    #google_translate_element,
+    .goog-te-gadget {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+    .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+  `;
+  const style = document.createElement('style');
+  style.id = 'google-translate-banner-suppressor-style';
+  style.textContent = css;
+  (document.head || document.documentElement).appendChild(style);
+
+  const bannerSelectors = [
+    '.goog-te-banner-frame',
+    'iframe.skiptranslate',
+    'iframe[id*=":"]',
+    '.VIpgJd-ZVi9I-ORHb-OEVmcd',
+    '[class*="VIpgJd-ZVi9I"]',
+    'body > .skiptranslate:not(.shiplystic-lang-selector)',
+    'body > div.skiptranslate:not(.shiplystic-lang-selector)',
+    '#goog-gt-tt'
+  ];
+
+  const resetTop = () => {
+    document.querySelectorAll(bannerSelectors.join(',')).forEach(el => {
+      el.style.setProperty('display', 'none', 'important');
+      el.style.setProperty('visibility', 'hidden', 'important');
+      el.style.setProperty('height', '0px', 'important');
+      el.style.setProperty('width', '0px', 'important');
+      el.style.setProperty('opacity', '0', 'important');
+      el.style.setProperty('pointer-events', 'none', 'important');
+    });
+    if (document.body && document.body.style.top && document.body.style.top !== '0px') {
+      document.body.style.setProperty('top', '0px', 'important');
+    }
+    if (document.documentElement && document.documentElement.style.top && document.documentElement.style.top !== '0px') {
+      document.documentElement.style.setProperty('top', '0px', 'important');
+    }
+  };
+
+  try {
+    const observer = new MutationObserver(resetTop);
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['style', 'class']
+    });
+    window.addEventListener('load', resetTop);
+    setInterval(resetTop, 200);
+  } catch (e) {}
+})();
+
 const PRARTHANA_LANGUAGES = [
   { code: 'en', native: 'English', en: 'English (Default)', short: 'EN' },
   { code: 'hi', native: 'हिन्दी', en: 'Hindi', short: 'HI' },
@@ -1487,11 +1583,7 @@ const PRARTHANA_LANGUAGES = [
 ];
 
 function initGoogleTranslateLanguageSelector() {
-  // Avoid duplicate injection
-  if (document.getElementById('shiplysticLangSelector')) return;
-
   const navContainer = document.querySelector('.header-nav .nav-container') || document.querySelector('.nav-container');
-  if (!navContainer) return;
 
   // 1. Ensure hidden Google Translate Element exists in DOM
   if (!document.getElementById('google_translate_element')) {
@@ -1539,67 +1631,81 @@ function initGoogleTranslateLanguageSelector() {
   const initialLang = getCurrentLang();
   const initialLangObj = PRARTHANA_LANGUAGES.find(l => l.code === initialLang) || PRARTHANA_LANGUAGES[0];
 
-  // 5. Create Custom Header Language Selector Widget
-  const selectorWrapper = document.createElement('div');
-  selectorWrapper.className = 'shiplystic-lang-selector';
-  selectorWrapper.id = 'shiplysticLangSelector';
+  // 5. Ensure Custom Header Language Selector Widget exists (either static HTML or dynamic injection)
+  let selectorWrapper = document.getElementById('shiplysticLangSelector');
+  if (!selectorWrapper && navContainer) {
+    selectorWrapper = document.createElement('div');
+    selectorWrapper.className = 'shiplystic-lang-selector';
+    selectorWrapper.id = 'shiplysticLangSelector';
 
-  const optionsHtml = PRARTHANA_LANGUAGES.map(l => `
-    <button type="button" class="lang-option ${l.code === initialLang ? 'active' : ''}" data-lang="${l.code}" role="menuitem">
-      <span class="lang-option-native">${l.native}</span>
-      <span class="lang-option-en">${l.en}</span>
-      <span class="lang-option-check">✓</span>
-    </button>
-  `).join('');
+    const optionsHtml = PRARTHANA_LANGUAGES.map(l => `
+      <button type="button" class="lang-option ${l.code === initialLang ? 'active' : ''}" data-lang="${l.code}" role="menuitem">
+        <span class="lang-option-native">${l.native}</span>
+        <span class="lang-option-en">${l.en}</span>
+        <span class="lang-option-check">✓</span>
+      </button>
+    `).join('');
 
-  selectorWrapper.innerHTML = `
-    <button type="button" class="lang-selector-btn" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language">
-      <svg class="lang-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-      </svg>
-      <span class="current-lang-text" id="currentLangLabel">${initialLangObj.native}</span>
-      <svg class="lang-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </button>
-    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
-      <div class="lang-dropdown-header">🌐 Select Language / भाषा चुनें</div>
-      <div class="lang-dropdown-grid">
-        ${optionsHtml}
+    selectorWrapper.innerHTML = `
+      <button type="button" class="lang-selector-btn" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language">
+        <svg class="lang-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span class="current-lang-text" id="currentLangLabel">${initialLangObj.native}</span>
+        <svg class="lang-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+        <div class="lang-dropdown-header">🌐 Select Language / भाषा चुनें</div>
+        <div class="lang-dropdown-grid">
+          ${optionsHtml}
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
-  // 6. Insert into navigation header before CTA or before mobile-toggle
-  const headerCta = navContainer.querySelector('#header-cta-btn');
-  const mobileToggle = navContainer.querySelector('.mobile-toggle');
+    const headerCta = navContainer.querySelector('#header-cta-btn');
+    const mobileToggle = navContainer.querySelector('.mobile-toggle');
 
-  if (headerCta) {
-    navContainer.insertBefore(selectorWrapper, headerCta);
-  } else if (mobileToggle) {
-    navContainer.insertBefore(selectorWrapper, mobileToggle);
-  } else {
-    navContainer.appendChild(selectorWrapper);
+    if (headerCta) {
+      navContainer.insertBefore(selectorWrapper, headerCta);
+    } else if (mobileToggle) {
+      navContainer.insertBefore(selectorWrapper, mobileToggle);
+    } else {
+      navContainer.appendChild(selectorWrapper);
+    }
   }
 
-  // 7. Event Handlers
+  if (!selectorWrapper) return;
+
+  // 6. Sync UI with active language
   const btn = selectorWrapper.querySelector('#langSelectorBtn');
   const labelEl = selectorWrapper.querySelector('#currentLangLabel');
+  if (labelEl) {
+    labelEl.textContent = initialLangObj.native;
+  }
+  selectorWrapper.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === initialLang);
+  });
 
+  // 7. Event Handlers
   function toggleDropdown(forceState) {
     const willOpen = typeof forceState === 'boolean' ? forceState : !selectorWrapper.classList.contains('open');
     selectorWrapper.classList.toggle('open', willOpen);
-    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    if (btn) btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
   }
 
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDropdown();
-  });
+  if (btn && !btn._hasLangListener) {
+    btn._hasLangListener = true;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
 
-  // Close when clicking anywhere outside
+  // Close when clicking outside
   document.addEventListener('click', (e) => {
     if (!selectorWrapper.contains(e.target)) {
       toggleDropdown(false);
@@ -1638,7 +1744,6 @@ function initGoogleTranslateLanguageSelector() {
       combo.value = targetCode;
       combo.dispatchEvent(new Event('change'));
     } else {
-      // If combo not ready yet in DOM, refresh so the new cookie immediately translates
       window.location.reload();
       return;
     }
@@ -1658,13 +1763,16 @@ function initGoogleTranslateLanguageSelector() {
 
   // Handle option clicks
   selectorWrapper.querySelectorAll('.lang-option').forEach(opt => {
-    opt.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const code = opt.getAttribute('data-lang');
-      if (code) {
-        applyLanguage(code);
-      }
-    });
+    if (!opt._hasLangOptionListener) {
+      opt._hasLangOptionListener = true;
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const code = opt.getAttribute('data-lang');
+        if (code) {
+          applyLanguage(code);
+        }
+      });
+    }
   });
 }
 

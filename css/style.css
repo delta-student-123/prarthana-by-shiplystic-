@@ -6611,22 +6611,49 @@ textarea.form-control {
    Shiplystic Prarthana - Google Translate Language Selector
    ========================================================================== */
 
-/* Hide default Google Translate banner and displacement */
-.goog-te-banner-frame.skiptranslate,
+/* 1. Permanently hide all Google Translate Banner Iframes, Containers & Tooltips */
 .goog-te-banner-frame,
-iframe.goog-te-banner-frame {
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate,
+iframe[id*=":1.container"],
+iframe[id*=":2.container"],
+iframe[id*=":"],
+.VIpgJd-ZVi9I-ORHb-OEVmcd,
+.VIpgJd-ZVi9I-ORHb,
+[class*="VIpgJd-ZVi9I"],
+div[id*=":"][class*="skiptranslate"],
+body > .skiptranslate,
+body > div.skiptranslate:not(.shiplystic-lang-selector),
+body > iframe.skiptranslate,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover {
   display: none !important;
   visibility: hidden !important;
-  height: 0 !important;
-  width: 0 !important;
+  height: 0px !important;
+  width: 0px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
   border: none !important;
+  z-index: -9999 !important;
 }
 
-body {
+/* 2. Lock html and body so Google Translate cannot displace the page down */
+html,
+body,
+body.translated-ltr,
+body.translated-rtl,
+html.translated-ltr,
+html.translated-rtl {
   top: 0px !important;
+  margin-top: 0px !important;
+  padding-top: 0px !important;
   position: static !important;
+  transform: none !important;
 }
 
+/* 3. Hide default Google gadget element */
 #google_translate_element,
 .goog-te-gadget {
   display: none !important;
@@ -6636,13 +6663,10 @@ body {
   overflow: hidden !important;
 }
 
-.goog-tooltip,
-.goog-tooltip:hover {
-  display: none !important;
-}
-
+/* 4. Disable Google highlight */
 .goog-text-highlight {
   background-color: transparent !important;
+  border: none !important;
   box-shadow: none !important;
 }
 
