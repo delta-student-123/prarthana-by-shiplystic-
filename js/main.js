@@ -1724,41 +1724,35 @@ function initGoogleTranslateLanguageSelector() {
     const langObj = PRARTHANA_LANGUAGES.find(l => l.code === targetCode) || PRARTHANA_LANGUAGES[0];
     const host = window.location.hostname;
 
-    // A. Update cookies for persistent cross-page translation
-    if (targetCode === 'en') {
+    // A. Update cookies for persistent cross-page translation across domains
+    if (targetCode === 'en' || !targetCode) {
       document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + host;
-      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + host;
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + host + ';';
+      if (host && !host.includes('localhost') && !host.includes('127.0.0.1')) {
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + host + ';';
+      }
       try { localStorage.removeItem('shiplystic_language'); } catch (e) {}
     } else {
       const val = `/en/${targetCode}`;
       document.cookie = `googtrans=${val}; path=/;`;
-      document.cookie = `googtrans=${val}; path=/; domain=${host}`;
-      document.cookie = `googtrans=${val}; path=/; domain=.${host}`;
+      document.cookie = `googtrans=${val}; path=/; domain=${host};`;
+      if (host && !host.includes('localhost') && !host.includes('127.0.0.1')) {
+        document.cookie = `googtrans=${val}; path=/; domain=.${host};`;
+      }
       try { localStorage.setItem('shiplystic_language', targetCode); } catch (e) {}
     }
 
-    // B. Trigger Google Translate combo element
+    // B. Trigger Google Translate combo if present
     const combo = document.querySelector('.goog-te-combo');
     if (combo) {
-      combo.value = targetCode;
-      combo.dispatchEvent(new Event('change'));
-    } else {
-      window.location.reload();
-      return;
+      try {
+        combo.value = targetCode;
+        combo.dispatchEvent(new Event('change'));
+      } catch (err) {}
     }
 
-    // C. Update Custom UI
-    if (labelEl) {
-      labelEl.textContent = langObj.native;
-    }
-
-    selectorWrapper.querySelectorAll('.lang-option').forEach(opt => {
-      const isCurrent = opt.getAttribute('data-lang') === targetCode;
-      opt.classList.toggle('active', isCurrent);
-    });
-
-    toggleDropdown(false);
+    // C. Always reload page on language change to ensure 100% of cards and sections translate cleanly without stale font tag conflicts
+    window.location.reload();
   }
 
   // Handle option clicks
