@@ -588,56 +588,320 @@ function downloadReceiptAsPdf() {
 }
 
 function getStandaloneReceiptHtml(receiptInnerHtml) {
-  return `
-    <!DOCTYPE html>
-    <html lang="hi">
-    <head>
-      <meta charset="utf-8">
-      <title>Temple Donation Receipt</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="/css/receipt.css">
-      <style>
-        * { box-sizing: border-box; }
-        html, body {
-          margin: 0 !important;
-          padding: 0 !important;
-          background: #F4EFE6 !important;
-          font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-        }
-        .temple-receipt-container {
-          box-shadow: none !important;
-          border-radius: 0 !important;
-          margin: 0 auto !important;
-          max-width: 680px !important;
-          padding: 2.2rem 2.8rem !important;
-          background: #F4EFE6 !important;
-          font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-        }
-        .receipt-trust-hindi,
-        .receipt-banner,
-        .receipt-label,
-        .receipt-sign-hindi {
-          font-family: 'Noto Sans Devanagari', 'Nirmala UI', sans-serif !important;
-          letter-spacing: 0 !important;
-        }
-        @page { size: A4 portrait; margin: 6mm; }
-      </style>
-    </head>
-    <body class="receipt-print-frame-body">
-      ${receiptInnerHtml}
-    </body>
-    </html>
-  `;
+  return `<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <title>Temple Donation Receipt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box !important;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm;
+    }
+
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #F4EFE6 !important;
+      font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color: #1C1917 !important;
+    }
+
+    .receipt-print-frame-body {
+      padding: 16px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background: #F4EFE6 !important;
+    }
+
+    /* Outer Parchment Container with Authentic Sacred Gold/Brown Double Border */
+    .temple-receipt-container {
+      background: #F4EFE6 !important;
+      color: #1C1917 !important;
+      width: 100% !important;
+      max-width: 680px !important;
+      margin: 0 auto !important;
+      padding: 2.2rem 2.8rem 2.0rem !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border-radius: 4px !important;
+      border: 2px solid #5E3D23 !important;
+      outline: 1px solid #9A3412 !important;
+      outline-offset: -6px !important;
+      box-shadow: none !important;
+      box-sizing: border-box !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    /* Diagonal Watermark */
+    .receipt-watermark {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) rotate(-30deg) !important;
+      font-size: 4.2rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 5px !important;
+      color: rgba(163, 145, 126, 0.14) !important;
+      white-space: nowrap !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      user-select: none !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Header */
+    .receipt-header {
+      text-align: center !important;
+      position: relative !important;
+      z-index: 2 !important;
+      margin-bottom: 0.6rem !important;
+    }
+
+    .receipt-seal-wrapper {
+      margin: 0 auto 0.4rem !important;
+      display: inline-block !important;
+      text-align: center !important;
+    }
+
+    .receipt-seal-svg {
+      display: block !important;
+      margin: 0 auto !important;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)) !important;
+    }
+
+    .receipt-trust-hindi {
+      font-family: 'Noto Sans Devanagari', 'Nirmala UI', sans-serif !important;
+      font-size: 1.45rem !important;
+      font-weight: 900 !important;
+      color: #452B19 !important;
+      margin: 0.35rem 0 0.15rem !important;
+      line-height: 1.3 !important;
+      letter-spacing: 0 !important;
+      text-align: center !important;
+    }
+
+    .receipt-trust-eng {
+      font-size: 0.88rem !important;
+      font-weight: 800 !important;
+      color: #452B19 !important;
+      letter-spacing: 0.6px !important;
+      margin: 0 0 0.2rem !important;
+      text-transform: uppercase !important;
+      text-align: center !important;
+    }
+
+    .receipt-location {
+      font-size: 0.84rem !important;
+      font-weight: 700 !important;
+      color: #C2410C !important;
+      margin-bottom: 0.4rem !important;
+      text-align: center !important;
+    }
+
+    .receipt-divider-line {
+      height: 2px !important;
+      background: #5E3D23 !important;
+      margin: 0.5rem 0 0.9rem !important;
+      width: 100% !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Center Banner */
+    .receipt-banner-wrap {
+      text-align: center !important;
+      margin-bottom: 1.2rem !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    .receipt-banner {
+      display: inline-block !important;
+      background: #5E3D23 !important;
+      color: #FFFFFF !important;
+      font-weight: 800 !important;
+      font-size: 0.96rem !important;
+      padding: 0.35rem 1.6rem !important;
+      border-radius: 3px !important;
+      letter-spacing: 0 !important;
+      font-family: 'Noto Sans Devanagari', 'Nirmala UI', sans-serif !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Body */
+    .receipt-body {
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    .receipt-row-3col {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 0.8rem !important;
+      align-items: flex-start !important;
+    }
+
+    .receipt-col {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .receipt-label {
+      font-size: 0.84rem !important;
+      font-weight: 800 !important;
+      color: #382417 !important;
+      margin-bottom: 0.18rem !important;
+      letter-spacing: 0 !important;
+      font-family: 'Noto Sans Devanagari', 'Nirmala UI', sans-serif !important;
+    }
+
+    .receipt-value {
+      font-size: 0.98rem !important;
+      font-weight: 600 !important;
+      color: #1C1917 !important;
+      word-break: break-word !important;
+    }
+
+    .receipt-value.large-value {
+      font-size: 1.15rem !important;
+      font-weight: 800 !important;
+      color: #1C1917 !important;
+    }
+
+    .receipt-value.italic-value {
+      font-size: 0.94rem !important;
+      font-style: italic !important;
+      font-weight: 600 !important;
+      color: #292524 !important;
+    }
+
+    .receipt-field-block {
+      margin: 0.35rem 0 !important;
+    }
+
+    .receipt-dashed-sep {
+      border-bottom: 1.5px dashed #A89F91 !important;
+      margin: 0.55rem 0 !important;
+      width: 100% !important;
+      height: 0 !important;
+    }
+
+    /* Footer */
+    .receipt-footer {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-end !important;
+      margin-top: 1.6rem !important;
+      padding-top: 0.8rem !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    .receipt-qr-block {
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .receipt-qr-svg {
+      width: 86px !important;
+      height: 86px !important;
+      background: #FFF !important;
+      padding: 3px !important;
+      border: 1px solid #D6D3D1 !important;
+      border-radius: 2px !important;
+      display: block !important;
+      margin: 0 auto !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .receipt-qr-caption {
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      color: #44403C !important;
+      margin-top: 0.3rem !important;
+      letter-spacing: 0.2px !important;
+      text-align: center !important;
+    }
+
+    .receipt-sign-block {
+      text-align: center !important;
+      min-width: 190px !important;
+    }
+
+    .receipt-sign-line {
+      height: 2px !important;
+      background: #292524 !important;
+      width: 100% !important;
+      margin-bottom: 0.4rem !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .receipt-sign-hindi {
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      color: #1C1917 !important;
+      font-family: 'Noto Sans Devanagari', 'Nirmala UI', sans-serif !important;
+    }
+
+    .receipt-sign-eng {
+      font-size: 0.80rem !important;
+      font-weight: 700 !important;
+      color: #1C1917 !important;
+    }
+
+    @media print {
+      body {
+        background: #F4EFE6 !important;
+        padding: 0 !important;
+      }
+      .receipt-print-frame-body {
+        padding: 0 !important;
+      }
+      .temple-receipt-container {
+        box-shadow: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border: 2px solid #5E3D23 !important;
+        margin: 0 auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="receipt-print-frame-body">
+  ${receiptInnerHtml}
+</body>
+</html>`;
 }
 
 // 2. High-Quality Vector Print / Save as PDF (Flawless Native HarfBuzz Hindi Text)
 function printDonationReceipt() {
   const receiptEl = document.getElementById('temple-donation-receipt');
   if (!receiptEl) return;
+
+  const htmlContent = getStandaloneReceiptHtml(receiptEl.outerHTML);
 
   const printWindow = window.open('', '_blank', 'width=850,height=950');
   if (!printWindow) {
@@ -656,21 +920,44 @@ function printDonationReceipt() {
     }
     const doc = iframe.contentWindow.document;
     doc.open();
-    doc.write(getStandaloneReceiptHtml(receiptEl.outerHTML));
+    doc.write(htmlContent);
     doc.close();
-    setTimeout(() => {
-      iframe.contentWindow.focus();
-      iframe.contentWindow.print();
-    }, 400);
+
+    const doPrint = () => {
+      try {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      } catch (e) {
+        console.error('Iframe print error:', e);
+      }
+    };
+
+    if (iframe.contentWindow.document.fonts && iframe.contentWindow.document.fonts.ready) {
+      iframe.contentWindow.document.fonts.ready.then(() => setTimeout(doPrint, 150));
+    } else {
+      setTimeout(doPrint, 400);
+    }
     return;
   }
 
-  printWindow.document.write(getStandaloneReceiptHtml(receiptEl.outerHTML));
+  printWindow.document.open();
+  printWindow.document.write(htmlContent);
   printWindow.document.close();
-  printWindow.focus();
-  setTimeout(() => {
-    printWindow.print();
-  }, 400);
+
+  const doPrintWindow = () => {
+    try {
+      printWindow.focus();
+      printWindow.print();
+    } catch (e) {
+      console.error('Print window error:', e);
+    }
+  };
+
+  if (printWindow.document.fonts && printWindow.document.fonts.ready) {
+    printWindow.document.fonts.ready.then(() => setTimeout(doPrintWindow, 150));
+  } else {
+    setTimeout(doPrintWindow, 400);
+  }
 }
 
 // Global hook: Download / View Receipt for latest order or specified order ID
