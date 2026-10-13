@@ -411,8 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sendAutomatedWhatsAppReceipt(newOrder);
       }
 
-      // Dynamic backend host: when testing on VS Code Live Server (port 5500/5501), forward API calls to localhost:3000
-      const apiBase = (window.location.port === '5500' || window.location.port === '5501') ? 'http://localhost:3000' : '';
+      // Dynamic backend host: when testing on VS Code Live Server or local static server, forward API calls to localhost:3000
+      const apiBase = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && window.location.port !== '3000' ? 'http://localhost:3000' : '';
 
       // Call Cashfree backend to initiate payment session
       fetch(`${apiBase}/api/create-order`, {
@@ -537,7 +537,7 @@ async function sendAutomatedWhatsAppReceipt(order) {
       descEl.innerHTML = `Delivering PDF directly to WhatsApp (+${cleanPhone}) via Cloud API... 🚀`;
     }
 
-    const apiBase = (window.location.port === '5500' || window.location.port === '5501') ? 'http://localhost:3000' : '';
+    const apiBase = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && window.location.port !== '3000' ? 'http://localhost:3000' : '';
     const res = await fetch(`${apiBase}/api/send-whatsapp-receipt`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
