@@ -289,66 +289,66 @@
         </ul>
       </nav>
 
-      <!-- Language Selector -->
-      <div class="shiplystic-lang-selector" id="shiplysticLangSelector">
-        <button type="button" class="lang-selector-btn" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language">
-          <svg class="lang-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Language Selector (Fixed & Consistent across all translations) -->
+      <div class="shiplystic-lang-selector notranslate" id="shiplysticLangSelector" translate="no">
+        <button type="button" class="lang-selector-btn notranslate" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language" translate="no">
+          <svg class="lang-globe-icon notranslate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" translate="no">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
-          <span class="current-lang-text" id="currentLangLabel">English</span>
-          <svg class="lang-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <span class="current-lang-text notranslate" id="currentLangLabel" translate="no">English</span>
+          <svg class="lang-chevron-icon notranslate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" translate="no">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
-        <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
-          <div class="lang-dropdown-header">🌐 Select Language / भाषा चुनें</div>
-          <div class="lang-dropdown-grid">
-            <button type="button" class="lang-option active" data-lang="en" role="menuitem">
-              <span class="lang-option-native">English</span>
-              <span class="lang-option-en">Default</span>
-              <span class="lang-option-check">✓</span>
+        <div class="lang-dropdown-menu notranslate" id="langDropdownMenu" role="menu" translate="no">
+          <div class="lang-dropdown-header notranslate" translate="no">🌐 Select Language / भाषा चुनें</div>
+          <div class="lang-dropdown-grid notranslate" translate="no">
+            <button type="button" class="lang-option notranslate active" data-lang="en" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">English</span>
+              <span class="lang-option-en notranslate" translate="no">Default</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="hi" role="menuitem">
-              <span class="lang-option-native">हिन्दी</span>
-              <span class="lang-option-en">Hindi</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="hi" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">हिन्दी</span>
+              <span class="lang-option-en notranslate" translate="no">Hindi</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="mr" role="menuitem">
-              <span class="lang-option-native">मराठी</span>
-              <span class="lang-option-en">Marathi</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="mr" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">मराठी</span>
+              <span class="lang-option-en notranslate" translate="no">Marathi</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="ml" role="menuitem">
-              <span class="lang-option-native">മലയാളം</span>
-              <span class="lang-option-en">Malayalam</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="ml" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">മലയാളം</span>
+              <span class="lang-option-en notranslate" translate="no">Malayalam</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="pa" role="menuitem">
-              <span class="lang-option-native">ਪੰਜਾਬੀ</span>
-              <span class="lang-option-en">Punjabi</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="pa" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">ਪੰਜਾਬੀ</span>
+              <span class="lang-option-en notranslate" translate="no">Punjabi</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="or" role="menuitem">
-              <span class="lang-option-native">ଓଡ଼ିଆ</span>
-              <span class="lang-option-en">Odia</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="or" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">ଓଡ଼ିਆ</span>
+              <span class="lang-option-en notranslate" translate="no">Odia</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="as" role="menuitem">
-              <span class="lang-option-native">অসমীয়া</span>
-              <span class="lang-option-en">Assamese</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="as" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">অসমীয়া</span>
+              <span class="lang-option-en notranslate" translate="no">Assamese</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="ur" role="menuitem">
-              <span class="lang-option-native">اردو</span>
-              <span class="lang-option-en">Urdu</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="ur" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">اردو</span>
+              <span class="lang-option-en notranslate" translate="no">Urdu</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
-            <button type="button" class="lang-option" data-lang="ne" role="menuitem">
-              <span class="lang-option-native">नेपाली</span>
-              <span class="lang-option-en">Nepali</span>
-              <span class="lang-option-check">✓</span>
+            <button type="button" class="lang-option notranslate" data-lang="ne" role="menuitem" translate="no">
+              <span class="lang-option-native notranslate" translate="no">नेपाली</span>
+              <span class="lang-option-en notranslate" translate="no">Nepali</span>
+              <span class="lang-option-check notranslate" translate="no">✓</span>
             </button>
           </div>
         </div>

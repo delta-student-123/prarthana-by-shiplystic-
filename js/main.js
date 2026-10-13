@@ -1635,32 +1635,33 @@ function initGoogleTranslateLanguageSelector() {
   let selectorWrapper = document.getElementById('shiplysticLangSelector');
   if (!selectorWrapper && navContainer) {
     selectorWrapper = document.createElement('div');
-    selectorWrapper.className = 'shiplystic-lang-selector';
+    selectorWrapper.className = 'shiplystic-lang-selector notranslate';
     selectorWrapper.id = 'shiplysticLangSelector';
+    selectorWrapper.setAttribute('translate', 'no');
 
     const optionsHtml = PRARTHANA_LANGUAGES.map(l => `
-      <button type="button" class="lang-option ${l.code === initialLang ? 'active' : ''}" data-lang="${l.code}" role="menuitem">
-        <span class="lang-option-native">${l.native}</span>
-        <span class="lang-option-en">${l.en}</span>
-        <span class="lang-option-check">✓</span>
+      <button type="button" class="lang-option notranslate ${l.code === initialLang ? 'active' : ''}" data-lang="${l.code}" role="menuitem" translate="no">
+        <span class="lang-option-native notranslate" translate="no">${l.native}</span>
+        <span class="lang-option-en notranslate" translate="no">${l.en}</span>
+        <span class="lang-option-check notranslate" translate="no">✓</span>
       </button>
     `).join('');
 
     selectorWrapper.innerHTML = `
-      <button type="button" class="lang-selector-btn" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language">
-        <svg class="lang-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button type="button" class="lang-selector-btn notranslate" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language" translate="no">
+        <svg class="lang-globe-icon notranslate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" translate="no">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="2" y1="12" x2="22" y2="12"></line>
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
         </svg>
-        <span class="current-lang-text" id="currentLangLabel">${initialLangObj.native}</span>
-        <svg class="lang-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <span class="current-lang-text notranslate" id="currentLangLabel" translate="no">${initialLangObj.native}</span>
+        <svg class="lang-chevron-icon notranslate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" translate="no">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
-      <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
-        <div class="lang-dropdown-header">🌐 Select Language / भाषा चुनें</div>
-        <div class="lang-dropdown-grid">
+      <div class="lang-dropdown-menu notranslate" id="langDropdownMenu" role="menu" translate="no">
+        <div class="lang-dropdown-header notranslate" translate="no">🌐 Select Language / भाषा चुनें</div>
+        <div class="lang-dropdown-grid notranslate" translate="no">
           ${optionsHtml}
         </div>
       </div>
@@ -1679,6 +1680,82 @@ function initGoogleTranslateLanguageSelector() {
   }
 
   if (!selectorWrapper) return;
+
+  // Protect Language Selector from ever being modified or translated by Google Translate
+  function enforceUntranslated() {
+    if (!selectorWrapper) return;
+    selectorWrapper.classList.add('notranslate');
+    selectorWrapper.setAttribute('translate', 'no');
+
+    // Remove any Google Translate injected <font> tags inside the language selector
+    const fontTags = selectorWrapper.querySelectorAll('font');
+    if (fontTags.length > 0) {
+      fontTags.forEach(font => {
+        const parent = font.parentNode;
+        if (!parent) return;
+        while (font.firstChild) {
+          parent.insertBefore(font.firstChild, font);
+        }
+        parent.removeChild(font);
+      });
+    }
+
+    // Ensure all internal elements maintain notranslate & translate="no"
+    selectorWrapper.querySelectorAll('*').forEach(el => {
+      el.classList.add('notranslate');
+      el.setAttribute('translate', 'no');
+    });
+
+    // Ensure header title is consistent
+    const headerEl = selectorWrapper.querySelector('.lang-dropdown-header');
+    if (headerEl && headerEl.textContent !== '🌐 Select Language / भाषा चुनें') {
+      headerEl.textContent = '🌐 Select Language / भाषा चुनें';
+    }
+
+    // Ensure all language options remain identical in their respective native scripts
+    selectorWrapper.querySelectorAll('.lang-option').forEach(opt => {
+      const langCode = opt.getAttribute('data-lang');
+      const langObj = PRARTHANA_LANGUAGES.find(l => l.code === langCode);
+      if (!langObj) return;
+
+      const nativeSpan = opt.querySelector('.lang-option-native');
+      if (nativeSpan && nativeSpan.textContent !== langObj.native) {
+        nativeSpan.textContent = langObj.native;
+      }
+      const enSpan = opt.querySelector('.lang-option-en');
+      const expectedEn = (langObj.code === 'en') ? 'Default' : langObj.en;
+      if (enSpan && enSpan.textContent !== expectedEn) {
+        enSpan.textContent = expectedEn;
+      }
+    });
+
+    // Ensure current language button label stays consistent with active language
+    const currentCode = getCurrentLang();
+    const currentObj = PRARTHANA_LANGUAGES.find(l => l.code === currentCode) || PRARTHANA_LANGUAGES[0];
+    const labelEl = selectorWrapper.querySelector('#currentLangLabel');
+    if (labelEl && labelEl.textContent !== currentObj.native) {
+      labelEl.textContent = currentObj.native;
+    }
+  }
+
+  // Run protection immediately
+  enforceUntranslated();
+
+  // Attach MutationObserver to dynamically counteract any DOM changes from Google Translate
+  try {
+    let isEnforcing = false;
+    const observer = new MutationObserver(() => {
+      if (isEnforcing) return;
+      isEnforcing = true;
+      enforceUntranslated();
+      setTimeout(() => { isEnforcing = false; }, 50);
+    });
+    observer.observe(selectorWrapper, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  } catch (e) {}
 
   // 6. Sync UI with active language
   const btn = selectorWrapper.querySelector('#langSelectorBtn');
