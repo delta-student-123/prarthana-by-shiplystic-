@@ -3,7 +3,7 @@
    Header: Crisp White Background with Prominent Brand Logo
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400;1,700&display=swap');
 
 :root {
   /* Font Family Variables - Standardized with Mukta for clean Marathi/Hindi Devanagari */
@@ -6906,6 +6906,312 @@ html.translated-rtl {
     right: -45px;
     width: 235px;
   }
+}
+
+/* ==========================================================================
+   MALAYALAM LANGUAGE SPECIFIC RULES (Clean Typography & Compact Layout)
+   Applies only when Malayalam is active: html.lang-ml, html[lang*="ml"], :lang(ml)
+   ========================================================================== */
+
+/* 1. Clean Malayalam Typography using Noto Sans Malayalam */
+html[lang*="ml"],
+body[lang*="ml"],
+html.lang-ml,
+body.lang-ml,
+[data-current-lang="ml"],
+:lang(ml),
+html[lang*="ml"] *,
+body[lang*="ml"] *,
+html.lang-ml *,
+body.lang-ml *,
+[data-current-lang="ml"] *,
+:lang(ml) * {
+  font-family: 'Noto Sans Malayalam', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Header & Navigation Fixes — Prevent Overflow and Keep Buttons Visible */
+html[lang*="ml"] .header-nav,
+body.lang-ml .header-nav,
+[data-current-lang="ml"] .header-nav {
+  overflow-x: clip;
+}
+
+html[lang*="ml"] .nav-container,
+body.lang-ml .nav-container,
+[data-current-lang="ml"] .nav-container {
+  padding: 0.25rem 0.65rem !important;
+  gap: 0.5rem !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  justify-content: space-between !important;
+}
+
+html[lang*="ml"] .brand-logo img,
+body.lang-ml .brand-logo img,
+[data-current-lang="ml"] .brand-logo img {
+  height: 40px !important;
+  width: auto !important;
+}
+
+html[lang*="ml"] .nav-container nav,
+body.lang-ml .nav-container nav,
+[data-current-lang="ml"] .nav-container nav {
+  margin-left: auto !important;
+  flex-shrink: 1 !important;
+  min-width: 0 !important;
+}
+
+html[lang*="ml"] .nav-links,
+body.lang-ml .nav-links,
+[data-current-lang="ml"] .nav-links {
+  gap: 0.35rem !important;
+}
+
+html[lang*="ml"] .nav-link,
+body.lang-ml .nav-link,
+[data-current-lang="ml"] .nav-link {
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.25rem !important;
+  letter-spacing: -0.2px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+html[lang*="ml"] .nav-dropdown-icon,
+body.lang-ml .nav-dropdown-icon,
+[data-current-lang="ml"] .nav-dropdown-icon {
+  margin-left: 2px !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html[lang*="ml"] .shiplystic-lang-selector,
+body.lang-ml .shiplystic-lang-selector,
+[data-current-lang="ml"] .shiplystic-lang-selector {
+  flex-shrink: 0 !important;
+  margin: 0 0.15rem !important;
+}
+
+html[lang*="ml"] .lang-selector-btn,
+body.lang-ml .lang-selector-btn,
+[data-current-lang="ml"] .lang-selector-btn {
+  padding: 0.3rem 0.55rem !important;
+  font-size: 0.75rem !important;
+  gap: 0.28rem !important;
+}
+
+html[lang*="ml"] #header-cta-btn,
+body.lang-ml #header-cta-btn,
+[data-current-lang="ml"] #header-cta-btn {
+  font-size: 0.74rem !important;
+  padding: 0.4rem 0.75rem !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  letter-spacing: -0.2px !important;
+  border-radius: 6px !important;
+}
+
+/* 3. Responsive Screen Adaptations (769px to 1250px) */
+@media (min-width: 769px) and (max-width: 1250px) {
+  html[lang*="ml"] .nav-container,
+  body.lang-ml .nav-container,
+  [data-current-lang="ml"] .nav-container {
+    padding: 0.2rem 0.4rem !important;
+    gap: 0.3rem !important;
+  }
+
+  html[lang*="ml"] .brand-logo img,
+  body.lang-ml .brand-logo img,
+  [data-current-lang="ml"] .brand-logo img {
+    height: 35px !important;
+  }
+
+  html[lang*="ml"] .nav-links,
+  body.lang-ml .nav-links,
+  [data-current-lang="ml"] .nav-links {
+    gap: 0.25rem !important;
+  }
+
+  html[lang*="ml"] .nav-link,
+  body.lang-ml .nav-link,
+  [data-current-lang="ml"] .nav-link {
+    font-size: 0.68rem !important;
+    padding: 0.2rem 0.15rem !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  html[lang*="ml"] .lang-selector-btn,
+  body.lang-ml .lang-selector-btn,
+  [data-current-lang="ml"] .lang-selector-btn {
+    padding: 0.25rem 0.45rem !important;
+    font-size: 0.70rem !important;
+  }
+
+  html[lang*="ml"] #header-cta-btn,
+  body.lang-ml #header-cta-btn,
+  [data-current-lang="ml"] #header-cta-btn {
+    font-size: 0.69rem !important;
+    padding: 0.32rem 0.55rem !important;
+  }
+}
+
+/* 4. Switch to drawer on compact screens under 1040px in Malayalam so no buttons hide */
+@media (max-width: 1040px) {
+  html[lang*="ml"] .header-nav nav,
+  body.lang-ml .header-nav nav,
+  [data-current-lang="ml"] .header-nav nav {
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  html[lang*="ml"] .header-nav nav.mobile-open,
+  body.lang-ml .header-nav nav.mobile-open,
+  [data-current-lang="ml"] .header-nav nav.mobile-open {
+    display: block !important;
+  }
+
+  html[lang*="ml"] .header-nav nav.mobile-open .nav-links,
+  body.lang-ml .header-nav nav.mobile-open .nav-links,
+  [data-current-lang="ml"] .header-nav nav.mobile-open .nav-links {
+    display: flex !important;
+    flex-direction: column !important;
+    background: #FFFFFF !important;
+    width: 280px !important;
+    height: 100% !important;
+    padding: 1.5rem 1rem !important;
+    gap: 0.8rem !important;
+    overflow-y: auto !important;
+  }
+
+  html[lang*="ml"] .header-nav nav.mobile-open .nav-link,
+  body.lang-ml .header-nav nav.mobile-open .nav-link,
+  [data-current-lang="ml"] .header-nav nav.mobile-open .nav-link {
+    font-size: 0.86rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+
+  html[lang*="ml"] .mobile-toggle,
+  body.lang-ml .mobile-toggle,
+  [data-current-lang="ml"] .mobile-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  html[lang*="ml"] #header-cta-btn,
+  body.lang-ml #header-cta-btn,
+  [data-current-lang="ml"] #header-cta-btn {
+    display: none !important;
+  }
+
+  html[lang*="ml"] .mobile-nav-book-btn,
+  body.lang-ml .mobile-nav-book-btn,
+  [data-current-lang="ml"] .mobile-nav-book-btn {
+    display: block !important;
+  }
+}
+
+/* 5. Temple Cards & Action Buttons — Prevent Overflow */
+html[lang*="ml"] .temple-card-body h3,
+body.lang-ml .temple-card-body h3,
+[data-current-lang="ml"] .temple-card-body h3 {
+  font-size: 0.94rem !important;
+  line-height: 1.35 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+html[lang*="ml"] .temple-card-body div,
+body.lang-ml .temple-card-body div,
+[data-current-lang="ml"] .temple-card-body div {
+  font-size: 0.74rem !important;
+}
+
+html[lang*="ml"] .temple-card-body strong,
+body.lang-ml .temple-card-body strong,
+[data-current-lang="ml"] .temple-card-body strong {
+  font-size: 0.95rem !important;
+}
+
+html[lang*="ml"] .temple-card-body .btn,
+body.lang-ml .temple-card-body .btn,
+[data-current-lang="ml"] .temple-card-body .btn {
+  font-size: 0.67rem !important;
+  padding: 0.45rem 0.12rem !important;
+  letter-spacing: -0.25px !important;
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 6. General Content Typography Reductions for Malayalam */
+html[lang*="ml"] h1,
+body.lang-ml h1,
+[data-current-lang="ml"] h1 {
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem) !important;
+  line-height: 1.3 !important;
+}
+
+html[lang*="ml"] h2,
+body.lang-ml h2,
+[data-current-lang="ml"] h2 {
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem) !important;
+  line-height: 1.35 !important;
+}
+
+html[lang*="ml"] h3,
+body.lang-ml h3,
+[data-current-lang="ml"] h3 {
+  font-size: 1.05rem !important;
+  line-height: 1.35 !important;
+}
+
+html[lang*="ml"] .hero-banner-title,
+body.lang-ml .hero-banner-title,
+[data-current-lang="ml"] .hero-banner-title {
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem) !important;
+  line-height: 1.25 !important;
+}
+
+html[lang*="ml"] .section-heading,
+body.lang-ml .section-heading,
+html[lang*="ml"] .section-title,
+body.lang-ml .section-title,
+[data-current-lang="ml"] .section-heading,
+[data-current-lang="ml"] .section-title {
+  font-size: clamp(1.35rem, 2.7vw, 1.85rem) !important;
+  line-height: 1.35 !important;
+}
+
+html[lang*="ml"] .step-card-title,
+body.lang-ml .step-card-title,
+html[lang*="ml"] .why-card-title,
+body.lang-ml .why-card-title,
+html[lang*="ml"] .occasion-card-title,
+body.lang-ml .occasion-card-title,
+[data-current-lang="ml"] .step-card-title,
+[data-current-lang="ml"] .why-card-title,
+[data-current-lang="ml"] .occasion-card-title {
+  font-size: 0.95rem !important;
+  line-height: 1.35 !important;
+}
+
+html[lang*="ml"] p,
+body.lang-ml p,
+[data-current-lang="ml"] p {
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
 }
 
 

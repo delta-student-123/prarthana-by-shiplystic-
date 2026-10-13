@@ -1628,7 +1628,29 @@ function initGoogleTranslateLanguageSelector() {
     return 'en';
   }
 
+  function syncLanguageState(lang) {
+    const active = (lang || getCurrentLang() || 'en').toLowerCase();
+    if (document.documentElement) {
+      document.documentElement.setAttribute('data-current-lang', active);
+    }
+    if (document.body) {
+      document.body.setAttribute('data-current-lang', active);
+    }
+
+    PRARTHANA_LANGUAGES.forEach(l => {
+      const isMatch = l.code === active;
+      if (document.documentElement) document.documentElement.classList.toggle(`lang-${l.code}`, isMatch);
+      if (document.body) document.body.classList.toggle(`lang-${l.code}`, isMatch);
+    });
+
+    if (active === 'ml' || (document.documentElement && document.documentElement.lang && document.documentElement.lang.startsWith('ml'))) {
+      if (document.documentElement) document.documentElement.classList.add('lang-ml');
+      if (document.body) document.body.classList.add('lang-ml');
+    }
+  }
+
   const initialLang = getCurrentLang();
+  syncLanguageState(initialLang);
   const initialLangObj = PRARTHANA_LANGUAGES.find(l => l.code === initialLang) || PRARTHANA_LANGUAGES[0];
 
   // 5. Ensure Custom Header Language Selector Widget exists (either static HTML or dynamic injection)
@@ -1748,6 +1770,7 @@ function initGoogleTranslateLanguageSelector() {
       if (isEnforcing) return;
       isEnforcing = true;
       enforceUntranslated();
+      syncLanguageState();
       setTimeout(() => { isEnforcing = false; }, 50);
     });
     observer.observe(selectorWrapper, {
@@ -1800,6 +1823,7 @@ function initGoogleTranslateLanguageSelector() {
   function applyLanguage(targetCode) {
     const langObj = PRARTHANA_LANGUAGES.find(l => l.code === targetCode) || PRARTHANA_LANGUAGES[0];
     const host = window.location.hostname;
+    syncLanguageState(targetCode);
 
     // A. Update cookies for persistent cross-page translation across domains
     if (targetCode === 'en' || !targetCode) {
