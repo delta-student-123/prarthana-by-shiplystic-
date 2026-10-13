@@ -11,6 +11,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Ujjain, Madhya Pradesh, India',
     watermark: 'SMTMC, UJJAIN',
     sealText: 'Shri Mahakaleshwar Temple Management Committee, Ujjain',
+    sealTop: 'MAHAKALESHWAR TEMPLE COMMITTEE',
+    sealBottom: 'UJJAIN • DEVSTHAN',
     prefix: 'SMTMC'
   },
   'kashi-vishwanath': {
@@ -19,6 +21,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Varanasi, Uttar Pradesh, India',
     watermark: 'SKVTT, VARANASI',
     sealText: 'Shri Kashi Vishwanath Temple Trust, Varanasi',
+    sealTop: 'KASHI VISHWANATH TEMPLE TRUST',
+    sealBottom: 'VARANASI • DHAM',
     prefix: 'KASHI'
   },
   'somnath': {
@@ -27,6 +31,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Prabhas Patan, Gujarat, India',
     watermark: 'SST, SOMNATH',
     sealText: 'Shree Somnath Trust, Prabhas Patan',
+    sealTop: 'SHREE SOMNATH TRUST',
+    sealBottom: 'PRABHAS PATAN • GUJARAT',
     prefix: 'SOM'
   },
   'kedarnath': {
@@ -35,6 +41,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Rudraprayag, Uttarakhand, India',
     watermark: 'BKTC, KEDARNATH',
     sealText: 'Shri Badrinath-Kedarnath Temple Committee',
+    sealTop: 'BADRINATH KEDARNATH COMMITTEE',
+    sealBottom: 'KEDARNATH • DHAM',
     prefix: 'KEDAR'
   },
   'omkareshwar': {
@@ -43,6 +51,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Mandhata, Khandwa, Madhya Pradesh, India',
     watermark: 'SOJTT, OMKARESHWAR',
     sealText: 'Shri Omkareshwar Jyotirlinga Temple Trust',
+    sealTop: 'OMKARESHWAR JYOTIRLINGA TRUST',
+    sealBottom: 'MANDHATA • M.P.',
     prefix: 'OMKAR'
   },
   'vaishno-devi': {
@@ -51,6 +61,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Katra, Jammu & Kashmir, India',
     watermark: 'SMVDSB, KATRA',
     sealText: 'Shri Mata Vaishno Devi Shrine Board, Katra',
+    sealTop: 'MATA VAISHNO DEVI SHRINE BOARD',
+    sealBottom: 'KATRA • J&K',
     prefix: 'SMVDSB'
   },
   'mahalaxmi-kolhapur': {
@@ -59,6 +71,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Kolhapur, Maharashtra, India',
     watermark: 'KNMTT, KOLHAPUR',
     sealText: 'Karveer Nivasini Shri Mahalaxmi Temple Trust, Kolhapur',
+    sealTop: 'MAHALAXMI TEMPLE TRUST',
+    sealBottom: 'KOLHAPUR • DEVSTHAN',
     prefix: 'MAHALAXMI'
   },
   'siddhivinayak-mumbai': {
@@ -67,6 +81,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Prabhadevi, Mumbai, Maharashtra, India',
     watermark: 'SSGTT, MUMBAI',
     sealText: 'Shree Siddhivinayak Ganapati Temple Trust, Mumbai',
+    sealTop: 'SIDDHIVINAYAK GANAPATI TRUST',
+    sealBottom: 'MUMBAI • PRABHADEVI',
     prefix: 'SIDDHI'
   },
   'siddhivinayak': {
@@ -75,6 +91,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Prabhadevi, Mumbai, Maharashtra, India',
     watermark: 'SSGTT, MUMBAI',
     sealText: 'Shree Siddhivinayak Ganapati Temple Trust, Mumbai',
+    sealTop: 'SIDDHIVINAYAK GANAPATI TRUST',
+    sealBottom: 'MUMBAI • PRABHADEVI',
     prefix: 'SIDDHI'
   },
   'sai-baba-shirdi': {
@@ -83,6 +101,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Shirdi, Ahmednagar, Maharashtra, India',
     watermark: 'SSST, SHIRDI',
     sealText: 'Shri Saibaba Sansthan Trust, Shirdi',
+    sealTop: 'SHRI SAIBABA SANSTHAN TRUST',
+    sealBottom: 'SHIRDI • MAHARASHTRA',
     prefix: 'SHIRDI'
   },
   'tirupati-balaji': {
@@ -91,6 +111,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Tirumala, Andhra Pradesh, India',
     watermark: 'TTD, TIRUMALA',
     sealText: 'Tirumala Tirupati Devasthanams, Tirumala',
+    sealTop: 'TIRUMALA TIRUPATI DEVASTHANAMS',
+    sealBottom: 'TIRUMALA • A.P.',
     prefix: 'TTD'
   },
   'tirupati': {
@@ -99,6 +121,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Tirumala, Andhra Pradesh, India',
     watermark: 'TTD, TIRUMALA',
     sealText: 'Tirumala Tirupati Devasthanams, Tirumala',
+    sealTop: 'TIRUMALA TIRUPATI DEVASTHANAMS',
+    sealBottom: 'TIRUMALA • A.P.',
     prefix: 'TTD'
   },
   'jagannath-puri': {
@@ -107,6 +131,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Puri, Odisha, India',
     watermark: 'SJPMC, PURI',
     sealText: 'Shri Jagannath Temple Managing Committee, Puri',
+    sealTop: 'JAGANNATH TEMPLE COMMITTEE',
+    sealBottom: 'PURI • ODISHA',
     prefix: 'JAGANNATH'
   },
   'jagannath': {
@@ -115,6 +141,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Puri, Odisha, India',
     watermark: 'SJPMC, PURI',
     sealText: 'Shri Jagannath Temple Managing Committee, Puri',
+    sealTop: 'JAGANNATH TEMPLE COMMITTEE',
+    sealBottom: 'PURI • ODISHA',
     prefix: 'JAGANNATH'
   },
   'dwarkadhish': {
@@ -123,6 +151,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Dwarka, Gujarat, India',
     watermark: 'SDTDC, DWARKA',
     sealText: 'Shri Dwarkadhish Temple Devasthan Committee, Dwarka',
+    sealTop: 'DWARKADHISH DEVASTHAN COMMITTEE',
+    sealBottom: 'DWARKA • GUJARAT',
     prefix: 'DWARKA'
   },
   'badrinath': {
@@ -131,6 +161,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Chamoli, Uttarakhand, India',
     watermark: 'BKTC, BADRINATH',
     sealText: 'Shri Badrinath-Kedarnath Temple Committee',
+    sealTop: 'BADRINATH KEDARNATH COMMITTEE',
+    sealBottom: 'BADRINATH • DHAM',
     prefix: 'BADRI'
   },
   'rameswaram': {
@@ -139,6 +171,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Rameswaram, Tamil Nadu, India',
     watermark: 'ARTD, RAMESWARAM',
     sealText: 'Arulmigu Ramanathaswamy Temple Devasthanam',
+    sealTop: 'RAMANATHASWAMY DEVASTHANAM',
+    sealBottom: 'RAMESWARAM • T.N.',
     prefix: 'RAMESWARAM'
   },
   'ayodhya-ram-mandir': {
@@ -147,6 +181,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Ayodhya, Uttar Pradesh, India',
     watermark: 'SRJTK, AYODHYA',
     sealText: 'Shri Ram Janmabhoomi Teerth Kshetra, Ayodhya',
+    sealTop: 'RAM JANMBHOOMI TEERTH KSHETRA',
+    sealBottom: 'AYODHYA • U.P.',
     prefix: 'RAM'
   },
   'ram-mandir': {
@@ -155,6 +191,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Ayodhya, Uttar Pradesh, India',
     watermark: 'SRJTK, AYODHYA',
     sealText: 'Shri Ram Janmabhoomi Teerth Kshetra, Ayodhya',
+    sealTop: 'RAM JANMBHOOMI TEERTH KSHETRA',
+    sealBottom: 'AYODHYA • U.P.',
     prefix: 'RAM'
   },
   'mathura-vrindavan': {
@@ -163,6 +201,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Mathura & Vrindavan, Uttar Pradesh, India',
     watermark: 'SKJSS, MATHURA',
     sealText: 'Shri Krishna Janmasthan Seva Sansthan, Mathura',
+    sealTop: 'KRISHNA JANMASTHAN SANSTHAN',
+    sealBottom: 'MATHURA • VRINDAVAN',
     prefix: 'MATHURA'
   },
   'dagdusheth-ganpati': {
@@ -171,6 +211,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Pune, Maharashtra, India',
     watermark: 'SDHGT, PUNE',
     sealText: 'Shreemant Dagdusheth Halwai Ganpati Trust, Pune',
+    sealTop: 'DAGDUSHETH GANPATI TRUST',
+    sealBottom: 'PUNE • MAHARASHTRA',
     prefix: 'DAGDU'
   },
   'gajanan-maharaj-shegaon': {
@@ -179,6 +221,8 @@ const TEMPLE_RECEIPT_CONFIG = {
     location: 'Shegaon, Buldhana District, Maharashtra, India',
     watermark: 'SGMS, SHEGAON',
     sealText: 'Shri Gajanan Maharaj Sansthan, Shegaon',
+    sealTop: 'GAJANAN MAHARAJ SANSTHAN',
+    sealBottom: 'SHEGAON • BULDHANA',
     prefix: 'SHEGAON'
   }
 };
@@ -289,6 +333,74 @@ function generateReceiptQrSvg() {
   `;
 }
 
+// Generate Majestic, High-Definition Vector Temple Seal (Crystal Clear, Upright Typography)
+function generateTempleSealSvg(config) {
+  const sealTop = (config.sealTop || config.englishTrust || 'TEMPLE TRUST').slice(0, 32);
+  const sealBottom = config.sealBottom || (config.location ? config.location.split(',')[0].trim().toUpperCase() + ' • DEVSTHAN' : 'OFFICIAL DEVSTHAN');
+
+  // Dynamically calculate font-size and spacing based on text length so it fits the top arc smoothly
+  const topLen = sealTop.length;
+  const fontSize = topLen > 30 ? 7.2 : (topLen > 24 ? 8.0 : 8.8);
+  const letterSpacing = topLen > 28 ? '0.4' : (topLen > 20 ? '0.8' : '1.2');
+
+  return `
+  <svg class="receipt-seal-svg" viewBox="0 0 150 150" width="98" height="98" style="display:block; margin:0 auto; filter:drop-shadow(0 2px 5px rgba(0,0,0,0.18));">
+    <defs>
+      <!-- Top Arc Path: Sweeps smoothly clockwise from 9 o'clock to 3 o'clock across the top -->
+      <path id="seal-arc-top-path" d="M 19,75 A 56,56 0 1,1 131,75" fill="none" />
+    </defs>
+
+    <!-- Outer Beaded Sacred Rim -->
+    <circle cx="75" cy="75" r="72" fill="#9A3412" stroke="#78350F" stroke-width="2" />
+    <circle cx="75" cy="75" r="68" fill="#EA580C" stroke="#FEF08A" stroke-width="1.5" stroke-dasharray="3,2" />
+
+    <!-- Top Curved Text (100% Upright, Natural Left-to-Right Readability) -->
+    <text fill="#FFFFFF" font-size="${fontSize}" font-family="'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" letter-spacing="${letterSpacing}">
+      <textPath href="#seal-arc-top-path" startOffset="50%" text-anchor="middle">
+        ${sealTop}
+      </textPath>
+    </text>
+
+    <!-- Side Decorative Stars -->
+    <text x="14" y="78" fill="#FDE047" font-size="10" font-weight="900" text-anchor="middle">★</text>
+    <text x="136" y="78" fill="#FDE047" font-size="10" font-weight="900" text-anchor="middle">★</text>
+
+    <!-- Inner Sacred Sanctum Medallion -->
+    <circle cx="75" cy="75" r="44" fill="#7C2D12" stroke="#FDE047" stroke-width="2" />
+    <circle cx="75" cy="75" r="41" fill="#431407" />
+
+    <!-- Sacred Temple Shikhara & Dhwaja (Flag) Emblem -->
+    <g transform="translate(75,62) scale(0.78)">
+      <!-- Temple Spire & Dhwaja (Flag) -->
+      <path d="M 0,-34 L -3,-18 L 3,-18 Z" fill="#FDE047" />
+      <path d="M 0,-33 L 13,-27 L 0,-21 Z" fill="#F97316" stroke="#FEF08A" stroke-width="0.5" />
+      <circle cx="0" cy="-35" r="3.2" fill="#FBBF24" stroke="#FFF" stroke-width="0.8" />
+      
+      <!-- Shikhara Body -->
+      <polygon points="0,-18 -18,14 18,14" fill="#FFFFFF" />
+      <polygon points="0,-15 -14,12 14,12" fill="#FDE047" opacity="0.95" />
+      <rect x="-20" y="14" width="40" height="12" fill="#FFFFFF" rx="2" />
+      <rect x="-17" y="16" width="34" height="8" fill="#EA580C" rx="1" />
+      
+      <!-- Sacred Sanctum Kalash -->
+      <ellipse cx="0" cy="2" rx="6" ry="7" fill="#F59E0B" />
+      <circle cx="0" cy="-6" r="3.5" fill="#FDE047" />
+    </g>
+
+    <!-- Lower Plaque / Ribbon for Location & Trust -->
+    <rect x="25" y="100" width="100" height="19" fill="#9A3412" stroke="#FDE047" stroke-width="1.2" rx="3.5" />
+    <text x="75" y="113" fill="#FFFFFF" font-size="8.2" font-family="'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" letter-spacing="0.8" text-anchor="middle">
+      ${sealBottom}
+    </text>
+
+    <!-- Bottom Crest Notice -->
+    <text x="75" y="132" fill="#FEF08A" font-size="6.8" font-family="'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" letter-spacing="1" text-anchor="middle">
+      ★ OFFICIAL DEVSTHAN SEAL ★
+    </text>
+  </svg>
+  `;
+}
+
 // Helper to resolve accurate temple receipt configuration
 function getTempleReceiptConfig(order) {
   if (!order) return TEMPLE_RECEIPT_CONFIG['mahakaleshwar-ujjain'];
@@ -340,6 +452,8 @@ function getTempleReceiptConfig(order) {
     location: order.templeLocation || order.location || 'India',
     watermark: `${cleanAcronym}, SANCTUM`,
     sealText: `${displayName} Management Trust`,
+    sealTop: `${displayName.toUpperCase().slice(0, 30)} TRUST`,
+    sealBottom: `${(order.templeLocation || order.location || 'DEVSTHAN').split(',')[0].toUpperCase()} • DEVSTHAN`,
     prefix: cleanAcronym
   };
 }
@@ -373,27 +487,7 @@ function generateDonationReceiptHtml(order) {
     <div class="receipt-header">
       <!-- Circular Saffron Temple Crest -->
       <div class="receipt-seal-wrapper">
-        <svg class="receipt-seal-svg" viewBox="0 0 120 120" width="86" height="86">
-          <circle cx="60" cy="60" r="56" fill="#EA580C" stroke="#C2410C" stroke-width="2.5" />
-          <circle cx="60" cy="60" r="51" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="3,2" />
-          <!-- Circular text path -->
-          <path id="receipt-text-path" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0" fill="none" />
-          <!-- Temple Shikhara Emblem -->
-          <g transform="translate(60,60) scale(0.65)">
-            <path d="M 0,-34 L -3,-18 L 3,-18 Z" fill="#FFFFFF" />
-            <polygon points="0,-18 -16,14 16,14" fill="#FFFFFF" opacity="0.95" />
-            <rect x="-18" y="14" width="36" height="12" fill="#FFFFFF" rx="2" />
-            <circle cx="0" cy="-35" r="3" fill="#FBBF24" />
-            <path d="M -8,2 L 0,-10 L 8,2 Z" fill="#EA580C" />
-            <rect x="-6" y="16" width="12" height="10" fill="#EA580C" rx="1" />
-          </g>
-          <!-- Surrounding circular text -->
-          <text fill="#FFFFFF" font-size="7.2" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700">
-            <textPath href="#receipt-text-path" startOffset="50%" text-anchor="middle">
-              ${config.sealText}
-            </textPath>
-          </text>
-        </svg>
+        ${generateTempleSealSvg(config)}
       </div>
 
       <!-- Bilingual Trust Title -->
