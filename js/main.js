@@ -1579,7 +1579,8 @@ const PRARTHANA_LANGUAGES = [
   { code: 'or', native: 'ଓଡ଼ିଆ', en: 'Odia', short: 'OR' },
   { code: 'as', native: 'অসমীয়া', en: 'Assamese', short: 'AS' },
   { code: 'ur', native: 'اردو', en: 'Urdu', short: 'UR' },
-  { code: 'ne', native: 'नेपाली', en: 'Nepali', short: 'NE' }
+  { code: 'ne', native: 'नेपाली', en: 'Nepali', short: 'NE' },
+  { code: 'sa', native: 'संस्कृतम्', en: 'Sanskrit', short: 'SA' }
 ];
 
 function initGoogleTranslateLanguageSelector() {
@@ -1598,7 +1599,7 @@ function initGoogleTranslateLanguageSelector() {
     try {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,hi,mr,ml,pa,or,as,ur,ne',
+        includedLanguages: 'en,hi,mr,ml,pa,or,as,ur,ne,sa',
         autoDisplay: false
       }, 'google_translate_element');
     } catch (err) {
