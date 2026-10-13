@@ -1467,3 +1467,210 @@ if (document.readyState === 'loading') {
 } else {
   initWhatsAppFloat();
 }
+
+// ==========================================================================
+// Shiplystic Prarthana - Google Website Translator Integration
+// Official Widget with Native Header Selector & Persistent Cookie Sync
+// Supported: English (Default), Hindi, Marathi, Malayalam, Punjabi, Odia, Assamese, Urdu, Nepali
+// ==========================================================================
+
+const PRARTHANA_LANGUAGES = [
+  { code: 'en', native: 'English', en: 'English (Default)', short: 'EN' },
+  { code: 'hi', native: 'हिन्दी', en: 'Hindi', short: 'HI' },
+  { code: 'mr', native: 'मराठी', en: 'Marathi', short: 'MR' },
+  { code: 'ml', native: 'മലയാളം', en: 'Malayalam', short: 'ML' },
+  { code: 'pa', native: 'ਪੰਜਾਬੀ', en: 'Punjabi', short: 'PA' },
+  { code: 'or', native: 'ଓଡ଼ିଆ', en: 'Odia', short: 'OR' },
+  { code: 'as', native: 'অসমীয়া', en: 'Assamese', short: 'AS' },
+  { code: 'ur', native: 'اردو', en: 'Urdu', short: 'UR' },
+  { code: 'ne', native: 'नेपाली', en: 'Nepali', short: 'NE' }
+];
+
+function initGoogleTranslateLanguageSelector() {
+  // Avoid duplicate injection
+  if (document.getElementById('shiplysticLangSelector')) return;
+
+  const navContainer = document.querySelector('.header-nav .nav-container') || document.querySelector('.nav-container');
+  if (!navContainer) return;
+
+  // 1. Ensure hidden Google Translate Element exists in DOM
+  if (!document.getElementById('google_translate_element')) {
+    const gtDiv = document.createElement('div');
+    gtDiv.id = 'google_translate_element';
+    gtDiv.style.display = 'none';
+    document.body.appendChild(gtDiv);
+  }
+
+  // 2. Setup Google Translate Callback
+  window.googleTranslateElementInit = function() {
+    try {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,mr,ml,pa,or,as,ur,ne',
+        autoDisplay: false
+      }, 'google_translate_element');
+    } catch (err) {
+      console.warn('Google Translate Element initialization notice:', err);
+    }
+  };
+
+  // 3. Load official Google Translate script asynchronously (if not already present)
+  if (!document.getElementById('google-translate-script')) {
+    const gtScript = document.createElement('script');
+    gtScript.id = 'google-translate-script';
+    gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    gtScript.async = true;
+    document.body.appendChild(gtScript);
+  }
+
+  // 4. Resolve currently active language from googtrans cookie or localStorage
+  function getCurrentLang() {
+    const match = document.cookie.match(/(?:^|;\s*)googtrans=\/en\/([a-z]+)/i);
+    if (match && match[1]) {
+      return match[1].toLowerCase();
+    }
+    try {
+      const stored = localStorage.getItem('shiplystic_language');
+      if (stored) return stored.toLowerCase();
+    } catch (e) {}
+    return 'en';
+  }
+
+  const initialLang = getCurrentLang();
+  const initialLangObj = PRARTHANA_LANGUAGES.find(l => l.code === initialLang) || PRARTHANA_LANGUAGES[0];
+
+  // 5. Create Custom Header Language Selector Widget
+  const selectorWrapper = document.createElement('div');
+  selectorWrapper.className = 'shiplystic-lang-selector';
+  selectorWrapper.id = 'shiplysticLangSelector';
+
+  const optionsHtml = PRARTHANA_LANGUAGES.map(l => `
+    <button type="button" class="lang-option ${l.code === initialLang ? 'active' : ''}" data-lang="${l.code}" role="menuitem">
+      <span class="lang-option-native">${l.native}</span>
+      <span class="lang-option-en">${l.en}</span>
+      <span class="lang-option-check">✓</span>
+    </button>
+  `).join('');
+
+  selectorWrapper.innerHTML = `
+    <button type="button" class="lang-selector-btn" id="langSelectorBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select Language">
+      <svg class="lang-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <span class="current-lang-text" id="currentLangLabel">${initialLangObj.native}</span>
+      <svg class="lang-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+      <div class="lang-dropdown-header">🌐 Select Language / भाषा चुनें</div>
+      <div class="lang-dropdown-grid">
+        ${optionsHtml}
+      </div>
+    </div>
+  `;
+
+  // 6. Insert into navigation header before CTA or before mobile-toggle
+  const headerCta = navContainer.querySelector('#header-cta-btn');
+  const mobileToggle = navContainer.querySelector('.mobile-toggle');
+
+  if (headerCta) {
+    navContainer.insertBefore(selectorWrapper, headerCta);
+  } else if (mobileToggle) {
+    navContainer.insertBefore(selectorWrapper, mobileToggle);
+  } else {
+    navContainer.appendChild(selectorWrapper);
+  }
+
+  // 7. Event Handlers
+  const btn = selectorWrapper.querySelector('#langSelectorBtn');
+  const labelEl = selectorWrapper.querySelector('#currentLangLabel');
+
+  function toggleDropdown(forceState) {
+    const willOpen = typeof forceState === 'boolean' ? forceState : !selectorWrapper.classList.contains('open');
+    selectorWrapper.classList.toggle('open', willOpen);
+    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown();
+  });
+
+  // Close when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (!selectorWrapper.contains(e.target)) {
+      toggleDropdown(false);
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      toggleDropdown(false);
+    }
+  });
+
+  // Apply Language Selection
+  function applyLanguage(targetCode) {
+    const langObj = PRARTHANA_LANGUAGES.find(l => l.code === targetCode) || PRARTHANA_LANGUAGES[0];
+    const host = window.location.hostname;
+
+    // A. Update cookies for persistent cross-page translation
+    if (targetCode === 'en') {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + host;
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + host;
+      try { localStorage.removeItem('shiplystic_language'); } catch (e) {}
+    } else {
+      const val = `/en/${targetCode}`;
+      document.cookie = `googtrans=${val}; path=/;`;
+      document.cookie = `googtrans=${val}; path=/; domain=${host}`;
+      document.cookie = `googtrans=${val}; path=/; domain=.${host}`;
+      try { localStorage.setItem('shiplystic_language', targetCode); } catch (e) {}
+    }
+
+    // B. Trigger Google Translate combo element
+    const combo = document.querySelector('.goog-te-combo');
+    if (combo) {
+      combo.value = targetCode;
+      combo.dispatchEvent(new Event('change'));
+    } else {
+      // If combo not ready yet in DOM, refresh so the new cookie immediately translates
+      window.location.reload();
+      return;
+    }
+
+    // C. Update Custom UI
+    if (labelEl) {
+      labelEl.textContent = langObj.native;
+    }
+
+    selectorWrapper.querySelectorAll('.lang-option').forEach(opt => {
+      const isCurrent = opt.getAttribute('data-lang') === targetCode;
+      opt.classList.toggle('active', isCurrent);
+    });
+
+    toggleDropdown(false);
+  }
+
+  // Handle option clicks
+  selectorWrapper.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const code = opt.getAttribute('data-lang');
+      if (code) {
+        applyLanguage(code);
+      }
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGoogleTranslateLanguageSelector);
+} else {
+  initGoogleTranslateLanguageSelector();
+}
+

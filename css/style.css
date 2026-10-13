@@ -6607,4 +6607,241 @@ textarea.form-control {
   }
 }
 
+/* ==========================================================================
+   Shiplystic Prarthana - Google Translate Language Selector
+   ========================================================================== */
+
+/* Hide default Google Translate banner and displacement */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: none !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+#google_translate_element,
+.goog-te-gadget {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Custom Header Language Selector */
+.shiplystic-lang-selector {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1002;
+  font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.lang-selector-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.75rem;
+  background: #FFFFFF;
+  border: 1.5px solid #E4E4E7;
+  border-radius: 9999px;
+  color: #27272A;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.lang-selector-btn:hover,
+.shiplystic-lang-selector.open .lang-selector-btn {
+  border-color: #DC2626;
+  color: #DC2626;
+  background: #FEF2F2;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.12);
+}
+
+.lang-globe-icon {
+  width: 16px;
+  height: 16px;
+  color: #DC2626;
+  flex-shrink: 0;
+}
+
+.current-lang-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.lang-chevron-icon {
+  width: 10px;
+  height: 10px;
+  color: #71717A;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.shiplystic-lang-selector.open .lang-chevron-icon {
+  transform: rotate(180deg);
+  color: #DC2626;
+}
+
+/* Dropdown Card */
+.lang-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #FFFFFF;
+  border: 1.5px solid #E4E4E7;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.06);
+  width: 280px;
+  max-width: 90vw;
+  padding: 0.5rem;
+  z-index: 1050;
+  animation: langDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shiplystic-lang-selector.open .lang-dropdown-menu {
+  display: block;
+}
+
+@keyframes langDropdownFade {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.lang-dropdown-header {
+  padding: 0.45rem 0.65rem 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #71717A;
+  border-bottom: 1px solid #F4F4F5;
+  margin-bottom: 0.35rem;
+}
+
+.lang-dropdown-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 340px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #27272A;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.lang-option:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+  padding-left: 0.95rem;
+}
+
+.lang-option.active {
+  background: #FEF2F2;
+  color: #DC2626;
+  font-weight: 800;
+}
+
+.lang-option-native {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.lang-option-en {
+  font-size: 0.74rem;
+  color: #71717A;
+  font-weight: 600;
+  margin-left: auto;
+  padding-right: 0.4rem;
+}
+
+.lang-option.active .lang-option-en {
+  color: #DC2626;
+}
+
+.lang-option-check {
+  display: none;
+  font-size: 0.85rem;
+  color: #DC2626;
+  font-weight: 900;
+}
+
+.lang-option.active .lang-option-check {
+  display: inline-block;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .shiplystic-lang-selector {
+    margin-right: 0.4rem;
+  }
+  .lang-selector-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+  }
+  .lang-globe-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .lang-dropdown-menu {
+    right: -30px;
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lang-selector-btn .current-lang-text {
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .lang-dropdown-menu {
+    right: -45px;
+    width: 235px;
+  }
+}
+
+
 
