@@ -1,0 +1,620 @@
+/* ==========================================================================
+   Prarthana by Shiplystic - Coming Soon Page Styles
+   Theme: Red (#DC2626), Black (#09090B), White (#FFFFFF)
+   Aesthetic: Clean, Premium, Sacred, Light Background, Fully Responsive
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-red: #DC2626;
+  --red-hover: #B91C1C;
+  --red-light: #FEF2F2;
+  --red-border: rgba(220, 38, 38, 0.2);
+  --red-glow: rgba(220, 38, 38, 0.12);
+
+  --text-dark: #09090B;
+  --text-secondary: #3F3F46;
+  --text-muted: #71717A;
+  --text-light: #FFFFFF;
+
+  --bg-page: #FAF9F6;
+  --bg-card: #FFFFFF;
+  --border-light: #E4E4E7;
+  --border-gold-subtle: #FDE68A;
+
+  --font-family: 'Poppins', 'Mukta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Playfair Display', serif;
+
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.08);
+  --shadow-badge: 0 2px 10px rgba(220, 38, 38, 0.15);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle sacred mandala background pattern */
+.bg-sacred-pattern {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(220, 38, 38, 0.03) 0%, transparent 40%),
+    radial-gradient(#E4E4E7 0.8px, transparent 0.8px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+  background-position: 0 0, 0 0, 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top Announcement Strip */
+.top-notice-bar {
+  background: #09090B;
+  color: #E4E4E7;
+  font-size: 0.82rem;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-notice-content {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.top-notice-badge {
+  background: var(--primary-red);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.top-notice-link {
+  color: #FCA5A5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.top-notice-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* Header Navbar */
+.site-header {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0.9rem 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.header-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.brand-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.brand-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--red-light);
+  color: var(--primary-red);
+  border: 1px solid var(--red-border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+.header-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+.header-contact-btn:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  background: var(--red-light);
+}
+
+/* Main Container */
+.main-stage {
+  flex: 1;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem 1.5rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.coming-soon-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* Content Column (Left) */
+.content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* Launching Soon Pill */
+.launch-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.launch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--red-border);
+  box-shadow: var(--shadow-badge);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-red);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.launch-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+/* Typography */
+.main-headline {
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+}
+
+.main-headline .highlight-red {
+  color: var(--primary-red);
+  position: relative;
+  display: inline-block;
+}
+
+.main-subtitle {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.main-description {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+/* Feature Highlights */
+.feature-pills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.feature-pill-icon {
+  font-size: 1rem;
+}
+
+/* Launch Announcement Card */
+.announcement-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary-red);
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.announcement-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-red);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.announcement-body {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Action & Inquiries */
+.cta-actions-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-primary-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--primary-red);
+  color: #FFFFFF;
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 4px 16px var(--red-glow);
+  transition: all 0.25s ease;
+}
+
+.btn-primary-whatsapp:hover {
+  background: var(--red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--red-glow);
+}
+
+.btn-secondary-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-light);
+  color: var(--text-dark);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary-email:hover {
+  border-color: var(--text-dark);
+  background: var(--bg-page);
+}
+
+/* Visual Column (Right) */
+.visual-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.prasad-card-frame {
+  position: relative;
+  background: #FFFFFF;
+  padding: 0.9rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  box-shadow: var(--shadow-elevated);
+  max-width: 480px;
+  width: 100%;
+}
+
+.prasad-img-wrap {
+  position: relative;
+  border-radius: calc(var(--radius-lg) - 6px);
+  overflow: hidden;
+  background: #F4F4F5;
+  aspect-ratio: 1 / 1;
+}
+
+.prasad-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prasad-card-frame:hover .prasad-showcase-img {
+  transform: scale(1.03);
+}
+
+/* Floating Caption Badge */
+.prasad-floating-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
+.prasad-floating-icon {
+  font-size: 1.1rem;
+}
+
+.prasad-floating-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Footer */
+.site-footer {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-light);
+  padding: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-copy strong {
+  color: var(--text-dark);
+}
+
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.social-link-item:hover {
+  color: var(--primary-red);
+  background: var(--red-light);
+}
+
+.social-link-item svg {
+  fill: currentColor;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .coming-soon-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .content-col {
+    align-items: center;
+  }
+
+  .main-headline {
+    font-size: 2.8rem;
+  }
+
+  .main-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .main-description {
+    max-width: 600px;
+  }
+
+  .feature-pills-list {
+    justify-content: center;
+  }
+
+  .cta-actions-wrap {
+    justify-content: center;
+  }
+
+  .announcement-card {
+    text-align: left;
+    max-width: 600px;
+  }
+
+  .prasad-card-frame {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-stage {
+    padding: 2rem 1.25rem 3rem 1.25rem;
+  }
+
+  .top-notice-bar {
+    font-size: 0.75rem;
+    padding: 0.45rem 1rem;
+  }
+
+  .brand-logo-img {
+    height: 40px;
+  }
+
+  .brand-tag-pill {
+    display: none;
+  }
+
+  .main-headline {
+    font-size: 2.15rem;
+  }
+
+  .main-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .main-description {
+    font-size: 0.95rem;
+  }
+
+  .cta-actions-wrap {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary-whatsapp,
+  .btn-secondary-email {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .prasad-floating-badge {
+    padding: 0.45rem 0.9rem;
+  }
+
+  .prasad-floating-text {
+    font-size: 0.75rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
