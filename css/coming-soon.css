@@ -1,8 +1,8 @@
 /* ==========================================================================
    Prarthana by Shiplystic - Coming Soon Page Styles
-   Theme: Exact Sacred Temple & Prasad Delivery Artwork
+   Theme: Exact Sacred Temple & Prasad Delivery Artwork as Background Image
    Background: #FCF7F1 (Warm Ivory Cream) edge-to-edge
-   Layout: Full horizontal coverage, viewport-optimized vertical height
+   Layout: 100% Viewport coverage, zero side margins, no vertical scrollbar
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
@@ -40,62 +40,72 @@ html, body {
   color: var(--text-dark);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow: hidden; /* Fits screen properly with zero scrollbar on desktop */
 }
 
 /* Full Viewport App Wrapper */
 .coming-soon-viewport {
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-cream);
-  position: relative;
-}
-
-/* Edge-to-Edge Hero Banner Stage */
-.banner-stage {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: var(--bg-cream);
-  padding: 0;
   margin: 0;
+  padding: 0;
+  position: relative;
   overflow: hidden;
 }
 
-/* Relative container wrapping image and interactive hotspots */
-.banner-canvas-frame {
-  position: relative;
+/* Edge-to-Edge Hero Banner as Background Image */
+.banner-bg-hero {
   width: 100%;
-  max-width: 100%;
+  flex: 1;
+  min-height: 0;
+  background-color: var(--bg-cream);
+  background-image: url('/images/banners/coming-soon-banner-2x.webp');
+  background-image: -webkit-image-set(
+    url('/images/banners/coming-soon-banner-2x.webp') 2x,
+    url('/images/banners/coming-soon-banner.webp') 1x,
+    url('/images/banners/coming-soon-banner-2x.jpg') 2x,
+    url('/images/banners/coming-soon-banner.jpg') 1x
+  );
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hero Artwork: Covers screen horizontally, scaled vertically to fit within viewport */
-.banner-artwork-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  max-height: calc(100vh - 64px);
-  object-fit: contain;
-  object-position: center;
-  display: block;
+/* Fallback for browsers that don't support image-set with webp */
+@supports not (background-image: -webkit-image-set(url('/images/banners/coming-soon-banner-2x.webp') 2x)) {
+  .banner-bg-hero {
+    background-image: url('/images/banners/coming-soon-banner-2x.jpg');
+  }
 }
 
-/* Interactive Overlay Hotspots on Banner */
+/* Interactive Hotspots Layer mapped over the background image */
+.banner-hotspots-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual Hotspot Links */
 .banner-hotspot {
   position: absolute;
   display: block;
   z-index: 5;
   cursor: pointer;
+  pointer-events: auto;
   transition: all 0.2s ease;
 }
 
@@ -133,6 +143,7 @@ html, body {
   height: 5.3%;
   display: flex;
   gap: 3px;
+  pointer-events: auto;
 }
 
 .hotspot-social-icon {
@@ -150,15 +161,16 @@ html, body {
 /* Sleek, Compact Devotee Bar at Bottom */
 .devotee-compact-bar {
   width: 100%;
+  height: 52px;
+  min-height: 52px;
   background: #FFFFFF;
   border-top: 1px solid rgba(220, 38, 38, 0.15);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
-  padding: 0.65rem 1.5rem;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
   position: relative;
   z-index: 10;
 }
@@ -167,9 +179,12 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--red-deep);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .devotee-bar-lotus {
@@ -181,7 +196,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .btn-compact-whatsapp {
@@ -191,9 +206,9 @@ html, body {
   background: var(--primary-red);
   color: #FFFFFF;
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  padding: 0.45rem 1.1rem;
+  padding: 0.42rem 1.1rem;
   border-radius: var(--radius-full);
   box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
   transition: all 0.2s ease;
@@ -215,7 +230,7 @@ html, body {
   text-decoration: none;
   font-size: 0.84rem;
   font-weight: 500;
-  padding: 0.45rem 0.9rem;
+  padding: 0.42rem 0.9rem;
   border-radius: var(--radius-full);
   transition: all 0.2s ease;
 }
@@ -227,41 +242,57 @@ html, body {
 }
 
 .footer-micro-copy {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
 }
 
 /* Responsiveness */
 @media (max-width: 900px) {
-  .banner-artwork-img {
-    max-height: calc(100vh - 100px);
+  html, body {
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .coming-soon-viewport {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .banner-bg-hero {
+    min-height: 65vh;
+    background-size: cover;
   }
 
   .devotee-compact-bar {
-    justify-content: center;
+    height: auto;
+    min-height: auto;
+    padding: 0.75rem 1rem;
+    flex-direction: column;
     text-align: center;
-    padding: 0.6rem 1rem;
   }
 
   .devotee-bar-left {
     justify-content: center;
     font-size: 0.8rem;
+    white-space: normal;
   }
 
   .devotee-bar-right {
     justify-content: center;
     width: 100%;
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 600px) {
-  .banner-artwork-img {
-    max-height: calc(100vh - 120px);
+  .banner-bg-hero {
+    min-height: 55vh;
   }
 
   .btn-compact-whatsapp,
   .btn-compact-support {
     font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.38rem 0.8rem;
   }
 }
