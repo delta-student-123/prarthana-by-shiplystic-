@@ -73,7 +73,7 @@ html, body {
     url('/images/banners/coming-soon-banner.jpg') 1x
   );
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center top; /* Locks top logo and header firmly in view */
   background-size: cover;
   position: relative;
   margin: 0;
@@ -111,19 +111,19 @@ html, body {
 
 /* Logo Hotspot (top-left) */
 .hotspot-logo {
-  top: 4.2%;
-  left: 8.2%;
-  width: 22.5%;
-  height: 10.6%;
+  top: 9.5%;
+  left: 7.8%;
+  width: 20%;
+  height: 9%;
   border-radius: var(--radius-sm);
 }
 
 /* Launching Soon Pill Hotspot */
 .hotspot-launch-btn {
-  top: 73.3%;
-  left: 8.3%;
-  width: 25.5%;
-  height: 8.0%;
+  top: 66.8%;
+  left: 7.8%;
+  width: 20%;
+  height: 6%;
   border-radius: var(--radius-full);
   background: rgba(220, 38, 38, 0);
 }
@@ -137,10 +137,10 @@ html, body {
 /* Social Icons Hotspot Row */
 .hotspot-social-row {
   position: absolute;
-  top: 87.2%;
-  left: 8.3%;
-  width: 12.8%;
-  height: 5.3%;
+  top: 74.6%;
+  left: 7.8%;
+  width: 11%;
+  height: 4.5%;
   display: flex;
   gap: 3px;
   pointer-events: auto;
