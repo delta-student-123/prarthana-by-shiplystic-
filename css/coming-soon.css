@@ -1,23 +1,29 @@
 /* ==========================================================================
-   Prarthana by Shiplystic - Coming Soon Page Styles
-   Theme: Exact Sacred Temple & Prasad Delivery Artwork as Background Image
-   Background: #FCF7F1 (Warm Ivory Cream) edge-to-edge
-   Layout: 100% Viewport coverage, zero side margins, no vertical scrollbar
+   Prarthana by Shiplystic - Pure HTML/CSS Coming Soon Landing Page
+   Exact Visual Replica of Reference Artwork
+   - Real typography (Alex Brush / Great Vibes + Playfair Display)
+   - Real, crisp, official logo (never cut off)
+   - Balanced, elegant, reduced font size
+   - 100% Full-screen horizontal coverage, zero scrollbars on desktop
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
   --primary-red: #DC2626;
   --red-deep: #8B1D1D;
+  --red-dark-text: #1F2937;
   --red-hover: #B91C1C;
   --red-light: #FEF2F2;
-  --red-border: rgba(220, 38, 38, 0.25);
+  --red-pill-bg: #FEE2E2;
+  --red-pill-border: #FCA5A5;
+  --red-border: rgba(220, 38, 38, 0.2);
 
   --bg-cream: #FCF7F1;
   --bg-white: #FFFFFF;
   --text-dark: #1F2937;
   --text-muted: #6B7280;
+  --text-gray: #4B5563;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -35,12 +41,12 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', 'Mukta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-cream);
   color: var(--text-dark);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow: hidden; /* Fits screen properly with zero scrollbar on desktop */
+  overflow: hidden; /* Fits screen properly on desktop without vertical scrollbar */
 }
 
 /* Full Viewport App Wrapper */
@@ -51,111 +57,329 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   background-color: var(--bg-cream);
-  margin: 0;
-  padding: 0;
   position: relative;
   overflow: hidden;
 }
 
-/* Edge-to-Edge Hero Banner as Background Image */
-.banner-bg-hero {
-  width: 100%;
-  flex: 1;
-  min-height: 0;
-  background-color: var(--bg-cream);
-  background-image: url('/images/banners/coming-soon-banner-2x.webp');
-  background-image: -webkit-image-set(
-    url('/images/banners/coming-soon-banner-2x.webp') 2x,
-    url('/images/banners/coming-soon-banner.webp') 1x,
-    url('/images/banners/coming-soon-banner-2x.jpg') 2x,
-    url('/images/banners/coming-soon-banner.jpg') 1x
-  );
+/* Corner Decorative Visual Accents */
+.corner-accent-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  background-image: url('/images/banners/corner_top_left.png');
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center top; /* Locks top logo and header firmly in view */
-  background-size: cover;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.corner-accent-bottom-left {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  width: 160px;
+  height: 140px;
+  background-image: url('/images/banners/corner_mandala_bl.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+/* Top Navigation Bar */
+.coming-soon-top-bar {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.1rem 3rem 0.5rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
+  z-index: 10;
+}
+
+.brand-header-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-header-logo {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.header-tradition-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text-gray);
+  text-transform: uppercase;
+}
+
+.tag-sep {
+  color: #D1D5DB;
+  font-weight: 300;
+}
+
+.tag-lotus {
+  font-size: 0.95rem;
+  color: var(--primary-red);
+}
+
+/* Main Two-Column Stage */
+.coming-soon-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.5rem 3.5rem 1rem 3.5rem;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 5;
+  min-height: 0;
+}
+
+/* Left Column: Typography & Content */
+.stage-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 580px;
+}
+
+/* Script Headline "Prarthana 🚩" */
+.script-headline-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1;
+  margin-bottom: -0.2rem;
+}
+
+.script-title {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.4rem;
+  font-weight: 400;
+  color: var(--primary-red);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.flag-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-top: -0.8rem;
+}
+
+/* Serif Headline "Is Coming Soon" */
+.serif-subheadline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   margin: 0;
-  padding: 0;
+}
+
+/* Subtitle */
+.divine-subtitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  line-height: 1.35;
+  margin-top: 0.15rem;
+}
+
+/* Lotus Divider */
+.lotus-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 320px;
+  margin: 0.2rem 0;
+}
+
+.div-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #FCA5A5, transparent);
+}
+
+.div-lotus {
+  font-size: 0.95rem;
+  color: var(--primary-red);
+  line-height: 1;
+}
+
+/* Description */
+.desc-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+/* 3 Feature Badges in a Horizontal Row */
+.feature-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0.35rem 0;
+  flex-wrap: wrap;
+}
+
+.feature-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-icon-bubble {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #FEE2E2;
+  border: 1px solid rgba(220, 38, 38, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  color: var(--primary-red);
 }
 
-/* Fallback for browsers that don't support image-set with webp */
-@supports not (background-image: -webkit-image-set(url('/images/banners/coming-soon-banner-2x.webp') 2x)) {
-  .banner-bg-hero {
-    background-image: url('/images/banners/coming-soon-banner-2x.jpg');
-  }
-}
-
-/* Interactive Hotspots Layer mapped over the background image */
-.banner-hotspots-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Individual Hotspot Links */
-.banner-hotspot {
-  position: absolute;
-  display: block;
-  z-index: 5;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: all 0.2s ease;
-}
-
-/* Logo Hotspot (top-left) */
-.hotspot-logo {
-  top: 9.5%;
-  left: 7.8%;
-  width: 20%;
-  height: 9%;
-  border-radius: var(--radius-sm);
-}
-
-/* Launching Soon Pill Hotspot */
-.hotspot-launch-btn {
-  top: 66.8%;
-  left: 7.8%;
-  width: 20%;
-  height: 6%;
-  border-radius: var(--radius-full);
-  background: rgba(220, 38, 38, 0);
-}
-
-.hotspot-launch-btn:hover {
-  background: rgba(220, 38, 38, 0.08);
-  box-shadow: 0 0 16px rgba(220, 38, 38, 0.3);
-  transform: scale(1.015);
-}
-
-/* Social Icons Hotspot Row */
-.hotspot-social-row {
-  position: absolute;
-  top: 74.6%;
-  left: 7.8%;
-  width: 11%;
-  height: 4.5%;
+.badge-label-text {
   display: flex;
-  gap: 3px;
-  pointer-events: auto;
+  flex-direction: column;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.25;
 }
 
-.hotspot-social-icon {
-  flex: 1;
-  height: 100%;
+.badge-v-sep {
+  width: 1px;
+  height: 22px;
+  background-color: #E5E7EB;
+}
+
+/* Launching Soon Pill Button */
+.launching-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: var(--red-pill-bg);
+  border: 1px solid var(--red-pill-border);
+  padding: 0.48rem 1.4rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  width: fit-content;
+  margin: 0.4rem 0 0.2rem 0;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.08);
+}
+
+.launching-pill-btn:hover {
+  background: #FECACA;
+  border-color: var(--primary-red);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.2);
+}
+
+.pill-rocket {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.pill-line {
+  color: var(--primary-red);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.pill-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--red-deep);
+  text-transform: uppercase;
+}
+
+/* Social Connect Row */
+.social-connect-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.social-label {
+  font-size: 0.74rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.social-icons-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icon-circle {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  background: transparent;
-  transition: background 0.2s ease;
+  border: 1px solid #D1D5DB;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4B5563;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 0.72rem;
 }
 
-.hotspot-social-icon:hover {
-  background: rgba(220, 38, 38, 0.15);
+.social-icon-circle:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  background: var(--red-light);
+  transform: translateY(-1px);
+}
+
+/* Right Column: Visual Showcase */
+.stage-visual-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+}
+
+.prasad-artwork-img {
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  max-height: calc(100vh - 130px);
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 14px 28px rgba(139, 29, 29, 0.08));
 }
 
 /* Sleek, Compact Devotee Bar at Bottom */
@@ -166,7 +390,7 @@ html, body {
   background: #FFFFFF;
   border-top: 1px solid rgba(220, 38, 38, 0.15);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
-  padding: 0 1.5rem;
+  padding: 0 3.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -247,7 +471,7 @@ html, body {
 }
 
 /* Responsiveness */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   html, body {
     overflow-y: auto;
     height: auto;
@@ -259,9 +483,41 @@ html, body {
     overflow-y: auto;
   }
 
-  .banner-bg-hero {
-    min-height: 65vh;
-    background-size: cover;
+  .coming-soon-top-bar {
+    padding: 1rem 1.5rem;
+  }
+
+  .coming-soon-stage {
+    grid-template-columns: 1fr;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .stage-content-col {
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .script-headline-wrap {
+    justify-content: center;
+  }
+
+  .lotus-divider {
+    margin: 0.2rem auto;
+  }
+
+  .feature-badges-row {
+    justify-content: center;
+  }
+
+  .social-connect-block {
+    align-items: center;
+  }
+
+  .prasad-artwork-img {
+    max-height: 380px;
   }
 
   .devotee-compact-bar {
@@ -286,8 +542,24 @@ html, body {
 }
 
 @media (max-width: 600px) {
-  .banner-bg-hero {
-    min-height: 55vh;
+  .script-title {
+    font-size: 2.8rem;
+  }
+
+  .serif-subheadline {
+    font-size: 1.85rem;
+  }
+
+  .header-tradition-tag {
+    display: none;
+  }
+
+  .badge-v-sep {
+    display: none;
+  }
+
+  .feature-badges-row {
+    gap: 0.75rem;
   }
 
   .btn-compact-whatsapp,
