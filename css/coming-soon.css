@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Prarthana by Shiplystic - Pure HTML/CSS Coming Soon Landing Page
-   Exact Visual Replica of Reference Artwork
-   - Real typography (Alex Brush / Great Vibes + Playfair Display)
-   - Real, crisp, official logo (never cut off)
-   - Balanced, elegant, reduced font size
-   - 100% Full-screen horizontal coverage, zero scrollbars on desktop
+   Prarthana by Shiplystic - Pure Centered Coming Soon Landing Page
+   - Zero background images (completely eliminates all text overlap)
+   - Right-side image completely removed as requested
+   - Real typography (Alex Brush script + Playfair Display serif)
+   - Official Shiplystic logo prominently displayed in header
+   - Perfectly balanced and centered on #FCF7F1 (Warm Ivory Cream)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
@@ -12,18 +12,16 @@
 :root {
   --primary-red: #DC2626;
   --red-deep: #8B1D1D;
-  --red-dark-text: #1F2937;
   --red-hover: #B91C1C;
   --red-light: #FEF2F2;
   --red-pill-bg: #FEE2E2;
   --red-pill-border: #FCA5A5;
-  --red-border: rgba(220, 38, 38, 0.2);
 
   --bg-cream: #FCF7F1;
   --bg-white: #FFFFFF;
-  --text-dark: #1F2937;
-  --text-muted: #6B7280;
+  --text-dark: #111827;
   --text-gray: #4B5563;
+  --text-muted: #6B7280;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -46,7 +44,7 @@ html, body {
   color: var(--text-dark);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow: hidden; /* Fits screen properly on desktop without vertical scrollbar */
+  overflow: hidden; /* Fits screen properly on desktop */
 }
 
 /* Full Viewport App Wrapper */
@@ -57,37 +55,10 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--bg-cream);
   position: relative;
   overflow: hidden;
-}
-
-/* Corner Decorative Visual Accents */
-.corner-accent-top-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 140px;
-  height: 140px;
-  background-image: url('/images/banners/corner_top_left.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.corner-accent-bottom-left {
-  position: absolute;
-  bottom: 52px;
-  left: 0;
-  width: 160px;
-  height: 140px;
-  background-image: url('/images/banners/corner_mandala_bl.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.85;
 }
 
 /* Top Navigation Bar */
@@ -95,7 +66,7 @@ html, body {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1.1rem 3rem 0.5rem 3.5rem;
+  padding: 1.25rem 3.5rem 0.5rem 3.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,7 +81,7 @@ html, body {
 }
 
 .brand-header-logo {
-  height: 46px;
+  height: 50px;
   width: auto;
   display: block;
 }
@@ -119,7 +90,7 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   color: var(--text-gray);
@@ -136,42 +107,44 @@ html, body {
   color: var(--primary-red);
 }
 
-/* Main Two-Column Stage */
+/* Main Centered Stage (Zero overlap, no right-side image) */
 .coming-soon-stage {
   flex: 1;
   width: 100%;
-  max-width: 1400px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 0.5rem 3.5rem 1rem 3.5rem;
-  display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
+  padding: 0.5rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  text-align: center;
   position: relative;
   z-index: 5;
   min-height: 0;
 }
 
-/* Left Column: Typography & Content */
 .stage-content-col {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.65rem;
-  max-width: 580px;
+  width: 100%;
 }
 
 /* Script Headline "Prarthana 🚩" */
 .script-headline-wrap {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  justify-content: center;
+  gap: 0.5rem;
   line-height: 1;
-  margin-bottom: -0.2rem;
+  margin-bottom: -0.15rem;
 }
 
 .script-title {
   font-family: 'Alex Brush', cursive;
-  font-size: 3.4rem;
+  font-size: 3.5rem;
   font-weight: 400;
   color: var(--primary-red);
   letter-spacing: 0.01em;
@@ -179,15 +152,15 @@ html, body {
 }
 
 .flag-icon {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   line-height: 1;
-  margin-top: -0.8rem;
+  margin-top: -0.75rem;
 }
 
 /* Serif Headline "Is Coming Soon" */
 .serif-subheadline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 2.25rem;
+  font-size: 2.35rem;
   font-weight: 700;
   color: #111827;
   line-height: 1.15;
@@ -197,7 +170,7 @@ html, body {
 
 /* Subtitle */
 .divine-subtitle {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 500;
   color: var(--text-gray);
   line-height: 1.35;
@@ -208,9 +181,11 @@ html, body {
 .lotus-divider {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
-  max-width: 320px;
-  margin: 0.2rem 0;
+  width: 100%;
+  max-width: 300px;
+  margin: 0.25rem auto;
 }
 
 .div-line {
@@ -227,18 +202,20 @@ html, body {
 
 /* Description */
 .desc-text {
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   color: var(--text-muted);
   line-height: 1.6;
-  max-width: 480px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 /* 3 Feature Badges in a Horizontal Row */
 .feature-badges-row {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
-  margin: 0.35rem 0;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 0.4rem auto;
   flex-wrap: wrap;
 }
 
@@ -246,18 +223,19 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-align: left;
 }
 
 .badge-icon-bubble {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #FEE2E2;
   border: 1px solid rgba(220, 38, 38, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   flex-shrink: 0;
   color: var(--primary-red);
 }
@@ -265,7 +243,7 @@ html, body {
 .badge-label-text {
   display: flex;
   flex-direction: column;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-dark);
   line-height: 1.25;
@@ -273,7 +251,7 @@ html, body {
 
 .badge-v-sep {
   width: 1px;
-  height: 22px;
+  height: 24px;
   background-color: #E5E7EB;
 }
 
@@ -285,11 +263,11 @@ html, body {
   gap: 0.65rem;
   background: var(--red-pill-bg);
   border: 1px solid var(--red-pill-border);
-  padding: 0.48rem 1.4rem;
+  padding: 0.52rem 1.6rem;
   border-radius: var(--radius-full);
   text-decoration: none;
   width: fit-content;
-  margin: 0.4rem 0 0.2rem 0;
+  margin: 0.5rem auto 0.25rem auto;
   transition: all 0.25s ease;
   box-shadow: 0 2px 8px rgba(220, 38, 38, 0.08);
 }
@@ -313,7 +291,7 @@ html, body {
 }
 
 .pill-text {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   color: var(--red-deep);
@@ -324,12 +302,13 @@ html, body {
 .social-connect-block {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  margin-top: 0.35rem;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 .social-label {
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   color: #9CA3AF;
   font-weight: 500;
 }
@@ -337,12 +316,13 @@ html, body {
 .social-icons-list {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.55rem;
 }
 
 .social-icon-circle {
-  width: 25px;
-  height: 25px;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
   border: 1px solid #D1D5DB;
   background: #FFFFFF;
@@ -352,7 +332,7 @@ html, body {
   color: #4B5563;
   text-decoration: none;
   transition: all 0.2s ease;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
 
 .social-icon-circle:hover {
@@ -360,26 +340,6 @@ html, body {
   color: var(--primary-red);
   background: var(--red-light);
   transform: translateY(-1px);
-}
-
-/* Right Column: Visual Showcase */
-.stage-visual-col {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  max-height: 100%;
-  position: relative;
-}
-
-.prasad-artwork-img {
-  width: 100%;
-  max-width: 580px;
-  height: auto;
-  max-height: calc(100vh - 130px);
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 14px 28px rgba(139, 29, 29, 0.08));
 }
 
 /* Sleek, Compact Devotee Bar at Bottom */
@@ -488,36 +448,7 @@ html, body {
   }
 
   .coming-soon-stage {
-    grid-template-columns: 1fr;
-    padding: 1rem 1.5rem 2rem 1.5rem;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .stage-content-col {
-    max-width: 600px;
-    margin: 0 auto;
-    align-items: center;
-  }
-
-  .script-headline-wrap {
-    justify-content: center;
-  }
-
-  .lotus-divider {
-    margin: 0.2rem auto;
-  }
-
-  .feature-badges-row {
-    justify-content: center;
-  }
-
-  .social-connect-block {
-    align-items: center;
-  }
-
-  .prasad-artwork-img {
-    max-height: 380px;
+    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   }
 
   .devotee-compact-bar {
